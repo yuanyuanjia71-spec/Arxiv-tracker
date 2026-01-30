@@ -1,16 +1,49 @@
-categories: ["cs.CV", "cs.LG", "cs.AI"]
+categories: ["cs.CL", "cs.LG", "cs.CV", "cs.AI", "cs.NI", "cs.DC", "cs.OS", "cs.CR"]
 keywords:
-  - "open vocabulary"
-  - "open-vocabulary"
-  - "open vocabulary segmentation"
-  - "open-vocabulary segmentation"
-  - "vision language model"
-  - "training-free"
-  - "training free"
+  # --- Speculative / draft-verify / small-large cooperation ---
+  - "speculative decoding"
+  - "assisted decoding"
+  - "draft model"
+  - "draft-and-verify"
+  - "verify"
+  - "verification"
+  - "proposal model"
+  - "target model"
+  - "small model"
+  - "large model"
+  - "student model"
+  - "teacher model"
+  - "dual model"
+  - "two-model"
+  - "multi-model"
+  - "cascaded"
+  - "early exit"          # 有些论文会这样写但思想相近
+  - "lookahead"
 
-# exclude_keywords: # 选择排除的关键词
-#   - "Large Language Model"
-#   - "LLM"
+  # --- Edge/Cloud / Offloading / Collaboration ---
+  - "edge-cloud"
+  - "edge cloud"
+  - "device-cloud"
+  - "device cloud"
+  - "cloud-edge"
+  - "cloud edge"
+  - "offloading"
+  - "inference offloading"
+  - "collaborative inference"
+  - "split inference"
+  - "partitioned inference"
+  - "distributed inference"
+  - "on-device"
+  - "mobile"
+  - "latency"
+  - "bandwidth"
+
+exclude_keywords:
+  - "dataset"
+  - "distillation"        # 只想要推理协作就排掉蒸馏类
+  - "quantization"        # 纯量化加速通常不在你核心点上
+  - "federated"           # 联邦学习很多不相关
+  - "blockchain"
   
 logic: "AND"                 # 组间逻辑：categories 与 keywords 间 AND/OR
 max_results: 30
