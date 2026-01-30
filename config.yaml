@@ -3,20 +3,13 @@ keywords:
   # --- Speculative / draft-verify / small-large cooperation ---
   - "speculative decoding"
   - "assisted decoding"
-  - "draft-and-verify"
   - "verify"
   - "verification"
   - "multi-model"
 
   # --- Edge/Cloud / Offloading / Collaboration ---
-  - "edge-cloud"
-  - "edge cloud"
-  - "device-cloud"
-  - "device cloud"
-  - "cloud-edge"
-  - "cloud edge"
   - "collaborative inference"
-  - "on-device"
+
 
 exclude_keywords:
   - "dataset"
