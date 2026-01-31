@@ -3,8 +3,7 @@ keywords:
   # --- Speculative / draft-verify / small-large cooperation ---
   - "speculative decoding"
   - "assisted decoding"
-  - "verify"
-  - "verification"
+  - "specVLM"
   - "multi-model"
 
   # --- Edge/Cloud / Offloading / Collaboration ---
