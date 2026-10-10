@@ -74,7 +74,7 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-10-10 06:57</span>
+        <span class="badge">2026-10-11 06:04</span>
       </div>
     </div>
     <div class="hr"></div>
@@ -123,56 +123,10 @@ summary{cursor:pointer;color:var(--acc)}
 <details class="detail"><summary>Summary / 总结</summary>
 <div class="mono">System prompts for LLM-based coding agents are software artifacts that govern agent behavior, yet lack the testing infrastructure applied to conventional software.</div>
 </details>
-</div>
-<div class="card">
-<div class="title">Speedbumps: Rejection Attacks on Speculative Decoding</div>
-<div class="meta-line">Authors: Adam Y. J. Jones, Yu Yuan, Sergio Maffeis</div>
-<div class="meta-line">First: 2026-10-07T21:35:01+00:00 · Latest: 2026-10-07T21:35:01+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.10929v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.10929v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding is a popular technique for increasing the speed and reducing the costs of large language model (LLM) inference by verifying multiple draft tokens in a single target-model forward pass. The resulting benefit depends on the ability of the drafter to approximate the target model&#x27;s distribution. In this work, we study Speculative Rejection Attacks (SRAs), a novel class of attacks that cause draft and target models to disagree more often, resulting in fewer draft tokens being accepted per draft cycle. This leads to more target model forward passes needed per generated token, slowing down inference and increasing costs for the victim. We introduce two attacks which append an adversarial suffix to attacker-controlled content to degrade speculative decoding on a victim&#x27;s prompts. Both attacks optimise the expected length of the accepted speculative prefix, estimating per-depth acceptance from the target&#x27;s probability of the drafted proposals (Speedbump-P) or from the overlap between the draft and target distributions (Speedbump-D). In some cases, attacks degrade speculative decoding to the point of being slower than autoregressive decoding. The degradation reduces the output quality - regularisation restores output quality but gives up most of the degradation, trading effectiveness for stealthiness. Additionally, the suffixes remain effective under sampling, and transfer across drafters (Speedbump-P) or across target models sharing a drafter (Speedbump-D). These findings identify the draft-target interaction of speculative decoding as a realistic attack surface through which adversarial inputs can inflate inference costs.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding is a popular technique for increasing the speed and reducing the costs of large language model (LLM) inference by verifying multiple draft tokens in a single target-model forward pass.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Training Parallel Speculative Draft Models by Directly Minimizing Expected Decoding Rounds</div>
-<div class="meta-line">Authors: Yunxiao Zhao, Changxiao Cai</div>
-<div class="meta-line">First: 2026-10-07T16:56:29+00:00 · Latest: 2026-10-07T16:56:29+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.10411v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.10411v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding accelerates large language model inference by using a low-cost draft model to propose tokens that the full-size target model verifies in parallel. Parallel and semi-autoregressive (semi- AR) drafters improve drafting efficiency by proposing an entire block in a single forward pass, but training them raises a new difficulty: the draft distribution for a given position depends on where the decoding round starts, and where rounds start depends on how many tokens earlier rounds accepted. Existing training objectives typically rely on block-local surrogates that ignore this cross-round coupling, and therefore do not directly optimize the global decoding efficiency. In this work, we develop a theoretical framework for training and evaluating these drafters by representing speculative decoding as a Markov reward process. This formulation yields the Expected Decoding Rounds (EDR) objective, which weights local rejection costs by state occupancies and exactly equals the expected number of decoding rounds. Unlike prior surrogate objectives, EDR introduces no auxiliary hyperparameters. We then derive an exact temporal-difference gradient that supports unbiased stochastic optimization from target-model rollouts. The same framework also yields an exact offline evaluator for round counts, enabling paired drafter comparisons on shared target rollouts without running speculative decoding. Finetuning two state-of-the- art drafters, DSpark and DFly, with EDR consistently improves mean accepted length and outperforms existing training objectives across nine benchmarks spanning math reasoning, code generation, and chat.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding accelerates large language model inference by using a low-cost draft model to propose tokens that the full-size target model verifies in parallel.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">GAGR-Lab: Evaluating Joint Spatial-Geometric and Analytic Function Reasoning</div>
-<div class="meta-line">Authors: Jingyao Zhang, Yun Li, Lu Han</div>
-<div class="meta-line">First: 2026-10-07T15:01:54+00:00 · Latest: 2026-10-07T15:01:54+00:00</div>
-<div class="meta-line">Comments: 15 pages, 1 figure, 7 tables</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.10201v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.10201v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Joint spatial-geometric and analytic function reasoning requires translating a perceived spatial configuration into a symbolic function whose executed curve satisfies geometric constraints. We present GAGR-Lab, a framework for measuring this capability through Cartesian game scenes, explicit function semantics, and authoritative Rust trajectory execution. It distinguishes spatial perception, metric grounding, geometric relations, function interpretation, function construction, and constrained synthesis. We specify four configurable scene-difficulty presets and a prospective 24-cell diagnostic design, while reporting only the subset actually evaluated. A bounded pilot of one hosted model (Llama 3.2 11B Vision Instruct) using two API credentials as execution replicas yields 72 balanced games with 432 attempts, 429 valid provider responses, and no target hits; exploratory ordinary-function prompt variants also fail to hit, while the structured localization interface yields no scoreable outputs. A privileged analytic search control independently succeeds on 600 directional cases from 300 generated scenes, with exact repeatability and 1,200 successful vertical-reflection or translation checks. The framework separates serving reliability, symbolic compliance, and geometric success, and preserves exact model-visible inputs and realized paths. A staged protocol outlines diagnostic calibration, held-out replication, multi-model comparison, and paired robustness tests. The contribution is an operational research framework with an executed pilot and a clearly identified prospective study plan; the full difficulty matrix and comparative model results remain untested.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Joint spatial-geometric and analytic function reasoning requires translating a perceived spatial configuration into a symbolic function whose executed curve satisfies geometric constraints.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Where Experts Disagree, Models Fail: Detecting Implicit Legal Citations in French Court Decisions</div>
-<div class="meta-line">Authors: Avrile Floro, Tamara Dhorasoo, Soline Pellez, Nils Holzenberger</div>
-<div class="meta-line">Venue: EMNLP 2026</div>
-<div class="meta-line">First: 2026-03-24T09:10:57+00:00 · Latest: 2026-10-07T07:46:44+00:00</div>
-<div class="meta-line">Comments: Accepted at the 8th Natural Legal Language Processing Workshop (NLLP 2026), co-located with EMNLP 2026</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.22973v3">Abs</a> · <a href="https://arxiv.org/pdf/2603.22973v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Applying computational methods to law at scale requires separating genuine legal reasoning from surface similarity. We study this through a concrete task: detecting implicit citations of the French Civil Code, where a court applies a statutory rule without naming it (a post-hoc question about the reasoning a court actually used). We release a benchmark of 1,015 passage-article pairs annotated by three legal experts. Our central finding is that their disagreement is itself informative: the third of cases the experts dispute are where models fail. Our best ensemble reaches an F1 score of 0.70 overall. Yet, two-thirds of its false positives fall on those disputed cases, a concentration that holds across all ten models we evaluate. Expert disagreement thus signals uncertainty in the task and in its gold label, which aggregate metrics hide. This should not block useful tools, however: reframed as top-$k$ ranking with multi-model consensus, the same signals reach 76% precision for the top-200 candidates of the benchmark without supervision.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Applying computational methods to law at scale requires separating genuine legal reasoning from surface similarity.</div>
-</details>
 </div></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261009_0735.html">20261009_0735</a>
+      <div class="history-list"><a href="archive/20261010_0657.html">20261010_0657</a>
+<a href="archive/20261009_0735.html">20261009_0735</a>
 <a href="archive/20261008_0722.html">20261008_0722</a>
 <a href="archive/20261007_0650.html">20261007_0650</a>
 <a href="archive/20261006_0825.html">20261006_0825</a>
