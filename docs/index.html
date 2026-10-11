@@ -74,58 +74,15 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-10-11 06:04</span>
+        <span class="badge">2026-10-12 06:32</span>
       </div>
     </div>
     <div class="hr"></div>
     <div>Latest digest</div>
-    <div class="row"><div class="card">
-<div class="title">SPIN: Shadow Predictive Indexer for Sparse Attention</div>
-<div class="meta-line">Authors: Yao Fu, Jiahan Chang, Ritchie Zhao, Bryce Long, Yueying Li, Mahdi Kamani, Samkit Jain, Rahul Raman, Tara Safavi, Shreya Gupta, Parsa Ashrafi Fashi, Minseok Lee, Julien Demouth, Bita Darvish Rouhani</div>
-<div class="meta-line">First: 2026-10-06T19:23:10+00:00 · Latest: 2026-10-08T14:38:08+00:00</div>
-<div class="meta-line">Comments: 12 pages, 4 figures; corrected an author&#x27;s name</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.09025v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.09025v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Indexer-based sparse attention reduces the cost of core attention by passing only a fixed, small number of important tokens to it. However, the indexer must still score the entire KV cache at every decoding step. This scoring overhead becomes a major bottleneck as the context length grows. We propose SPIN (Shadow Predictive Indexer) to reduce this indexer overhead. SPIN uses lightweight, history-based prediction to identify important KV blocks, avoiding the need to score the full KV cache at every decoding step. SPIN treats KV blocks and speculative decoding as first-class design and implementation considerations. Across extensive evaluations on long-context and agentic benchmarks, SPIN achieves 30-40% sparsity while preserving task quality. In end-to-end vLLM serving, SPIN improves output throughput by up to 14.9% and reduces median inter-token latency by up to 13.2%.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Indexer-based sparse attention reduces the cost of core attention by passing only a fixed, small number of important tokens to it.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Where Draft Trees Lose Target Mass: Exit-Guided Speculative Decoding</div>
-<div class="meta-line">Authors: Shijing Hu, Xuancheng Ren, Zhihui Lu, Pan Zhou</div>
-<div class="meta-line">First: 2026-10-08T11:40:13+00:00 · Latest: 2026-10-08T11:40:13+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.11750v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.11750v1">PDF</a> · <a href="https://github.com/hsj576/TEV">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Tree-based speculative decoding verifies multiple draft continuations in one target-model pass, but finite trees built from draft scores face a fundamental draft-target mismatch. We ask whether better exact verification can increase acceptance on a fixed tree and how target feedback can improve the tree itself. Through a target-flow view, we identify a canonical exit law and prove that one plus target coverage sharply bounds the expected output-block length, including the bonus token, of any exact path verifier. All optimal verifiers share the same exit and bonus-token law, already attained by representative predraw-and-follow and sequential residual verifiers. This yields Tree Exit Verification (TEV), an exact, level-parallel procedure using one exit-node decision and one bonus-token decision. The exit law also identifies missing target probability, providing node-level feedback for Exit-Guided Draft-Tree Training (ExitTrain) on inference-time draft trees. Experiments across dialogue, code, and mathematical reasoning validate fixed-tree equivalence: ExitTrain increases average output-block length by 13%, while TEV reduces verifier-stage latency by 15%, yielding a 14% end-to-end speedup over DDTree. Our results distinguish two opportunities: better draft trees for higher acceptance and more direct verification for lower latency. Code: https://github.com/hsj576/TEV.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Tree-based speculative decoding verifies multiple draft continuations in one target-model pass, but finite trees built from draft scores face a fundamental draft-target mismatch.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">RaReCache: Bridging the Gap in Cross-Model KV Cache Reuse via Rank disagreement-based Selective Recomputation</div>
-<div class="meta-line">Authors: Sreetama Sarkar, Saptarshi Mitra, Sitao Huang, Souvik Kundu, Peter A. Beerel</div>
-<div class="meta-line">First: 2026-10-08T06:49:28+00:00 · Latest: 2026-10-08T06:49:28+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.11358v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.11358v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Cross-model KV-cache reuse remains a key challenge in modern LLM serving. Coding agents and multi-model systems increasingly route a shared context across models: a user may switch models mid-session, or a cascade may escalate a difficult query. Because KV caches contain model-specific representations, each switch typically forces the receiving model to prefill the entire context from scratch. Recent work shows that closed-form linear maps can translate KV caches between models in the same family, but transfer accuracy degrades as the model-size gap widens. In this paper, we establish that these transfer failures are concentrated in a small subset of information-dense tokens. To bridge this gap, we introduce RaReCache, a framework that enables a large target model to decode accurately from a cache prefilled by a much smaller source via selective recomputation. RaReCache identifies these critical positions using a novel rank disagreement metric, scoring each token by the energy of its mapped KV in output directions weakly supported by the calibration data. Across two model families and five benchmarks, on a 23x parameter gap (Qwen3-0.6B to 14B) recomputing just 30% of positions retains 95-99% of the target accuracy, whereas on a 8.8x gap (Llama3-8B to 70B), recomputing 40% retains 96.5% of the target accuracy. RaReCache largely removes sensitivity to source-model size, and achieves up to a 3.04x prefill speedup. For online serving, it handles 1.8x the request throughput of target prefill on a single GPU, and at the target&#x27;s saturation load, reduces median and 99th-percentile time-to-first-token (TTFT) by 5.0x and 6.4x respectively, with a 30% recompute budget. RaReCache establishes an efficient serving paradigm where small models prefill on behalf of massive targets, enabling large models to recompute only critical tokens, drastically reducing prefill latency.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Cross-model KV-cache reuse remains a key challenge in modern LLM serving.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Arbiter: Detecting Interference in LLM Agent System Prompts</div>
-<div class="meta-line">Authors: Tony Mason</div>
-<div class="meta-line">First: 2026-03-09T22:29:47+00:00 · Latest: 2026-10-07T23:03:53+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.08993v2">Abs</a> · <a href="https://arxiv.org/pdf/2603.08993v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">System prompts for LLM-based coding agents are software artifacts that govern agent behavior, yet lack the testing infrastructure applied to conventional software. We present Arbiter, a framework combining formal evaluation rules with multi-model LLM scouring to detect interference patterns in system prompts. Applied to three major coding agent system prompts: Claude Code (Anthropic), Codex CLI (OpenAI), and Gemini CLI (Google), we identify 152 findings across the undirected scouring phase and 21 hand-labeled interference patterns in directed analysis of one vendor. We show that prompt architecture (monolithic, flat, modular) strongly correlates with observed failure class but not with severity, and that multi-model evaluation discovers categorically different vulnerability classes than single-model analysis. One scourer finding was structural data loss in Gemini CLI&#x27;s memory system was consistent with an issue filed and patched by Google, which addressed the symptom without addressing the schema-level root cause identified by the scourer. Total cost of cross-vendor analysis: \$0.27 USD.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">System prompts for LLM-based coding agents are software artifacts that govern agent behavior, yet lack the testing infrastructure applied to conventional software.</div>
-</details>
-</div></div>
+    <div class="row"></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261010_0657.html">20261010_0657</a>
+      <div class="history-list"><a href="archive/20261011_0604.html">20261011_0604</a>
+<a href="archive/20261010_0657.html">20261010_0657</a>
 <a href="archive/20261009_0735.html">20261009_0735</a>
 <a href="archive/20261008_0722.html">20261008_0722</a>
 <a href="archive/20261007_0650.html">20261007_0650</a>
