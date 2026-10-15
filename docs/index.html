@@ -74,12 +74,93 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-10-15 05:58</span>
+        <span class="badge">2026-10-16 05:51</span>
       </div>
     </div>
     <div class="hr"></div>
     <div>Latest digest</div>
     <div class="row"><div class="card">
+<div class="title">ReaDy: Recurrent States as Dynamic Context for Speculative Drafting in Hybrid Linear Attention Large Language Models</div>
+<div class="meta-line">Authors: Bohan Sun, Zunhai Su, Xialie Zhuang, Jianjin Li, Ngai Wong, Chuan-Wei Kuo</div>
+<div class="meta-line">First: 2026-10-14T17:08:52+00:00 · Latest: 2026-10-14T17:08:52+00:00</div>
+<div class="meta-line">Comments: 13 pages, 6 figures, 8 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.20503v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.20503v1">PDF</a> · <a href="https://github.com/StartLuxLabs/ReaDy">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speculative decoding accelerates autoregressive generation by drafting multiple tokens per step, yet feature-based drafters rely on target hidden features whose contextual emphasis may not align with the needs of subsequent draft positions. Hybrid linear attention (HLA) models maintain compact recurrent states that accumulate historical associations, offering an efficient source of complementary context for speculative drafting. We introduce ReaDy, the first speculative decoding method, to the best of our knowledge, to leverage HLA recurrent states for position-specific context retrieval during drafting. ReaDy equips each draft position with a learned query to retrieve supplementary context directly from the target&#x27;s committed recurrent states. A lightweight state reader integrates this context into draft representations through residual updates, while low-rank state reads and fused operators keep additional computation and I/O overhead low. Building on DSpark&#x27;s parallel backbone and sequential prediction head, ReaDy employs a lightweight two-stage adaptation strategy, with reader capacity, state sources, and residual placement examined through ablation studies. Across seven benchmarks spanning mathematics, code generation, and dialogue, ReaDy achieves an average $3.16\times$ decoding speedup over autoregressive decoding with Qwen3.8-27B on a single NVIDIA B200 GPU. It outperforms DSpark on every benchmark, improving throughput by 7.97% and acceptance length by 8.50% on average. Our code is available at https://github.com/StartLuxLabs/ReaDy.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speculative decoding accelerates autoregressive generation by drafting multiple tokens per step, yet feature-based drafters rely on target hidden features whose contextual emphasis may not align with the needs of subsequent draft positions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">FOLD: Position-Free Far Memory with Local Order for Long-Context Speculative Decoding</div>
+<div class="meta-line">Authors: Shuxuan Li, Jialiang Kang, Yanghao Zhou, Ziye Zhu, Xiao Yang</div>
+<div class="meta-line">First: 2026-10-14T15:55:10+00:00 · Latest: 2026-10-14T15:55:10+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.20392v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.20392v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speculative decoding accelerates LLM generation through lightweight drafting and parallel verification. It is particularly promising for long inputs, where KV-cache access costs can be amortized over multiple accepted tokens. Yet most drafters are trained on short sequences and degrade on long inputs, while long-context training is costly. Existing training-free approaches restrict the context window, rescale positions, or augment recent context with retrieved distant entries. Drafters, however, read target hidden states that already encode contextual and positional information, and their lightweight architecture makes full-history attention affordable. We propose FOLD, a training-free method that preserves exact local positions and treats all distant entries as far memory at a shared position. To counter attention dilution as the memory grows, we sharpen attention within it to emphasize relevant entries while separately controlling its total weight relative to the local window. Across six target-drafter pairs and diverse benchmarks of up to 256K tokens, FOLD predominantly delivers the highest speedup, with the best case more than doubling the speedup over autoregressive decoding, from 2.08$\times$ to 4.22$\times$.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speculative decoding accelerates LLM generation through lightweight drafting and parallel verification.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">TreeSpark: Learning to Draft the Trees You Verify for Speculative Decoding</div>
+<div class="meta-line">Authors: Jihao Zhao, Qianyu Jiang, Shuaishuai Zu, Pengfei Li, Guanghuan Fang, Ben Feng, Biao Qin, Zhibin Wang, Baochuan Yang</div>
+<div class="meta-line">First: 2026-10-14T13:21:09+00:00 · Latest: 2026-10-14T13:21:09+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.20175v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.20175v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Parallel drafters such as DFlash and DSpark reduce proposal latency, but early mismatches limit how much of each block can be accepted. Retaining alternatives introduces parent states and candidate choices that reference-conditioned training does not directly supervise. We introduce TreeSpark, a unified training and inference framework extending the semi-autoregressive DSpark architecture. It constructs parent-conditioned candidate trees from one backbone pass and replays their expansion, pruning, and budgeted packing during training. Survival negative log-likelihood weights retained edges by reference-derived path mass, while a capped coverage hinge promotes target-important alternatives near local selection boundaries. Both objectives reuse reference-chain target distributions without additional target forward passes. We evaluate greedy decoding with Qwen3-4B and Qwen3-8B on nine general benchmarks and six writing domains. Across targets and suites, TreeSpark improves mean acceptance length over DSpark by 23.4% to 31.6% and mean single-request throughput by 15.1% to 25.0%. Batched Qwen3-4B throughput improves by 12.6% to 17.2%. At fixed attention capacity and inference policy, the proposed supervision further improves mean acceptance length by approximately 6.4% and mean system throughput by 4.2% to 5.0% on Qwen3-4B.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Parallel drafters such as DFlash and DSpark reduce proposal latency, but early mismatches limit how much of each block can be accepted.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">JointServe: Serving Multi-Model Agents on Memory-Constrained GPUs</div>
+<div class="meta-line">Authors: Daijin Hu</div>
+<div class="meta-line">First: 2026-10-14T08:59:35+00:00 · Latest: 2026-10-14T08:59:35+00:00</div>
+<div class="meta-line">Comments: 18 pages, 12 figures, 1 table</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19822v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19822v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">LLM agents are evolving from a single model calling tools to planners that orchestrate multiple expert models whose capabilities live in distinct weights. This shift breaks a hidden assumption of today&#x27;s serving systems: that the working set of models fits in GPU memory. On the memory-constrained GPUs typical of private and edge deployments, naive whole-model swapping serializes weight transfer with computation and, without host-backed KV restoration, discards session state at a switch. We present JointServe, a serving system that treats weight shards and KV blocks as residency objects competing for one unified memory budget. JointServe exploits three structural properties of agent workloads (directed calls, gapped execution, and dual-state residency) to prepare models before they are called: an intent signal parsed from the caller&#x27;s own output stream triggers prefetch during generation, partial k* residency reduces switching to incremental layers, and a preemptive transfer scheduler protects live-session KV with a guaranteed bandwidth share. A carve-out control step adjusts the weight/KV allocation as workload demands change. Evaluations show that JointServe reduces session completion time by 21.7% over the strongest whole-model swap baseline and stays usable in a crash regime where every whole-model swap baseline fails to finish (a 46-fold gap). On replayed SWE-bench, tau-bench, and OSWorld traces, it cuts session completion time by up to 49% and lifts SLO attainment from 2.8-24.5% to 76.8-100%.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">LLM agents are evolving from a single model calling tools to planners that orchestrate multiple expert models whose capabilities live in distinct weights.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">JetSpec++: Foresight Parallel Drafting with Self Refinements</div>
+<div class="meta-line">Authors: Zhaoxiang Feng, Lanxiang Hu, Haoran Yuan, Yu-Yang Qian, Jihui Yang, Peng Zhao, Yibo Zhu, Tajana Rosing, Hao Zhang</div>
+<div class="meta-line">First: 2026-10-14T08:37:27+00:00 · Latest: 2026-10-14T08:37:27+00:00</div>
+<div class="meta-line">Comments: 31 pages, 4 figures, 16 tables. Zhaoxiang Feng and Lanxiang Hu contributed equally. Code and models: https://github.com/hao-ai-lab/JetSpec</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19792v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19792v1">PDF</a> · <a href="https://github.com/hao-ai-lab/JetSpec">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speculative decoding&#x27;s effectiveness is governed by two quantities: the acceptance rate of drafted tokens and the cost of producing them. We show the two objectives can be co-optimized with algorithm-system co-design, and present JetSpec++, which retains a strong learned draft model while hiding its cost almost entirely. JetSpec++ combines three components: intra-block self refinement, which trains the draft model to iteratively correct its own parallel predictions within a block of tokens; inter-block foresight drafting, which begins the next block before the current one is verified; and pipelined drafting and verification, which overlaps the two stages so drafting&#x27;s marginal wall-clock cost approaches zero. In comparison with state-of-the-art speculative decoding methods, JetSpec++ attains a wall-clock speedup of up to $7.45\times$ over autoregressive (AR) decoding and $1.54\times$ over DSpark, with up to 1,361 tokens per second for a single request on GB200, and an average acceptance length of 8.94 across seven benchmarks, while preserving the target model&#x27;s output distribution. Our code and models are available at https://github.com/hao-ai-lab/JetSpec.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speculative decoding&#x27;s effectiveness is governed by two quantities: the acceptance rate of drafted tokens and the cost of producing them.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">New Model, Old Habits: Behavior Transfer under Model Swapping in Multi-Session LLM Agents</div>
+<div class="meta-line">Authors: Youngbin Choi, Sehyun Hwang, Suhyeon Jun, Seoyeon Lee, Sunghyun Choi, MoonJeong Park, Dongwoo Kim</div>
+<div class="meta-line">First: 2026-10-14T07:38:54+00:00 · Latest: 2026-10-14T07:38:54+00:00</div>
+<div class="meta-line">Comments: 27 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19712v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19712v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Multi-session agents can switch between LLMs to balance performance and inference cost. Such switches require transferring a history for continuity, yet their effects on the recipient remain underexplored. Through controlled experiments with multi-session tasks, we uncover behavior transfer: recipients tend to adopt reasoning and action patterns from the models that generated their histories. This effect is most evident with raw-history transfer but is substantially reduced by summarization. Based on these findings, we propose Direction- and Authorship-aware Summarization of History (DASH) that preserves stronger-model behavior while minimizing weak-to-strong transfer via summarization. Experiments with repeated swaps show that DASH outperforms raw-history transfer and naive summarization baselines. These results suggest that effective multi-model orchestration requires considering not only which model to use, but also which behavioral patterns to carry forward.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Multi-session agents can switch between LLMs to balance performance and inference cost.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">SuperAI: Merging Capabilities Across Heterogeneous Foundation Models</div>
+<div class="meta-line">Authors: Jingtong Dou, Chuancheng Shi, Wenhua Wu, Wei Bao, Fei Shen, Zhiyong Wang, Tat-Seng Chua</div>
+<div class="meta-line">First: 2026-10-11T03:51:47+00:00 · Latest: 2026-10-14T07:18:02+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.15322v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.15322v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Enabling the reuse and composition of knowledge and capabilities distributed across foundation models is an important step toward building scalable artificial intelligence (AI) systems. However, architectural differences and incompatible representations make it difficult to transfer and integrate these capabilities through a unified cross-model interface. To address this challenge, we propose SuperAI, a cross-architecture multi-model fusion framework that integrates complementary capabilities from multiple source models into a host model through orthogonal alignment of low-dimensional task-relevant representations. Specifically, we first extract task-relevant representations from the source models and the host model using shared anchor samples, and apply principal component analysis (PCA) to construct low-dimensional functional subspaces with the same dimensionality. Next, we use orthogonal Procrustes mappings to align the source and host coordinate systems, establishing cross-model correspondences while preserving the internal geometry of each source subspace. Finally, we train a lightweight residual multilayer perceptron (MLP) with joint supervision on task outputs and source-model increments, learning input-dependent residual increments that are injected into the host model for multi-model capability fusion. Experiments on three host models across 15 capability domains show that SuperAI achieves higher average domain scores than the evaluated cross-architecture fusion methods and better preserves general capabilities as the number of source models increases. Ablation studies further support the effectiveness of orthogonal alignment, nonlinear residual mapping, and joint supervision.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Enabling the reuse and composition of knowledge and capabilities distributed across foundation models is an important step toward building scalable artificial intelligence (AI) systems.</div>
+</details>
+</div>
+<div class="card">
 <div class="title">SP$^2$ec: Adaptive Self-Speculative Decoding for Vision-Language Models</div>
 <div class="meta-line">Authors: Yuqi Huang, Xingyao Li, Yunlong Hou, Fengzhuo Zhang, Jiachun Pan, Vincent Y. F. Tan</div>
 <div class="meta-line">First: 2026-10-13T17:08:28+00:00 · Latest: 2026-10-13T17:08:28+00:00</div>
@@ -115,33 +196,10 @@ summary{cursor:pointer;color:var(--acc)}
 <details class="detail"><summary>Summary / 总结</summary>
 <div class="mono">Large Audio-Language Models (LALMs) reason fluently about sound yet struggle to localize precisely when events occur, while classical Sound Event Detection (SED) attains frame-level precision only over a closed label set.</div>
 </details>
-</div>
-<div class="card">
-<div class="title">Think Before You Speak: Enabling Training-Free Latent Communication Between Language Models</div>
-<div class="meta-line">Authors: Rishi Khare</div>
-<div class="meta-line">First: 2026-10-12T04:40:48+00:00 · Latest: 2026-10-12T04:40:48+00:00</div>
-<div class="meta-line">Comments: Accepted at the 2nd Workshop on Efficient Reasoning at COLM 2026</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.16165v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.16165v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Large language models (LLMs) have demonstrated remarkable capabilities in solving complex tasks in coding, mathematical logic, and iterative reasoning, especially by coordinating effectively within multi-agent systems (MAS). However, language agents traditionally communicate via text exchange, which introduces a bottleneck in information transfer and adds prefill latency for downstream agents. Recent work proposes that directly sharing the key-value (KV) cache between language models can enable efficient latent collaboration, entirely bypassing standard text-based communication. To enable latent communication between heterogeneous models of different sizes, prior work introduces trained fusion adapters for each model pair, which limits practical deployment. We introduce CacheFuse, a training-free method which demonstrates that augmenting a downstream model with an upstream model&#x27;s KV cache using linear interpolation consistently enables superior performance than the standalone downstream model can achieve. We systematically analyze CacheFuse across four reasoning and knowledge benchmarks and demonstrate up to 8.6 percentage points higher accuracy compared to single-model baselines and up to 12.2x TTFT speedup compared to text-based communication in multi-model inference.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Large language models (LLMs) have demonstrated remarkable capabilities in solving complex tasks in coding, mathematical logic, and iterative reasoning, especially by coordinating effectively within multi-agent systems (MAS).</div>
-</details>
-</div>
-<div class="card">
-<div class="title">PAIR: Memory-Efficient and Fast Inference with Reading--Reasoning Fusion</div>
-<div class="meta-line">Authors: Sejun Park, Haocheng Xia, Yongjoo Park</div>
-<div class="meta-line">First: 2026-10-12T00:10:17+00:00 · Latest: 2026-10-12T00:10:17+00:00</div>
-<div class="meta-line">Comments: 34 pages, 8 figures</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.16003v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.16003v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">For context-based question answering, using one large model for both evidence extraction and answer reasoning requires substantial memory and computation. Existing approaches trade accuracy for efficiency within a single model only. We propose a multi-model approach for efficient inference: our method, PAIR, employs two differently sized models for evidence extraction and answer reasoning, respectively. A smaller Reader model processes and retains the full context, while a larger Reasoner model sees only the question and generated sequence without directly attending to the context. These capabilities are fused at the logit level: at each token, both Reader and Reasoner produce a prediction, and their logits are combined into one, behaving as a single next-token-prediction model. Fine-tuning further boosts their performance. On HotpotQA, PAIR with a 32B Reasoner retains 96% of that same 32B model&#x27;s full-context accuracy while using roughly one quarter of its KV memory. At 45.7K-token contexts, PAIR achieves up to 3.2$\times$ higher end-to-end throughput than the full-context 32B model on the same GPU. PAIR also improves the accuracy-memory and accuracy-throughput trade-offs over evaluated token-reduction baselines. Its accuracy-preserving behavior generalizes across Qwen2.5, OLMo-3, and Gemma-3 model families.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">For context-based question answering, using one large model for both evidence extraction and answer reasoning requires substantial memory and computation.</div>
-</details>
 </div></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261014_0708.html">20261014_0708</a>
+      <div class="history-list"><a href="archive/20261015_0558.html">20261015_0558</a>
+<a href="archive/20261014_0708.html">20261014_0708</a>
 <a href="archive/20261012_0632.html">20261012_0632</a>
 <a href="archive/20261011_0604.html">20261011_0604</a>
 <a href="archive/20261010_0657.html">20261010_0657</a>
