@@ -74,12 +74,57 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-10-16 05:51</span>
+        <span class="badge">2026-10-17 05:48</span>
       </div>
     </div>
     <div class="hr"></div>
     <div>Latest digest</div>
     <div class="row"><div class="card">
+<div class="title">LoopAhead: Speculating Ahead for Faster Decoding in Looped Language Models</div>
+<div class="meta-line">Authors: Zixuan Liu, Nan Xue, Rui Bao, Yuhang Xu, Xiaofeng Cao, Jiangchao Yao, Zhiyong Chen</div>
+<div class="meta-line">First: 2026-10-15T09:38:11+00:00 · Latest: 2026-10-15T09:38:11+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.21594v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.21594v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Looped Transformers improve parameter efficiency by repeatedly applying the same Transformer layers. However, generating each token still involves sequential computation and repeated access to model weights, leading to high decoding latency. Recent pipelined self-speculative decoding methods reduce this delay by drafting tokens from early-loop predictions and asynchronously advancing tokens at different recurrent depths in the same batch, but they do not fully exploit early-loop features for longer lookahead and still spend computation verifying incorrect speculative branches. We introduce \method, a speculative decoding framework for looped transformers that enables earlier drafting of future tokens and assigns complementary roles to different recurrent depths. A lightweight lookahead drafter (LAD) predicts multiple future tokens with early-loop states, and deeper-loop feedback helps decide which draft branches to continue and which to pause, while the full-depth model makes the final token decisions. LoopAhead achieves up to 7.82x decoding speedup over autoregressive decoding while preserving the target model&#x27;s output distribution.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Looped Transformers improve parameter efficiency by repeatedly applying the same Transformer layers.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">JetSpec++: Foresight Parallel Drafting with Self Refinements</div>
+<div class="meta-line">Authors: Zhaoxiang Feng, Lanxiang Hu, Haoran Yuan, Yu-Yang Qian, Jihui Yang, Peng Zhao, Yibo Zhu, Tajana Rosing, Hao Zhang</div>
+<div class="meta-line">First: 2026-10-14T08:37:27+00:00 · Latest: 2026-10-15T06:05:59+00:00</div>
+<div class="meta-line">Comments: 31 pages, 4 figures, 16 tables. Zhaoxiang Feng and Lanxiang Hu contributed equally. Code and models: https://github.com/hao-ai-lab/JetSpec</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19792v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.19792v2">PDF</a> · <a href="https://github.com/hao-ai-lab/JetSpec">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speculative decoding&#x27;s effectiveness is governed by two quantities: the acceptance rate of drafted tokens and the cost of producing them. We show the two objectives can be co-optimized with algorithm-system co-design, and present JetSpec++, which retains a strong learned draft model while hiding its cost almost entirely. JetSpec++ combines three components: intra-block self refinement, which trains the draft model to iteratively correct its own parallel predictions within a block of tokens; inter-block foresight drafting, which begins the next block before the current one is verified; and pipelined drafting and verification, which overlaps the two stages so drafting&#x27;s marginal wall-clock cost approaches zero. In comparison with state-of-the-art speculative decoding methods, JetSpec++ attains a wall-clock speedup of up to $7.45\times$ over autoregressive (AR) decoding and $1.54\times$ over DSpark, with up to 1,361 tokens per second for a single request on GB200, and an average acceptance length of 8.94 across seven benchmarks, while preserving the target model&#x27;s output distribution. Our code and models are available at https://github.com/hao-ai-lab/JetSpec.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speculative decoding&#x27;s effectiveness is governed by two quantities: the acceptance rate of drafted tokens and the cost of producing them.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">When Rotation Bounds Nothing: Streaming Image Classifiers to Field Nodes Under Physical Capture</div>
+<div class="meta-line">Authors: Daniel Gilkarov, Ran Dubin</div>
+<div class="meta-line">First: 2026-10-15T05:11:53+00:00 · Latest: 2026-10-15T05:11:53+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.21276v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.21276v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Field nodes run image classifiers locally, exposing a first-class asset, the trained model, to theft. Trusted-execution enclaves, collaborative-inference splits, and encrypted storage assume the device owner is the adversary from deployment. Here the operator owns the node, and an adversary seizing it reads only what cold-boot capture finds resident. One answer stores nothing: a chunkable multi-exit model streams into volatile memory, rotating to bound residency. We characterise the capture envelope on real LTE traces across two victims of one architecture, against passive and adaptive adversaries. Neither survives a capable adversary; recovery cost alone differs. Against a from-scratch victim the uncaptured stages must be learned: the adaptive adversary gains most at shallow seizures, ends the CIFAR-10 envelope at every rotation, and stays rotation-bounded on CIFAR100, from 42.6% of usable seizures at 5 s to 86.8% at 30 s. Against the same architecture sliced from a public pretrained backbone, the adversary downloads those stages, recovering at least 90% of maximum accuracy at all depths, taking usable CIFAR-100 seizures from 0.0% to 97.3% at 5 s, given the victim&#x27;s full labelled training set. Delivery-side secrecy raises a seizure&#x27;s price; a public copy of the withheld stages erases it.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Field nodes run image classifiers locally, exposing a first-class asset, the trained model, to theft.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Long-Context Drafting Does Not Require Long-Context Drafters</div>
+<div class="meta-line">Authors: Aref Jafari, Vansh Bhatia, Matt Qin, Subhajit Dutta Chowdhury, Ben Lee, Vikram Appia, Ali Ghodsi, Mehdi Rezagholizadeh</div>
+<div class="meta-line">First: 2026-10-14T19:54:59+00:00 · Latest: 2026-10-14T19:54:59+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.20865v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.20865v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speculative decoding pairs a cheap drafter with parallel verification against the target. At ultra-long context it stops paying, because a drafter that attends over the full prefix inherits the target&#x27;s context-dependent cost, so the speedup it was meant to provide first erodes and then reverses. The standard response is to build a long-context drafter, by training or fine-tuning one, or by using a multi-token-prediction head shipped inside the target checkpoint. We argue this is unnecessary, because the drafters in use are target-conditioned, reading hidden states the target computed over the entire prefix, so distant context already reaches them without their own attention, and verification corrects what they miss. We therefore freeze released short-context drafters and run them far past their training length under two inference-time mechanisms, one bounding the attention cache they see, which fixes their cost, and one re-basing their rotary position indices into the trained range. No weight is touched and the only tunable saturates early, so one vLLM-side configuration spans 4k to two million tokens, costing at most 0.16x of speedup at short length. We prove when a common index shift leaves the drafter&#x27;s computation exactly unchanged, and decompose acceptance into two measurable gaps with sharp bounds. Whatever speedup a frozen drafter delivers at short context, it retains out to two million tokens, across three target-drafter pairs and five corpora. The claim concerns the flatness rather than the multiple, and removing either mechanism eliminates it. The gain is conditional on the speculative cost per emitted token staying below the matched target-only cost.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speculative decoding pairs a cheap drafter with parallel verification against the target.</div>
+</details>
+</div>
+<div class="card">
 <div class="title">ReaDy: Recurrent States as Dynamic Context for Speculative Drafting in Hybrid Linear Attention Large Language Models</div>
 <div class="meta-line">Authors: Bohan Sun, Zunhai Su, Xialie Zhuang, Jianjin Li, Ngai Wong, Chuan-Wei Kuo</div>
 <div class="meta-line">First: 2026-10-14T17:08:52+00:00 · Latest: 2026-10-14T17:08:52+00:00</div>
@@ -126,18 +171,6 @@ summary{cursor:pointer;color:var(--acc)}
 </details>
 </div>
 <div class="card">
-<div class="title">JetSpec++: Foresight Parallel Drafting with Self Refinements</div>
-<div class="meta-line">Authors: Zhaoxiang Feng, Lanxiang Hu, Haoran Yuan, Yu-Yang Qian, Jihui Yang, Peng Zhao, Yibo Zhu, Tajana Rosing, Hao Zhang</div>
-<div class="meta-line">First: 2026-10-14T08:37:27+00:00 · Latest: 2026-10-14T08:37:27+00:00</div>
-<div class="meta-line">Comments: 31 pages, 4 figures, 16 tables. Zhaoxiang Feng and Lanxiang Hu contributed equally. Code and models: https://github.com/hao-ai-lab/JetSpec</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19792v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.19792v1">PDF</a> · <a href="https://github.com/hao-ai-lab/JetSpec">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding&#x27;s effectiveness is governed by two quantities: the acceptance rate of drafted tokens and the cost of producing them. We show the two objectives can be co-optimized with algorithm-system co-design, and present JetSpec++, which retains a strong learned draft model while hiding its cost almost entirely. JetSpec++ combines three components: intra-block self refinement, which trains the draft model to iteratively correct its own parallel predictions within a block of tokens; inter-block foresight drafting, which begins the next block before the current one is verified; and pipelined drafting and verification, which overlaps the two stages so drafting&#x27;s marginal wall-clock cost approaches zero. In comparison with state-of-the-art speculative decoding methods, JetSpec++ attains a wall-clock speedup of up to $7.45\times$ over autoregressive (AR) decoding and $1.54\times$ over DSpark, with up to 1,361 tokens per second for a single request on GB200, and an average acceptance length of 8.94 across seven benchmarks, while preserving the target model&#x27;s output distribution. Our code and models are available at https://github.com/hao-ai-lab/JetSpec.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding&#x27;s effectiveness is governed by two quantities: the acceptance rate of drafted tokens and the cost of producing them.</div>
-</details>
-</div>
-<div class="card">
 <div class="title">New Model, Old Habits: Behavior Transfer under Model Swapping in Multi-Session LLM Agents</div>
 <div class="meta-line">Authors: Youngbin Choi, Sehyun Hwang, Suhyeon Jun, Seoyeon Lee, Sunghyun Choi, MoonJeong Park, Dongwoo Kim</div>
 <div class="meta-line">First: 2026-10-14T07:38:54+00:00 · Latest: 2026-10-14T07:38:54+00:00</div>
@@ -159,46 +192,10 @@ summary{cursor:pointer;color:var(--acc)}
 <details class="detail"><summary>Summary / 总结</summary>
 <div class="mono">Enabling the reuse and composition of knowledge and capabilities distributed across foundation models is an important step toward building scalable artificial intelligence (AI) systems.</div>
 </details>
-</div>
-<div class="card">
-<div class="title">SP$^2$ec: Adaptive Self-Speculative Decoding for Vision-Language Models</div>
-<div class="meta-line">Authors: Yuqi Huang, Xingyao Li, Yunlong Hou, Fengzhuo Zhang, Jiachun Pan, Vincent Y. F. Tan</div>
-<div class="meta-line">First: 2026-10-13T17:08:28+00:00 · Latest: 2026-10-13T17:08:28+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18735v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18735v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative Decoding (SD) has demonstrated its efficacy in accelerating large language model inference, but for Vision-Language Models (VLMs), the diverse input modalities make it difficult for a small trained drafter to achieve consistently high throughput. Self-speculative decoding reuses parts of the target model as a drafter which retains the multi-modal capability of the VLMs, yet its efficiency depends on choosing a suitable draft configuration for each prompt. We propose Single-Peak SPeculative decoding (SP$^2$ec), a training-free bandit algorithm that adapts the draft configuration during generation. SP$^2$ec exploits the single-peak throughput pattern observed in existing self-speculative methods, including SWIFT, KnapSpec, SpecVLM, and our simple cosSim. Our algorithmic design explicitly minimizes a novel notion of wall-time regret for each given query, corresponding to the empirical wall-time latency. Theoretical guarantees on the wall-time regret show that SP$^2$ec can exploit the optimal draft configuration, with negligible exploration cost. Extensive experiments on Qwen2.5-VL-7B-Instruct and LLaVA-NeXT-Mistral-7B across visual and textual tasks show consistent improvements of up to 11\% over the original self-speculative methods, demonstrating the wide applicability of the proposed SP$^2$ec algorithm.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative Decoding (SD) has demonstrated its efficacy in accelerating large language model inference, but for Vision-Language Models (VLMs), the diverse input modalities make it difficult for a small trained drafter to achieve consistently high throughput.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Secure Speculative Decoding for Large Language Models</div>
-<div class="meta-line">Authors: Yichi Zhang, Zhiqi Wang, Neil Gong, Yuchen Yang</div>
-<div class="meta-line">First: 2026-10-06T16:59:37+00:00 · Latest: 2026-10-13T15:39:04+00:00</div>
-<div class="meta-line">Comments: 18 pages, accepted by IEEE S&amp;P 2027</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.08678v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.08678v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding accelerates inference for a large language model (LLM), referred to as the \emph{target model}, by first using a smaller model, referred to as the \emph{draft model}, to generate candidate tokens and then verifying them with the target model for acceptance or rejection. Prior studies primarily focused on the efficiency-utility trade-off of speculative decoding, e.g., lossy speculative decoding, leaving its security implications largely unexplored.
-  In this work, we bridge this gap by providing the \emph{first} systematic study of the security implications of speculative decoding. Through a large-scale measurement study, we reveal a pronounced security-utility asymmetry: across a wide range of lossy speculative decoding methods, improvements in inference efficiency come at a disproportionately high cost to security, with attack success rates for jailbreak and prompt injection attacks increasing much faster than utility degrades.
-  We then propose SecureSD, a new theory-guided speculative decoding method that enhances security while maintaining efficiency and utility. Specifically, our theoretical analysis reveals that security degradation primarily originates from the early tokens generated by the draft model. Motivated by this insight, SecureSD applies a stricter verification criterion to draft-model tokens at early decoding positions. Extensive experiments on both security and utility benchmarks demonstrate that SecureSD significantly improves security while preserving efficiency and utility compared to existing speculative decoding methods.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding accelerates inference for a large language model (LLM), referred to as the \emph{target model}, by first using a smaller model, referred to as the \emph{draft model}, to generate candidate tokens and then verifying them with the target model for acceptance or rejection.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Auto-AEG: Scalable Data Construction for Open-Vocabulary Audio Event Grounding</div>
-<div class="meta-line">Authors: Zihan Zhang, Xize Cheng, Wenhao Yan, Tong Zhang, Dongjie Fu, Wenxu Jia, Boyun Zhang, Yongbo He, Qifei Zhang, Linjun Li, Wenshi Chen, Tao Jin</div>
-<div class="meta-line">First: 2026-07-05T16:22:14+00:00 · Latest: 2026-10-13T07:23:33+00:00</div>
-<div class="meta-line">Comments: Work in progress</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.04383v5">Abs</a> · <a href="https://arxiv.org/pdf/2607.04383v5">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Large Audio-Language Models (LALMs) reason fluently about sound yet struggle to localize precisely when events occur, while classical Sound Event Detection (SED) attains frame-level precision only over a closed label set. At the intersection of these paradigms lies the task of Open-Vocabulary Audio Event Grounding: predicting all time intervals of a target sound event described by an arbitrary natural language query. Progress is bottlenecked by data scarcity: no large-scale resource provides open-vocabulary onset/offset supervision, and manual temporal annotation is prohibitively expensive. To address this, we introduce Auto-AEG, a scalable pipeline that constructs such supervision by automatic data construction and model fine-tuning. It pairs programmatically synthesized clips, which carry placement-exact ground-truth intervals for supervised cold-start, with multi-model pseudo-labels on real-world audio that supply the reward signal for reinforcement learning. Training with this pipeline yields large temporal-localization gains on AEGBench, an independent difficulty-stratified benchmark whose annotations we release, and these gains generalize to various held-out SED and audio grounding benchmarks. Our results show that automatically constructed data, coupled with interval-aware reward design, provides an effective data-side route to expanding the temporal localization capability of LALMs.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Large Audio-Language Models (LALMs) reason fluently about sound yet struggle to localize precisely when events occur, while classical Sound Event Detection (SED) attains frame-level precision only over a closed label set.</div>
-</details>
 </div></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261015_0558.html">20261015_0558</a>
+      <div class="history-list"><a href="archive/20261016_0551.html">20261016_0551</a>
+<a href="archive/20261015_0558.html">20261015_0558</a>
 <a href="archive/20261014_0708.html">20261014_0708</a>
 <a href="archive/20261012_0632.html">20261012_0632</a>
 <a href="archive/20261011_0604.html">20261011_0604</a>
