@@ -74,47 +74,15 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-10-18 05:05</span>
+        <span class="badge">2026-10-19 05:07</span>
       </div>
     </div>
     <div class="hr"></div>
     <div>Latest digest</div>
-    <div class="row"><div class="card">
-<div class="title">LoopAhead: Speculating Ahead for Faster Decoding in Looped Language Models</div>
-<div class="meta-line">Authors: Zixuan Liu, Nan Xue, Rui Bao, Yuhang Xu, Xiaofeng Cao, Jiangchao Yao, Zhiyong Chen</div>
-<div class="meta-line">First: 2026-10-15T09:38:11+00:00 · Latest: 2026-10-15T09:38:11+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.21594v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.21594v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Looped Transformers improve parameter efficiency by repeatedly applying the same Transformer layers. However, generating each token still involves sequential computation and repeated access to model weights, leading to high decoding latency. Recent pipelined self-speculative decoding methods reduce this delay by drafting tokens from early-loop predictions and asynchronously advancing tokens at different recurrent depths in the same batch, but they do not fully exploit early-loop features for longer lookahead and still spend computation verifying incorrect speculative branches. We introduce \method, a speculative decoding framework for looped transformers that enables earlier drafting of future tokens and assigns complementary roles to different recurrent depths. A lightweight lookahead drafter (LAD) predicts multiple future tokens with early-loop states, and deeper-loop feedback helps decide which draft branches to continue and which to pause, while the full-depth model makes the final token decisions. LoopAhead achieves up to 7.82x decoding speedup over autoregressive decoding while preserving the target model&#x27;s output distribution.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Looped Transformers improve parameter efficiency by repeatedly applying the same Transformer layers.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">JetSpec++: Foresight Parallel Drafting with Self Refinements</div>
-<div class="meta-line">Authors: Zhaoxiang Feng, Lanxiang Hu, Haoran Yuan, Yu-Yang Qian, Jihui Yang, Peng Zhao, Yibo Zhu, Tajana Rosing, Hao Zhang</div>
-<div class="meta-line">First: 2026-10-14T08:37:27+00:00 · Latest: 2026-10-15T06:05:59+00:00</div>
-<div class="meta-line">Comments: 31 pages, 4 figures, 16 tables. Zhaoxiang Feng and Lanxiang Hu contributed equally. Code and models: https://github.com/hao-ai-lab/JetSpec</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19792v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.19792v2">PDF</a> · <a href="https://github.com/hao-ai-lab/JetSpec">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding&#x27;s effectiveness is governed by two quantities: the acceptance rate of drafted tokens and the cost of producing them. We show the two objectives can be co-optimized with algorithm-system co-design, and present JetSpec++, which retains a strong learned draft model while hiding its cost almost entirely. JetSpec++ combines three components: intra-block self refinement, which trains the draft model to iteratively correct its own parallel predictions within a block of tokens; inter-block foresight drafting, which begins the next block before the current one is verified; and pipelined drafting and verification, which overlaps the two stages so drafting&#x27;s marginal wall-clock cost approaches zero. In comparison with state-of-the-art speculative decoding methods, JetSpec++ attains a wall-clock speedup of up to $7.45\times$ over autoregressive (AR) decoding and $1.54\times$ over DSpark, with up to 1,361 tokens per second for a single request on GB200, and an average acceptance length of 8.94 across seven benchmarks, while preserving the target model&#x27;s output distribution. Our code and models are available at https://github.com/hao-ai-lab/JetSpec.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding&#x27;s effectiveness is governed by two quantities: the acceptance rate of drafted tokens and the cost of producing them.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">When Rotation Bounds Nothing: Streaming Image Classifiers to Field Nodes Under Physical Capture</div>
-<div class="meta-line">Authors: Daniel Gilkarov, Ran Dubin</div>
-<div class="meta-line">First: 2026-10-15T05:11:53+00:00 · Latest: 2026-10-15T05:11:53+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.21276v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.21276v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Field nodes run image classifiers locally, exposing a first-class asset, the trained model, to theft. Trusted-execution enclaves, collaborative-inference splits, and encrypted storage assume the device owner is the adversary from deployment. Here the operator owns the node, and an adversary seizing it reads only what cold-boot capture finds resident. One answer stores nothing: a chunkable multi-exit model streams into volatile memory, rotating to bound residency. We characterise the capture envelope on real LTE traces across two victims of one architecture, against passive and adaptive adversaries. Neither survives a capable adversary; recovery cost alone differs. Against a from-scratch victim the uncaptured stages must be learned: the adaptive adversary gains most at shallow seizures, ends the CIFAR-10 envelope at every rotation, and stays rotation-bounded on CIFAR100, from 42.6% of usable seizures at 5 s to 86.8% at 30 s. Against the same architecture sliced from a public pretrained backbone, the adversary downloads those stages, recovering at least 90% of maximum accuracy at all depths, taking usable CIFAR-100 seizures from 0.0% to 97.3% at 5 s, given the victim&#x27;s full labelled training set. Delivery-side secrecy raises a seizure&#x27;s price; a public copy of the withheld stages erases it.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Field nodes run image classifiers locally, exposing a first-class asset, the trained model, to theft.</div>
-</details>
-</div></div>
+    <div class="row"></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261017_0548.html">20261017_0548</a>
+      <div class="history-list"><a href="archive/20261018_0505.html">20261018_0505</a>
+<a href="archive/20261017_0548.html">20261017_0548</a>
 <a href="archive/20261016_0551.html">20261016_0551</a>
 <a href="archive/20261015_0558.html">20261015_0558</a>
 <a href="archive/20261014_0708.html">20261014_0708</a>
