@@ -74,12 +74,72 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-10-22 06:02</span>
+        <span class="badge">2026-10-23 06:03</span>
       </div>
     </div>
     <div class="hr"></div>
     <div>Latest digest</div>
     <div class="row"><div class="card">
+<div class="title">Trees from Marginals: Autoregressive drafting with factorized priors</div>
+<div class="meta-line">Authors: Yuma Oda, Ryan Mathieu, Roman Knyazhitskiy, Artur Chakhvadze</div>
+<div class="meta-line">First: 2026-07-07T19:48:36+00:00 · Latest: 2026-10-21T16:07:58+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.06763v3">Abs</a> · <a href="https://arxiv.org/pdf/2607.06763v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speculative decoding greatly increases the interactivity of autoregressive language models by trading off computation for extra tokens generated in a single forward pass. Factorized draft models are especially efficient because they predict future-token marginals in parallel, but their independence assumption causes acceptance rates to degrade sharply as the speculative budget grows. We analyze this limitation and introduce Weaver, a lightweight autoregressive adapter that constructs proposal trees from the top-K marginals of a factorized drafter. Weaver restores conditional dependencies between proposed tokens while avoiding a full-vocabulary projection. To support fast verification for models with Gated Delta Net layers, we derive a rollback-free tree-verification algorithm and implement optimized CUDA kernels in SGLang. By combining these model and systems contributions we achieve a 4.08-fold speedup over autoregressive decoding, and outperform a highly optimized DFlash baseline by 16.3%.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speculative decoding greatly increases the interactivity of autoregressive language models by trading off computation for extra tokens generated in a single forward pass.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">UlaCache: Unified Logical Addressing for Sparse LLM Serving</div>
+<div class="meta-line">Authors: Isaac Zhu, Alan Cao, Hugh Yin, Rocky Wang, Orion Wang, Hscos Zhang, Jack Li, Jason Zhao</div>
+<div class="meta-line">First: 2026-10-21T14:46:11+00:00 · Latest: 2026-10-21T14:46:11+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.29820v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.29820v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Long contexts increase the memory cost of the key-value (KV) cache in large language model (LLM) inference. Sparse attention reduces attention computation and memory traffic by selecting historical tokens, but the retained KV cache must remain available for later decoding steps. We present UlaCache, a KV cache management system built around a unified logical address space spanning GPU KV pools and optional CPU memory. Stable logical references let the inference engine allocate and select KV independently of physical placement. Common allocation and sparse-access interfaces support data-parallel (DP) and tensor-parallel (TP) attention. For distributed storage, local GPU buffers retain selected KV across decoding steps, so only missing entries require transfers. When CPU storage is enabled, Parallel Bucketed LRU (PB-LRU) manages a GPU pool shared across requests. It updates recency metadata and selects eviction victims in parallel. UlaCache transfers KV and then updates the address mappings. With speculative decoding enabled under matched CPU and GPU memory budgets, UlaCache achieves peak decoding throughput speedups of 1.16 $\times$ (DP) and 1.70 $\times$ (TP) on H200, and 1.73 $\times$ (DP) and 2.51 $\times$ (TP) on B300, compared with the state-of-the-art baseline.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Long contexts increase the memory cost of the key-value (KV) cache in large language model (LLM) inference.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Understanding Target Probability Reuse in Speculative Decoding</div>
+<div class="meta-line">Authors: Jungseob Lee, Giyoon Jang, Chailin Nam, Jiwoo Kum, Sihyeon Lee, Kyojun Choo, Jihun Song, Eunseo Song, Chanjun Park</div>
+<div class="meta-line">First: 2026-10-21T05:02:50+00:00 · Latest: 2026-10-21T05:02:50+00:00</div>
+<div class="meta-line">Comments: 29 pages, 6 figures, 29 tables. Code: https://github.com/js-lee-AI/TargetRows</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.29210v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.29210v1">PDF</a> · <a href="https://github.com/js-lee-AI/TargetRows">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speculative decoding uses a target model to verify a tree of draft tokens in parallel. We study whether the resulting next-token distributions can help select the next tree. For unrestricted target models, we show that guaranteed exact reuse requires a distribution computed at the next round&#x27;s complete context. We characterize when retaining this distribution requires sacrificing accepted tokens and establish conditions under which this loss persists across decoding rounds. Across six targets, we find that reranking first-token branches with a separately computed distribution at the current context improves expected acceptance over draft ranking, especially with small tree budgets. Drawing the first token from this distribution before allocating the tree further improves expected acceptance over pruning a preselected tree, even at equal mean tree size. In our experiments, both selection rules also decode faster than draft ranking when the separate target pass overlaps standalone drafting. Our findings show that making target probabilities available before tree allocation can improve the efficiency of speculative decoding. Our code is available at https://github.com/js-lee-AI/TargetRows.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speculative decoding uses a target model to verify a tree of draft tokens in parallel.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">DLoop: Looped Speculative Decoding</div>
+<div class="meta-line">Authors: Geonmo Gu, Byeongho Heo, HeeJae Jun, Yoohoon Kang, Sangmin Lee, Sangdoo Yun, Dongyoon Han</div>
+<div class="meta-line">First: 2026-10-06T02:55:25+00:00 · Latest: 2026-10-21T03:47:16+00:00</div>
+<div class="meta-line">Comments: 22 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.07659v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.07659v2">PDF</a> · <a href="https://github.com/naver-ai/DLoop">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speculative decoding accelerates autoregressive generation in large language models. In each drafting stage, a lightweight draft model proposes tokens that the target model subsequently verifies. With increasingly capable draft models, we find that the target model frequently accepts all tokens produced in a drafting stage. A verification nevertheless follows each drafting stage, resulting in unnecessary target-model forward passes even when drafting could have continued. Adaptive draft length methods decide during decoding how many draft tokens precede a verification, but they raise the speedup only for autoregressive draft models. For a parallel draft model, drafting further requires target-model hidden states for draft tokens that have not been verified. We propose DLoop, a looped form of speculative decoding that adaptively performs multiple drafting stages before verification. DLoop continues drafting while the draft model remains confident and verifies all accumulated draft tokens together. Loop-aware training keeps the draft model reliable in the additional drafting stages by exposing it to its own hidden states for unverified draft tokens. By spending additional draft-model forward passes, DLoop reduces the number of target-model forward passes required for verification. Across diverse speculative decoding methods including EAGLE-3, DFlash, Domino, DSpark, and multi-token prediction modules, DLoop improves the wall-clock speedup by 5 to 41 percent while preserving lossless decoding. Code will be available at https://github.com/naver-ai/DLoop.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speculative decoding accelerates autoregressive generation in large language models.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">How Much Does the Harness Matter, and for Whom? A Multi-Model Study of Context in LLM-Driven Vulnerability Discovery</div>
+<div class="meta-line">Authors: Ganni Galea Curmi, Ben Wilde</div>
+<div class="meta-line">First: 2026-10-20T18:25:47+00:00 · Latest: 2026-10-20T18:25:47+00:00</div>
+<div class="meta-line">Comments: Accepted to CAMLIS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28802v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28802v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">How much does an agent harness affect vulnerability discovery, and does its value depend on the model? We study 24 model-runner configurations using an open-source harness on a production codebase whose vulnerabilities were non-public at scan time. The pipeline combines static screening, LLM investigation, model self-revalidation, root-cause mapping, independent source review, and isolated proof-of-concept confirmation.
+  Across 265 confirmed security root causes, the largest two-run configuration covers 60.4%, while 14.3% are found by exactly one model. No single configuration covers all observed findings. In a four-model context experiment, moving from a minimal prompt to an engineered prompt with a CodeQL-derived call graph raises criticality-weighted yield by 20-86% for smaller and mid-tier models, compared with 2% for the frontier model. This comparison changes both prompt and context. Separating those effects shows that the engineered prompt improves yield for all four models, while adding CodeQL context beyond that prompt improves yield only for the smallest model. A held-out CyberGym subset shows the same direction of target-recall improvement for the combined treatment.
+  Frontier models achieve low false-report rates but do not consistently achieve the highest yield. Strong lower-cost models can deliver similar performance at an order of magnitude lower cost. These results support matching models, prompts, and context to the task, and combining configurations for broader coverage.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">How much does an agent harness affect vulnerability discovery, and does its value depend on the model?</div>
+</details>
+</div>
+<div class="card">
 <div class="title">Beyond the Point Mass: Acceptance-Derived Weights and Distributional Losses for Speculative Decoding</div>
 <div class="meta-line">Authors: Tianyu Wu, Zhuohan Wang, Jonathan Geuter, Yu Yao, Weifan Jiang, Chengxi Zhang, Ju Li, Minlan Yu</div>
 <div class="meta-line">First: 2026-10-20T15:20:26+00:00 · Latest: 2026-10-20T15:20:26+00:00</div>
@@ -126,54 +186,10 @@ summary{cursor:pointer;color:var(--acc)}
 <details class="detail"><summary>Summary / 总结</summary>
 <div class="mono">The throughput gains of speculative decoding depend on the trade-off between acceptance length and execution latency.</div>
 </details>
-</div>
-<div class="card">
-<div class="title">Tandem: Serving Hybrid Linear-Attention GUI Agents on Mobile NPUs</div>
-<div class="meta-line">Authors: Zhuomin Chen, Jingchao Ni, Xu Zheng, Yong Chen, Mo Sha, Wei Cheng, Dongsheng Luo</div>
-<div class="meta-line">First: 2026-10-19T16:18:16+00:00 · Latest: 2026-10-19T16:18:16+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.26660v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26660v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Smartphone GUI agents complete tasks in mobile apps by repeatedly reading the screen and asking a model for the next action. Mobile neural processing units (NPUs) enable local execution, keeping screen contents on the phone, but model latency accumulates with every action. Hybrid linear attention models reduce memory requirements, yet reusing their recurrent state requires checkpoints at the appropriate input positions. Agent requests retain instructions but rewrite recent history, so checkpoint policies designed for chat continuation can miss reusable prefixes. Retaining rollback states for speculative decoding can also move prompt processing off the NPU&#x27;s matrix unit, adding overhead that outweighs decoding savings on short action outputs. A loaded model can further hold the NPU awake between tasks. We present Tandem, a runtime for hybrid GUI agents on mobile NPUs. Tandem saves recurrent state where consecutive prompts diverge, allowing later requests to reuse previously processed context. It keeps most prefill on the matrix unit and produces rollback states through a short per-token tail. Its verification kernel reads each weight block once for all proposed tokens. Between request bursts, Tandem releases NPU power votes without unloading the model. We implement Tandem in llama.cpp and evaluate it on recorded agent interactions across two Snapdragon generations. On a Snapdragon 8 Elite, Tandem reduces per-step latency by 30% for text-based screen descriptions and 16% for screenshots relative to llama.cpp&#x27;s fastest NPU configuration, reduces energy per text step by 33%, and lowers standby power with the model loaded from 0.76 to 0.22 W.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Smartphone GUI agents complete tasks in mobile apps by repeatedly reading the screen and asking a model for the next action.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">ReAnchor: Reusing Rejected Verifier States for Diffusion Drafting</div>
-<div class="meta-line">Authors: Sanghyun Lee, Wonjin Nam, Seungho Jang, Jaeho Lee, Jiho Park, Jaewoon Lee, Seungryong Kim</div>
-<div class="meta-line">First: 2026-10-19T14:57:27+00:00 · Latest: 2026-10-19T14:57:27+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.26531v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26531v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Block diffusion drafters accelerate speculative decoding by generating multiple draft tokens in a single forward pass. However, each pass produces only a fixed-length block from a single target-generated anchor, limiting how far the draft can extend. Meanwhile, target verification computes hidden states even at positions beyond the first rejection, but these states are typically discarded rather than reused. We propose ReAnchor, a training-free method that reanchors a pretrained drafter at shifted positions using discarded verifier states to generate parallel draft blocks. These blocks improve predictions within the original block and extend coverage beyond its endpoint. At sampling temperature of T=0, ReAnchor achieves its largest average gains on Gemma 4-12B, improving acceptance length by 19.4% and decoding speed by 17.9% across eight benchmarks. Averaged equally over four target models and eight benchmarks, it improves acceptance length by 15.2% and decoding speed by 13.4% with pretrained DFlash drafters.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Block diffusion drafters accelerate speculative decoding by generating multiple draft tokens in a single forward pass.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">SP$^2$ec: Adaptive Self-Speculative Decoding for Vision-Language Models</div>
-<div class="meta-line">Authors: Yuqi Huang, Xingyao Li, Yunlong Hou, Fengzhuo Zhang, Jiachun Pan, Vincent Y. F. Tan</div>
-<div class="meta-line">First: 2026-10-13T17:08:28+00:00 · Latest: 2026-10-19T12:48:24+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18735v3">Abs</a> · <a href="https://arxiv.org/pdf/2610.18735v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative Decoding (SD) has demonstrated its efficacy in accelerating large language model inference, but for Vision-Language Models (VLMs), the diverse input modalities make it difficult for a small trained drafter to achieve consistently high throughput. Self-speculative decoding reuses parts of the target model as a drafter which retains the multi-modal capability of the VLMs, yet its efficiency depends on choosing a suitable draft configuration for each prompt. We propose Single-Peak SPeculative decoding (SP$^2$ec), a training-free bandit algorithm that adapts the draft configuration during generation. SP$^2$ec exploits the single-peak throughput pattern observed in existing self-speculative methods, including SWIFT, KnapSpec, SpecVLM, and our simple cosSim. Our algorithmic design explicitly minimizes a novel notion of wall-time regret for each given query, corresponding to the empirical wall-time latency. Theoretical guarantees on the wall-time regret show that SP$^2$ec can exploit the optimal draft configuration, with negligible exploration cost. Extensive experiments on Qwen2.5-VL-7B-Instruct and LLaVA-NeXT-Mistral-7B across visual and textual tasks show consistent improvements of up to 11% over the original self-speculative methods, demonstrating the wide applicability of the proposed SP$^2$ec algorithm.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative Decoding (SD) has demonstrated its efficacy in accelerating large language model inference, but for Vision-Language Models (VLMs), the diverse input modalities make it difficult for a small trained drafter to achieve consistently high throughput.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Large Language Models over Networks: Collaborative Intelligence under Resource Constraints</div>
-<div class="meta-line">Authors: Liangqi Yuan, Wenzhi Fang, Shiqiang Wang, H. Vincent Poor, Christopher G. Brinton</div>
-<div class="meta-line">First: 2026-05-09T02:42:39+00:00 · Latest: 2026-10-18T22:19:36+00:00</div>
-<div class="meta-line">Comments: IEEE Communications Magazine</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.08626v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.08626v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Large language models (LLMs) are transforming society, powering applications from smartphone assistants to autonomous driving. Yet cloud-based LLM services alone cannot serve a growing class of applications, including those operating under intermittent connectivity, sub-second latency budgets, data-residency constraints, or sustained high-volume inference. On-device deployment is in turn constrained by limited computation and memory. No single endpoint can deliver high-quality service across this spectrum. This article focuses on collaborative intelligence, a paradigm in which multiple independent LLMs distributed across device and cloud endpoints collaborate at the task level through natural language or structured messages. Such collaboration strives for superior response quality under heterogeneous resource constraints spanning computation, memory, communication, and cost across network tiers. We present collaborative inference along two complementary and composable dimensions: vertical device-cloud collaboration and horizontal multi-agent collaboration, which can be combined into hybrid topologies in practice. We then examine learning to collaborate, addressing the training of routing policies and the development of cooperative capabilities among LLMs. Finally, we identify open research challenges including scaling under resource heterogeneity and trustworthy collaborative intelligence.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Large language models (LLMs) are transforming society, powering applications from smartphone assistants to autonomous driving.</div>
-</details>
 </div></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261021_0557.html">20261021_0557</a>
+      <div class="history-list"><a href="archive/20261022_0602.html">20261022_0602</a>
+<a href="archive/20261021_0557.html">20261021_0557</a>
 <a href="archive/20261020_0640.html">20261020_0640</a>
 <a href="archive/20261019_0507.html">20261019_0507</a>
 <a href="archive/20261018_0505.html">20261018_0505</a>
