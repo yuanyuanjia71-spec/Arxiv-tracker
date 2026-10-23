@@ -74,12 +74,58 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-10-23 06:03</span>
+        <span class="badge">2026-10-24 05:44</span>
       </div>
     </div>
     <div class="hr"></div>
     <div>Latest digest</div>
     <div class="row"><div class="card">
+<div class="title">ValuSpec: Plug-and-Play Candidate Valuation before Target Verification for Tree-Based Speculative Decoding</div>
+<div class="meta-line">Authors: Liang He, SiYuan Ma, Qishi Zhan, Yongqi Fan, Mingyu Cao, Qizhen Lan, Zhaolu Kang, Xilu Wang</div>
+<div class="meta-line">First: 2026-10-22T14:23:26+00:00 · Latest: 2026-10-22T14:23:26+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31338v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31338v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Tree-based speculative decoding accelerates large language model inference by verifying multiple candidate branches in parallel. However, in practical serving scenarios, similar requests repeatedly induce overlapping candidate branches. While retrieval-based methods mitigate this by reusing historical drafts, the resulting candidate trees often contain many low-quality branches as the candidate tree grows, which reduces verification efficiency and wastes target-side computation. To address this, we propose ValuSpec, a plug-and-play candidate valuation mechanism that filters low-quality branches from a supplied candidate tree before expensive target-side verification. ValuSpec introduces transfer-based supervision to align filtering with the target model&#x27;s behavior. A filtering threshold is estimated from the target model&#x27;s greedy trajectories on a calibration split, without any parameter training. The target model then verifies the filtered tree under the output-identical greedy rule, so accepted tokens are guaranteed to match standard autoregressive decoding exactly. Experimental results on HumanEval, GSM8K, Dolly, and SpecBench show that, in our main evaluation, ValuSpec achieves up to 2.38x end-to-end speedup in retrieval-based tree settings. Furthermore, integrating ValuSpec into the EAGLE-3 dynamic tree framework yields up to 2.78x end-to-end speedup without modifying its tree construction strategy, demonstrating that ValuSpec serves as a generally applicable and plug-and-play candidate valuation module.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Tree-based speculative decoding accelerates large language model inference by verifying multiple candidate branches in parallel.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">RIFT: KV Cache Compression for Draft Models with Complementary Compressibility Training</div>
+<div class="meta-line">Authors: Dor Tsur, Maor Ashkenazi, Maximilian Golub, Peter Hicks, Yaniv Galron, Talor Abramovich, Yoav Miron, Tiyasa Mitra, Bita Darvish Rouhani, Ran Zilberstein</div>
+<div class="meta-line">First: 2026-10-22T11:12:23+00:00 · Latest: 2026-10-22T11:12:23+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31098v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31098v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speculative decoding is a popular decode acceleration method. As such, it is particularly relevant to long-output generation, which requires an increasingly large KV cache. KV cache compression offers a way to constrain costs in long-context drafting. However, compression methods that focus on prefill information can lose relevance as the output length grows. We term this phenomenon decode staleness and show that it degrades draft model accuracy under selection-based KV cache compression. We introduce RIFT, a family of selection-based KV cache compression strategies that balance prefill information and recent generated tokens. We show that refreshing the KV cache selection during token generation significantly improves the drafter&#x27;s quality at the cost of additional decode latency. To alleviate the refresh costs, we propose an adaptive KV refresh strategy that reduces the number of score calculations while retaining the drafter&#x27;s quality. We further demonstrate how a compressibility-driven drafter training phase, based on sparse attention masks, can improve the drafter&#x27;s quality under a compressed KV cache. Combined with compressibility training, RIFT enables Qwen3.5-4B, drafting for Qwen3.5-122B, to retain over 98% of its full-cache acceptance length on 32K-token inputs, 4K-token outputs, and an 8K-token KV cache budget.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speculative decoding is a popular decode acceleration method.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">PROACT-Agent: Progressive Runtime Oversight and Active Circuit-breaking for Real-Time Safety</div>
+<div class="meta-line">Authors: Ding Jia, Wei Liu, Xianglong Du, Yingjie Li, Yingqing Yang, Huili Yu, Zhangsong Zhan, Chu Zhou</div>
+<div class="meta-line">First: 2026-09-28T06:30:49+00:00 · Latest: 2026-10-22T02:57:37+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.34415v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.34415v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The transition from Large Language Models (LLMs) to agents shifts safety stakes from toxic text to irreversible environmental harm. While current defenses remain largely retrospective, proactive runtime intervention is bottlenecked by the lack of large-scale, causally-consistent data. We propose PROACT-Agent, a framework for synthesizing high-fidelity trajectories to enable real-time guardrails. We identify a critical &quot;safety drift&quot; in prior benchmarks, where lenient annotation paradigms fail to enforce temporal consistency. PROACT-Agent addresses this through: (1) Progressive Trajectory Unrolling to reveal risks hidden in long-context interactions; (2) Reasoning-Augmented Causal Rectification to enforce monotonic causal consistency; and (3) Culturally-Aware Data Localization for cross-border robustness. We introduce PROACT-Bench, a bilingual safety benchmark with 155,780 states labeled through multi-model adjudication. Evaluating updated context before the next LLM inference, the trained guard achieves 91.46% unsafe-class F1 and 90.63% exact-boundary detection under complete source holdout. In AgentDojo, it reduces non-DoS targeted attack success from 20.82% to 0.40%.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The transition from Large Language Models (LLMs) to agents shifts safety stakes from toxic text to irreversible environmental harm.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">What Do Verifiable Rewards Teach Video-Language Models About Time? A Controlled Multi-Model Study</div>
+<div class="meta-line">Authors: Avyay Sadhu, Patrick Cooper</div>
+<div class="meta-line">Venue: WACV 2027</div>
+<div class="meta-line">First: 2026-09-30T21:42:57+00:00 · Latest: 2026-10-21T23:30:17+00:00</div>
+<div class="meta-line">Comments: 8 pages, 3 figures. Accepted to WACV 2027</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.03792v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.03792v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Reinforcement learning from verifiable rewards (RLVR) has produced large reasoning gains in language models, and verifiable video benchmarks make it applicable to causal-temporal video question answering. We study what RLVR teaches video-language models about time. We fine-tune four open models (Qwen3-VL-8B/4B, Qwen2.5-VL-7B, Gemma-3-12B) with group relative policy optimization under three data recipes: verified (synthetic CLEVRER questions with exact answer and event-order rewards), unverified (self-supervised pretext tasks over 43,751 real web videos), and a 1:1 mixture, plus a verified+real arm that adds 4,000 verifiable questions on real video. Each cell is evaluated in-domain and on out-of-domain real video (a NExT-QA temporal stress set and an MVBench subset), with frames in order, shuffled, and absent. (1) Verified training yields large in-domain gains that shrink as base competence grows (+14 to +19 points on weaker models; +6 on the strongest). (2) Much of the gain is non-visual: accuracy with no frames rises nearly as much as with frames. (3) Verified-only training can severely degrade out-of-domain accuracy with no sign during training: Qwen3-VL-8B loses 26.7 and 25.2 points on the two real-video sets, while the mixture never significantly degrades a model trained on it. Adding real verified questions removes that loss (-2.3 points, within noise of base) and keeps a +9.3 in-domain gain, so the cause is narrow synthetic-only data, not verification. (4) No recipe induces temporal-order grounding: across 41 evaluations the ordered-versus-shuffled gap is indistinguishable from zero in 39 and marginal in two, despite an event-order reward. Verifiable rewards improve benchmark accuracy without temporal understanding. Report no-frame controls, and mix in real video to guard against out-of-domain degradation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Reinforcement learning from verifiable rewards (RLVR) has produced large reasoning gains in language models, and verifiable video benchmarks make it applicable to causal-temporal video question answering.</div>
+</details>
+</div>
+<div class="card">
 <div class="title">Trees from Marginals: Autoregressive drafting with factorized priors</div>
 <div class="meta-line">Authors: Yuma Oda, Ryan Mathieu, Roman Knyazhitskiy, Artur Chakhvadze</div>
 <div class="meta-line">First: 2026-07-07T19:48:36+00:00 · Latest: 2026-10-21T16:07:58+00:00</div>
@@ -124,71 +170,10 @@ summary{cursor:pointer;color:var(--acc)}
 <details class="detail"><summary>Summary / 总结</summary>
 <div class="mono">Speculative decoding accelerates autoregressive generation in large language models.</div>
 </details>
-</div>
-<div class="card">
-<div class="title">How Much Does the Harness Matter, and for Whom? A Multi-Model Study of Context in LLM-Driven Vulnerability Discovery</div>
-<div class="meta-line">Authors: Ganni Galea Curmi, Ben Wilde</div>
-<div class="meta-line">First: 2026-10-20T18:25:47+00:00 · Latest: 2026-10-20T18:25:47+00:00</div>
-<div class="meta-line">Comments: Accepted to CAMLIS 2026</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28802v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28802v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">How much does an agent harness affect vulnerability discovery, and does its value depend on the model? We study 24 model-runner configurations using an open-source harness on a production codebase whose vulnerabilities were non-public at scan time. The pipeline combines static screening, LLM investigation, model self-revalidation, root-cause mapping, independent source review, and isolated proof-of-concept confirmation.
-  Across 265 confirmed security root causes, the largest two-run configuration covers 60.4%, while 14.3% are found by exactly one model. No single configuration covers all observed findings. In a four-model context experiment, moving from a minimal prompt to an engineered prompt with a CodeQL-derived call graph raises criticality-weighted yield by 20-86% for smaller and mid-tier models, compared with 2% for the frontier model. This comparison changes both prompt and context. Separating those effects shows that the engineered prompt improves yield for all four models, while adding CodeQL context beyond that prompt improves yield only for the smallest model. A held-out CyberGym subset shows the same direction of target-recall improvement for the combined treatment.
-  Frontier models achieve low false-report rates but do not consistently achieve the highest yield. Strong lower-cost models can deliver similar performance at an order of magnitude lower cost. These results support matching models, prompts, and context to the task, and combining configurations for broader coverage.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">How much does an agent harness affect vulnerability discovery, and does its value depend on the model?</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Beyond the Point Mass: Acceptance-Derived Weights and Distributional Losses for Speculative Decoding</div>
-<div class="meta-line">Authors: Tianyu Wu, Zhuohan Wang, Jonathan Geuter, Yu Yao, Weifan Jiang, Chengxi Zhang, Ju Li, Minlan Yu</div>
-<div class="meta-line">First: 2026-10-20T15:20:26+00:00 · Latest: 2026-10-20T15:20:26+00:00</div>
-<div class="meta-line">Comments: Code: https://github.com/Lucas-TY/D-PAL-SpecForge</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.28355v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.28355v1">PDF</a> · <a href="https://github.com/Lucas-TY/D-PAL-SpecForge">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">In speculative decoding, a lightweight draft model proposes tokens that the target model verifies in parallel, speeding up generation without changing the target distribution. D-PACE (Wu et al., 2026) trains such drafters with a loss that weights each position by its contribution to the expected accepted length. Both its weights and its cross-entropy (CE) loss use only the draft&#x27;s probability of the recorded target token, treating the target as a point mass. Under rejection sampling, however, a sampled draft token is accepted with probability equal to the overlap of the draft and target distributions, one minus their total variation (TV). We derive D-PAL (Dynamic Position-wise Acceptance Loss) from the exact expected accepted length, using this overlap as the acceptance signal. This yields overlap-based position weights with log acceptance (LA) as the per-position loss, and the objective reduces to D-PACE for a point-mass target. Since the weights are detached, any per-position loss can replace LA in practice. We show that forward KL divergence and Rényi divergence of order 1/2 match or exceed LA, and that Rényi-1/2 provably bounds the true acceptance rate from above and below. Replacing CE with Rényi-1/2 improves acceptance length under both D-PACE&#x27;s weights and ours. On six benchmarks with a Qwen3-4B target, D-PAL raises mean acceptance length over D-PACE from 4.50 to 4.57 at T=0 and from 4.20 to 4.28 at T=1, and consistently achieves higher throughput at both temperatures.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">In speculative decoding, a lightweight draft model proposes tokens that the target model verifies in parallel, speeding up generation without changing the target distribution.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Performance-Driven Policy Optimization for Speculative Decoding with Adaptive Windowing</div>
-<div class="meta-line">Authors: Jie Jiang, Xing Sun, Ruotian Chen, Jianan Su, Kaixin Shen</div>
-<div class="meta-line">Venue: NeurIPS 2026</div>
-<div class="meta-line">First: 2026-05-14T15:41:57+00:00 · Latest: 2026-10-20T13:08:31+00:00</div>
-<div class="meta-line">Comments: Accepted at NeurIPS 2026</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.14978v3">Abs</a> · <a href="https://arxiv.org/pdf/2605.14978v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding accelerates LLM inference by having a lightweight draft model propose speculative windows of candidate tokens for parallel verification by a larger target model. In practice, speculative efficiency is often bottlenecked by hard-to-draft positions, where an early mismatch truncates the accepted prefix and invalidates the rest of the speculative window. Most learning-based drafters are still optimized with token-level supervised objectives, even though speculative utility is inherently window-level and prefix-sensitive. We propose PPOW (Performance-Driven Policy Optimization with Adaptive Windowing), a reinforcement learning framework that shifts drafter optimization from token-level imitation to window-level optimization. PPOW combines a Cost-Aware Speedup Reward, a Distribution-Based Proximity Reward, and Adaptive Divergence-Aware Windowing, which prioritizes informative windows with high confidence-weighted draft-target divergence. PPOW achieves average acceptance lengths of 6.29-6.52 and speedups of 3.39-4.36$\times$ across multiple model families and benchmarks under a unified decoding protocol. These results show that performance-driven window-level optimization is a practical approach to improving speculative decoding efficiency.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding accelerates LLM inference by having a lightweight draft model propose speculative windows of candidate tokens for parallel verification by a larger target model.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">ProVe: Proposer-Verifier Decoding</div>
-<div class="meta-line">Authors: Ziqi Jin, Weiwen Xu, Jiaxi Li, Yujie Zhong, Qi She, Aixin Sun</div>
-<div class="meta-line">First: 2026-10-20T08:06:37+00:00 · Latest: 2026-10-20T08:06:37+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.27815v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.27815v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding accelerates autoregressive (AR) language models by letting a small model draft tokens serially and a large model verify them in parallel. We reverse these roles. Starting from a standard AR checkpoint, we fine-tune the large model into a proposer that predicts a block of future tokens in a single forward pass, then use one additional forward pass to verify the proposed block. This gives ProVe, Proposer-Verifier decoding. The verifier can be a smaller AR model or the proposer itself; the latter gives ProVe-lossless, which reproduces the proposer&#x27;s greedy AR decoding. Block proposals already provide substantial room for acceleration: with a block size of 16, the proposed block has an average AR-matching prefix of 6.6 tokens on GSM8K. Across six benchmarks with a 32B proposer, ProVe-lossless reaches 2.5x average AR throughput without training a separate draft head. With a small 3B verifier, ProVe reaches 2.7x average throughput at 2.6 accuracy points below AR on the six-task average, providing a controllable tradeoff between speed and accuracy.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding accelerates autoregressive (AR) language models by letting a small model draft tokens serially and a large model verify them in parallel.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">When Does Better Acceptance Pay? A Controlled Study of Speculative Decoding</div>
-<div class="meta-line">Authors: Yongchao Long, Chunrui Zheng, Yuxuan Zhou, Guangkun Nie, Tian-Chi Ma, Chao Pang, Shuohuan Wang, Yuchen Ding, Xianbin Wen, Dianhai Yu, Junyuan Shang, Yuxi Zhou, Shenda Hong</div>
-<div class="meta-line">First: 2026-10-18T03:52:06+00:00 · Latest: 2026-10-20T07:26:20+00:00</div>
-<div class="meta-line">Comments: 24 pages, 11 figures. Project page: https://github.com/ernie-research/DCore</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.24993v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.24993v2">PDF</a> · <a href="https://github.com/ernie-research/DCore">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">The throughput gains of speculative decoding depend on the trade-off between acceptance length and execution latency. We ask when additional acceptance is worth the cost of obtaining it. We establish a comparison protocol spanning training, inference, and evaluation, remeasuring released checkpoints and retraining six drafter recipes on shared target-generated data across ten benchmarks and two target models. Alignment changes the picture: gaps that appear large in published comparisons shrink substantially under shared training and inference conditions. This narrowing motivates two deeper questions: how is acceptance improved at different costs, and when do these gains improve throughput? We find that acceptance can be improved through nearly free objective and context changes or more expensive token-to-token conditioning. DCore illustrates the former route as a strong baseline with little additional measured drafting overhead. The payoff is conditional: task uncertainty and serving conditions affect acceptance returns, execution costs, and the preferred drafter and budget. These findings inform future drafter design and deployment choices.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">The throughput gains of speculative decoding depend on the trade-off between acceptance length and execution latency.</div>
-</details>
 </div></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261022_0602.html">20261022_0602</a>
+      <div class="history-list"><a href="archive/20261023_0603.html">20261023_0603</a>
+<a href="archive/20261022_0602.html">20261022_0602</a>
 <a href="archive/20261021_0557.html">20261021_0557</a>
 <a href="archive/20261020_0640.html">20261020_0640</a>
 <a href="archive/20261019_0507.html">20261019_0507</a>
