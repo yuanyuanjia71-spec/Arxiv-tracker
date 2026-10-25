@@ -74,59 +74,15 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-10-25 05:16</span>
+        <span class="badge">2026-10-26 05:17</span>
       </div>
     </div>
     <div class="hr"></div>
     <div>Latest digest</div>
-    <div class="row"><div class="card">
-<div class="title">ValuSpec: Plug-and-Play Candidate Valuation before Target Verification for Tree-Based Speculative Decoding</div>
-<div class="meta-line">Authors: Liang He, SiYuan Ma, Qishi Zhan, Yongqi Fan, Mingyu Cao, Qizhen Lan, Zhaolu Kang, Xilu Wang</div>
-<div class="meta-line">First: 2026-10-22T14:23:26+00:00 · Latest: 2026-10-22T14:23:26+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31338v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31338v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Tree-based speculative decoding accelerates large language model inference by verifying multiple candidate branches in parallel. However, in practical serving scenarios, similar requests repeatedly induce overlapping candidate branches. While retrieval-based methods mitigate this by reusing historical drafts, the resulting candidate trees often contain many low-quality branches as the candidate tree grows, which reduces verification efficiency and wastes target-side computation. To address this, we propose ValuSpec, a plug-and-play candidate valuation mechanism that filters low-quality branches from a supplied candidate tree before expensive target-side verification. ValuSpec introduces transfer-based supervision to align filtering with the target model&#x27;s behavior. A filtering threshold is estimated from the target model&#x27;s greedy trajectories on a calibration split, without any parameter training. The target model then verifies the filtered tree under the output-identical greedy rule, so accepted tokens are guaranteed to match standard autoregressive decoding exactly. Experimental results on HumanEval, GSM8K, Dolly, and SpecBench show that, in our main evaluation, ValuSpec achieves up to 2.38x end-to-end speedup in retrieval-based tree settings. Furthermore, integrating ValuSpec into the EAGLE-3 dynamic tree framework yields up to 2.78x end-to-end speedup without modifying its tree construction strategy, demonstrating that ValuSpec serves as a generally applicable and plug-and-play candidate valuation module.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Tree-based speculative decoding accelerates large language model inference by verifying multiple candidate branches in parallel.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">RIFT: KV Cache Compression for Draft Models with Complementary Compressibility Training</div>
-<div class="meta-line">Authors: Dor Tsur, Maor Ashkenazi, Maximilian Golub, Peter Hicks, Yaniv Galron, Talor Abramovich, Yoav Miron, Tiyasa Mitra, Bita Darvish Rouhani, Ran Zilberstein</div>
-<div class="meta-line">First: 2026-10-22T11:12:23+00:00 · Latest: 2026-10-22T11:12:23+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31098v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31098v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding is a popular decode acceleration method. As such, it is particularly relevant to long-output generation, which requires an increasingly large KV cache. KV cache compression offers a way to constrain costs in long-context drafting. However, compression methods that focus on prefill information can lose relevance as the output length grows. We term this phenomenon decode staleness and show that it degrades draft model accuracy under selection-based KV cache compression. We introduce RIFT, a family of selection-based KV cache compression strategies that balance prefill information and recent generated tokens. We show that refreshing the KV cache selection during token generation significantly improves the drafter&#x27;s quality at the cost of additional decode latency. To alleviate the refresh costs, we propose an adaptive KV refresh strategy that reduces the number of score calculations while retaining the drafter&#x27;s quality. We further demonstrate how a compressibility-driven drafter training phase, based on sparse attention masks, can improve the drafter&#x27;s quality under a compressed KV cache. Combined with compressibility training, RIFT enables Qwen3.5-4B, drafting for Qwen3.5-122B, to retain over 98% of its full-cache acceptance length on 32K-token inputs, 4K-token outputs, and an 8K-token KV cache budget.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding is a popular decode acceleration method.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">PROACT-Agent: Progressive Runtime Oversight and Active Circuit-breaking for Real-Time Safety</div>
-<div class="meta-line">Authors: Ding Jia, Wei Liu, Xianglong Du, Yingjie Li, Yingqing Yang, Huili Yu, Zhangsong Zhan, Chu Zhou</div>
-<div class="meta-line">First: 2026-09-28T06:30:49+00:00 · Latest: 2026-10-22T02:57:37+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.34415v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.34415v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">The transition from Large Language Models (LLMs) to agents shifts safety stakes from toxic text to irreversible environmental harm. While current defenses remain largely retrospective, proactive runtime intervention is bottlenecked by the lack of large-scale, causally-consistent data. We propose PROACT-Agent, a framework for synthesizing high-fidelity trajectories to enable real-time guardrails. We identify a critical &quot;safety drift&quot; in prior benchmarks, where lenient annotation paradigms fail to enforce temporal consistency. PROACT-Agent addresses this through: (1) Progressive Trajectory Unrolling to reveal risks hidden in long-context interactions; (2) Reasoning-Augmented Causal Rectification to enforce monotonic causal consistency; and (3) Culturally-Aware Data Localization for cross-border robustness. We introduce PROACT-Bench, a bilingual safety benchmark with 155,780 states labeled through multi-model adjudication. Evaluating updated context before the next LLM inference, the trained guard achieves 91.46% unsafe-class F1 and 90.63% exact-boundary detection under complete source holdout. In AgentDojo, it reduces non-DoS targeted attack success from 20.82% to 0.40%.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">The transition from Large Language Models (LLMs) to agents shifts safety stakes from toxic text to irreversible environmental harm.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">What Do Verifiable Rewards Teach Video-Language Models About Time? A Controlled Multi-Model Study</div>
-<div class="meta-line">Authors: Avyay Sadhu, Patrick Cooper</div>
-<div class="meta-line">Venue: WACV 2027</div>
-<div class="meta-line">First: 2026-09-30T21:42:57+00:00 · Latest: 2026-10-21T23:30:17+00:00</div>
-<div class="meta-line">Comments: 8 pages, 3 figures. Accepted to WACV 2027</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.03792v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.03792v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Reinforcement learning from verifiable rewards (RLVR) has produced large reasoning gains in language models, and verifiable video benchmarks make it applicable to causal-temporal video question answering. We study what RLVR teaches video-language models about time. We fine-tune four open models (Qwen3-VL-8B/4B, Qwen2.5-VL-7B, Gemma-3-12B) with group relative policy optimization under three data recipes: verified (synthetic CLEVRER questions with exact answer and event-order rewards), unverified (self-supervised pretext tasks over 43,751 real web videos), and a 1:1 mixture, plus a verified+real arm that adds 4,000 verifiable questions on real video. Each cell is evaluated in-domain and on out-of-domain real video (a NExT-QA temporal stress set and an MVBench subset), with frames in order, shuffled, and absent. (1) Verified training yields large in-domain gains that shrink as base competence grows (+14 to +19 points on weaker models; +6 on the strongest). (2) Much of the gain is non-visual: accuracy with no frames rises nearly as much as with frames. (3) Verified-only training can severely degrade out-of-domain accuracy with no sign during training: Qwen3-VL-8B loses 26.7 and 25.2 points on the two real-video sets, while the mixture never significantly degrades a model trained on it. Adding real verified questions removes that loss (-2.3 points, within noise of base) and keeps a +9.3 in-domain gain, so the cause is narrow synthetic-only data, not verification. (4) No recipe induces temporal-order grounding: across 41 evaluations the ordered-versus-shuffled gap is indistinguishable from zero in 39 and marginal in two, despite an event-order reward. Verifiable rewards improve benchmark accuracy without temporal understanding. Report no-frame controls, and mix in real video to guard against out-of-domain degradation.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Reinforcement learning from verifiable rewards (RLVR) has produced large reasoning gains in language models, and verifiable video benchmarks make it applicable to causal-temporal video question answering.</div>
-</details>
-</div></div>
+    <div class="row"></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261024_0544.html">20261024_0544</a>
+      <div class="history-list"><a href="archive/20261025_0516.html">20261025_0516</a>
+<a href="archive/20261024_0544.html">20261024_0544</a>
 <a href="archive/20261023_0603.html">20261023_0603</a>
 <a href="archive/20261022_0602.html">20261022_0602</a>
 <a href="archive/20261021_0557.html">20261021_0557</a>
