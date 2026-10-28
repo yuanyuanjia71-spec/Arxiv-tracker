@@ -74,12 +74,36 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-10-28 06:42</span>
+        <span class="badge">2026-10-29 06:54</span>
       </div>
     </div>
     <div class="hr"></div>
     <div>Latest digest</div>
     <div class="row"><div class="card">
+<div class="title">Exploring the Limits of the Delta Learning Hypothesis: Single-Pair Generator Biases in Direct Preference Optimization</div>
+<div class="meta-line">Authors: Giuseppe Curci, Stefano Simonazzi, Andrea Molinari, Andrea Zugarini</div>
+<div class="meta-line">First: 2026-10-27T11:24:50+00:00 · Latest: 2026-10-27T11:24:50+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37058v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.37058v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Direct Preference Optimization (DPO) typically relies on preference pairs generated from diverse model pools and ranked by an external LLM judge. The recently proposed delta-learning hypothesis suggests that comparable supervision can instead be obtained from a single pair of models by treating the larger model&#x27;s response as preferred. We investigate the limits of this approach across model families and scales. We show, both theoretically and empirically, that fixed model pairs introduce systematic, generator-dependent biases that are predictive of the preference label independent of response quality. Consequently, DPO trained on single-pair data consistently underperforms multi-model preference data, despite the larger generator producing higher-quality responses, and we trace this gap to training dynamics consistent with reward hacking on these biases. We further show that simply increasing the number of generators, even without an external judge, is enough to partially mitigate this effect. Our results highlight generator diversity as a critical factor in preference-data construction.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Direct Preference Optimization (DPO) typically relies on preference pairs generated from diverse model pools and ranked by an external LLM judge.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Bastion: Budget-Aware Speculative Decoding with Tree-structured Block Diffusion Drafting</div>
+<div class="meta-line">Authors: Soowon Oh, Nam Cao, Yujin Kim, Hojung Jung, Huzama Ahmad, Sangmin Bae, Se-Young Yun</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-05-28T10:21:34+00:00 · Latest: 2026-10-27T02:18:31+00:00</div>
+<div class="meta-line">Comments: NeurIPS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.29727v3">Abs</a> · <a href="https://arxiv.org/pdf/2605.29727v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Block-diffusion drafters have recently emerged as a powerful alternative for speculative decoding by predicting multiple future-token distributions in a single parallel step. However, since these parallel predictions are sampled from position-wise marginals rather than fully conditioned sequences, committing to a single greedy path often fails to capture the target model&#x27;s preferred trajectory. To address this, we propose BASTION, a budget-aware speculative decoding framework with tree-based diffusion drafting. Unlike existing methods that rely on static tree topologies, BASTION dynamically constructs query-dependent trees by balancing draft quality against hardware constraints. Our framework integrates three synergistic components: (1) an acceptance surrogate that estimates expected accepted length via path confidence, (2) an online latency estimator that calibrates a hardware-aware roofline model, and (3) an adaptive best-first expansion that grows the tree until marginal gains no longer justify incremental verification costs. BASTION is training-free, preserves the target model&#x27;s distribution, and requires no per-setting tuning. Across diverse benchmarks and GPU architectures, BASTION achieves up to a $6.61\times$ speedup over standard autoregressive decoding, outperforming state-of-the-art block-diffusion baselines by 39%.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Block-diffusion drafters have recently emerged as a powerful alternative for speculative decoding by predicting multiple future-token distributions in a single parallel step.</div>
+</details>
+</div>
+<div class="card">
 <div class="title">On the SPOT: Enhancing Speculative Decoding for Diffusion Language Models via Commit-Order Prediction</div>
 <div class="meta-line">Authors: Eliezer Shlomi, Eliron Rahimi, Avi Mendelson, Chaim Baskin</div>
 <div class="meta-line">First: 2026-10-15T18:40:42+00:00 · Latest: 2026-10-26T14:21:10+00:00</div>
@@ -104,17 +128,6 @@ summary{cursor:pointer;color:var(--acc)}
 </details>
 </div>
 <div class="card">
-<div class="title">Bastion: Budget-Aware Speculative Decoding with Tree-structured Block Diffusion Drafting</div>
-<div class="meta-line">Authors: Soowon Oh, Nam Cao, Yujin Kim, Hojung Jung, Huzama Ahmad, Sangmin Bae, Se-Young Yun</div>
-<div class="meta-line">First: 2026-05-28T10:21:34+00:00 · Latest: 2026-10-26T05:30:36+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.29727v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.29727v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Block-diffusion drafters have recently shown strong potential for speculative decoding by predicting multiple future-token distributions in a single forward pass. To exploit these parallel predictions, tree-based verification can check multiple plausible continuations instead of committing to a single greedy draft path, often increasing the number of accepted tokens per decoding cycle. However, existing tree-based approaches typically rely on fixed tree topologies or static verification budgets, even though the best budget depends on the local draft distribution, context length, target model, and hardware runtime. We propose a system-aware adaptive tree framework for block-diffusion speculative decoding. At each decoding cycle, our method builds a tree toward high-probability draft paths and selects the verification budget that maximizes an online speedup estimate. This estimate combines a drafter-based acceptance surrogate with an analytical verifier-latency model calibrated from observed runtimes. The framework requires no additional training of the drafter or target model and preserves the target model&#x27;s decoding rule. Across target models, benchmarks, decoding temperatures, and GPU platforms, our method achieves up to a $6.93\times$ wall-clock speedup over standard autoregressive decoding. This corresponds to approximately 40% higher speedup than Dflash, the strongest existing block-diffusion drafter, and is obtained without per-setting budget tuning.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Block-diffusion drafters have recently shown strong potential for speculative decoding by predicting multiple future-token distributions in a single forward pass.</div>
-</details>
-</div>
-<div class="card">
 <div class="title">ActECC: Action Chunk Temporal Harnessing for Edge-Cloud Collaborative VLA Inference System</div>
 <div class="meta-line">Authors: Zihao Zheng, Zhihao Mao, Hui Huang, Sicheng Tian, Hangyu Cao, Ziyun Zhang, Chenyue Li, Jiayu Chen, Maoliang Li, Hailong Zou, Guojie Luo, Xiang Chen</div>
 <div class="meta-line">First: 2026-03-09T04:30:57+00:00 · Latest: 2026-10-26T05:06:37+00:00</div>
@@ -135,55 +148,10 @@ summary{cursor:pointer;color:var(--acc)}
 <details class="detail"><summary>Summary / 总结</summary>
 <div class="mono">Block-diffusion drafters like dFlash generate an entire block of draft tokens in a single forward pass, drastically reducing the overhead of multiple-token drafting in speculative decoding.</div>
 </details>
-</div>
-<div class="card">
-<div class="title">Speculative Decoding for Mixture-of-Experts Models: Expert Bytes, Kernel Bandwidth and the Best Draft Length</div>
-<div class="meta-line">Authors: Yuzheng Lan</div>
-<div class="meta-line">First: 2026-10-25T16:55:48+00:00 · Latest: 2026-10-25T16:55:48+00:00</div>
-<div class="meta-line">Comments: 35 pages, 7 figures, 8 tables</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.34440v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.34440v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding checks several drafted tokens in one verification pass. On a mixture-of-experts (MoE) model, consecutive tokens often select the same experts. A deduplicating engine reads each selected expert once per pass, so it requests fewer bytes than a per-slot engine, which reads it once per token. We write a step&#x27;s time as the bytes each kernel requests over its effective bandwidth, plus fixed time. Under geometric acceptance, we derive from this step time when speculation is faster than plain decoding. The best draft length is a monotone staircase in the acceptance rate. We bound how a bandwidth error moves each result, and we check the main steps in Lean. Deduplication is faster exactly where its share $\bar u(n)$ of the per-slot bytes is below its ratio $r(n)$ of the per-slot bandwidth. On llama.cpp Metal, MLX-LM and llama.cpp CUDA, which we modified to deduplicate, the per-slot kernel has the higher effective bandwidth (r = 0.32 to 0.75). Thus deduplication is faster only from 5 to 8 tokens per pass, or never. We fit the bandwidths on one layer&#x27;s expert operation, run alone, in under an hour per model. Bytes from routing traces over these bandwidths predict the time that deduplication saves. The measured saving lies inside its error bound at every point on CUDA and MLX-LM and at 36 of 48 points on Metal. The crossover is the first pass size at which deduplication is faster. The prediction places it within one pass size in 10 of 12 configurations of engine, model and depth. We computed these predictions after the measurements. On DeepSeek-V2-Lite, operation times measured before its speculative runs give the best draft length on CUDA within one at all 22 acceptance values.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding checks several drafted tokens in one verification pass.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Prefix Keys and Values Matter Late: RIPE Caching for Self-Speculative Decoding in Looped Language Models</div>
-<div class="meta-line">Authors: Dezhen Lu, Runguo Li, Zixiang Ni</div>
-<div class="meta-line">First: 2026-10-25T16:44:33+00:00 · Latest: 2026-10-25T16:44:33+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.34436v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.34436v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">A looped language model runs one block of layers $R$ times per token, so its key-value (KV) cache holds $R$ planes per recurrent layer, and self-speculative decoding (draft with a few loops, verify with all $R$) reads them all. We find that prefix keys and values matter late: at equal perturbation size, loops 25-32 are $e^{15.0}$ (Huginn-0125) and $e^{12.8}$ (Raven-Llama) times more sensitive than loops 2-9, and the planes approach the last one geometrically, at 0.88 and 0.81 per loop. Whether the deepest plane alone suffices then depends on how ripe the late planes are: on Raven, storing only it is indistinguishable from a bf16-to-fp32 change; on Huginn, 1% of positions carry 74% of its error. We turn this into RIPE, which stores the deepest plane everywhere except a window of recent positions kept at full depth. On Huginn, a 64-position window removes 89% of the tail positions at 11.9% of the full cache&#x27;s memory (1024-token context), and any window at least as long as the draft block makes batched verification block-independent by construction. Nine pre-registered GPU batches back these results. Simple models of acceptance, decoding cost and memory, two of them checked on held-out measurements, account for the measured self-speculative speed-ups ($2.09\times$ with the full cache, $2.58\times$ with the deepest plane) and decompose the $2.24\times$ fixed-memory throughput gain of one shared plane.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">A looped language model runs one block of layers $R$ times per token, so its key-value (KV) cache holds $R$ planes per recurrent layer, and self-speculative decoding (draft with a few loops, verify with all $R$) reads them all.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">When Does Better Acceptance Pay? A Controlled Study of Speculative Decoding</div>
-<div class="meta-line">Authors: Yongchao Long, Chunrui Zheng, Yuxuan Zhou, Guangkun Nie, Tian-Chi Ma, Chao Pang, Shuohuan Wang, Yuchen Ding, Xianbin Wen, Dianhai Yu, Junyuan Shang, Yuxi Zhou, Shenda Hong</div>
-<div class="meta-line">First: 2026-10-18T03:52:06+00:00 · Latest: 2026-10-25T13:39:44+00:00</div>
-<div class="meta-line">Comments: 24 pages, 11 figures. Project page: https://github.com/ernie-research/DCore</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.24993v3">Abs</a> · <a href="https://arxiv.org/pdf/2610.24993v3">PDF</a> · <a href="https://github.com/ernie-research/DCore">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">The throughput gains of speculative decoding depend on the trade-off between acceptance length and execution latency. We ask when additional acceptance is worth the cost of obtaining it. We establish a comparison protocol spanning training, inference, and evaluation, remeasuring released checkpoints and retraining six drafter recipes on shared target-generated data across ten benchmarks and two target models. Alignment changes the picture: gaps that appear large in published comparisons shrink substantially under shared training and inference conditions. This narrowing motivates two deeper questions: how is acceptance improved at different costs, and when do these gains improve throughput? We find that acceptance can be improved through nearly free objective and context changes or more expensive token-to-token conditioning, which pays off most clearly under sampled drafting. DCore illustrates the former route as a strong baseline with little additional measured drafting overhead. The payoff is conditional: task uncertainty and serving conditions affect acceptance returns, execution costs, and the preferred drafter and budget. These findings inform future drafter design and deployment choices.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">The throughput gains of speculative decoding depend on the trade-off between acceptance length and execution latency.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">OasisKV: Scaling In-Decode KV Cache Beyond HBM with Lookahead Sparse Prefetching</div>
-<div class="meta-line">Authors: Can Xiao, Sukmin Cho, Junbong We, Zhixiong Niu, Jianyi Cheng, Yiren Zhao, Youngjin Kwon, Yongqiang Xiong, Rui Ma, Junyi Liu</div>
-<div class="meta-line">First: 2026-08-08T12:27:03+00:00 · Latest: 2026-10-25T10:57:32+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.08097v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.08097v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Large language model (LLM) inference serving is increasingly constrained by memory rather than compute. As long-context and long-form reasoning workloads become more prevalent, the key-value (KV) cache dominates both memory footprint and memory traffic at the token generation (i.e., decode) stage. HBM capacity has therefore become a critical bottleneck, constraining inference batch size and throughput. This paper introduces OasisKV, a memory-centric LLM inference system that alleviates HBM limitations by offloading the KV-cache to alternative memory tiers. Exploiting the sparsity of decode-time attention and leveraging speculative decoding to predict important tokens, OasisKV selectively prefetches and stages only the most relevant KV entries in HBM for efficient LLM inference computation. To support growing LLM context and the larger batches enabled by sparse HBM residency, OasisKV employs tiered KV management across decode, prefill, and remote-memory nodes, relaxing decode-host memory capacity limits under disaggregated serving. An asynchronous prefetch pipeline hides off-GPU transfer latency while bounding per-step traffic to fit the available bandwidth. We implement OasisKV on vLLM. With only 2,048 KV tokens resident in HBM, OasisKV maintains average accuracy within a negligible 0.61 points of full attention on LongBench v2 for long-context understanding and across AIME24-25 and GPQA-Diamond for long-form reasoning. This sparsity translates into a 1.86x throughput gain over vLLM on AIME24. Synthetic long-context workloads further show up to 2.2x higher throughput in multi-GPU serving. Under prefill-decode disaggregation, OasisKV achieves 2.29x vLLM&#x27;s throughput while supporting 2.42x as many concurrent requests under the same host-memory budget.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Large language model (LLM) inference serving is increasingly constrained by memory rather than compute.</div>
-</details>
 </div></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261027_0655.html">20261027_0655</a>
+      <div class="history-list"><a href="archive/20261028_0642.html">20261028_0642</a>
+<a href="archive/20261027_0655.html">20261027_0655</a>
 <a href="archive/20261026_0517.html">20261026_0517</a>
 <a href="archive/20261025_0516.html">20261025_0516</a>
 <a href="archive/20261024_0544.html">20261024_0544</a>
