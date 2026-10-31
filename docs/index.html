@@ -74,7 +74,7 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-10-31 06:42</span>
+        <span class="badge">2026-11-01 05:58</span>
       </div>
     </div>
     <div class="hr"></div>
@@ -127,71 +127,10 @@ summary{cursor:pointer;color:var(--acc)}
 <details class="detail"><summary>Summary / 总结</summary>
 <div class="mono">Speculative decoding (SD) accelerates autoregressive inference by leveraging the memory bound nature of decoding, verifying multiple draft tokens in a single forward pass.</div>
 </details>
-</div>
-<div class="card">
-<div class="title">TableTune: Measured, Self-Correcting Draft-Length Tables for Dynamic Speculative Decoding</div>
-<div class="meta-line">Authors: Abhishek Malvankar, Paul Castro, Nick Mitchell, Lionel Villard</div>
-<div class="meta-line">First: 2026-10-28T21:52:13+00:00 · Latest: 2026-10-28T21:52:13+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.38968v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.38968v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding speeds up large language model (LLM) serving only while the GPU has spare compute, so the best draft length, the number of tokens a small drafter guesses per step, shrinks as the batch grows. vLLM lets operators set the draft length for each batch size with a hand-written table, but nothing measures or corrects that table. We present TableTune. Its tuner times the decoding step for every batch size and draft length on vLLM&#x27;s own serving path and computes, in minutes, the table that maximizes throughput. Its controller, a vLLM plugin, tracks how many guesses are accepted in live traffic and rebuilds the table while serving. We measure TableTune only against other ways to speculate. On an H100, the tuned table delivers at least 94% of the throughput of the best fixed draft length at every load in four of five drafter settings (88% in the fifth) without the operator having to know which length that is. Against reimplementations of TurboSpec- and Nightjar-style control on the same engine, its worst-case loss is never higher than theirs, and with the EAGLE-3 drafter it is 3% against 9% and 12%. On a mixture-of-experts model, vLLM&#x27;s documented table loses up to 18% and the tuned table at most 3%. Starting from mistuned tables, the controller raises throughput by up to 58% (up to 45% on vLLM&#x27;s default runner), and after a workload switch with the DFlash drafter it recovers 96% of a stale table&#x27;s loss. In llm-d&#x27;s optimized-baseline deployment as shipped, two Qwen3-32B replicas on four GPUs, the tuned table is up to 32% faster than a fixed draft length of 3 and up to 25% faster than vLLM&#x27;s documented table at high load, and the controller raises the documented table&#x27;s throughput by up to 29%.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding speeds up large language model (LLM) serving only while the GPU has spare compute, so the best draft length, the number of tokens a small drafter guesses per step, shrinks as the batch grows.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">UBTree: Parallel Tree Drafting via Unigram and Bigram Models for Speculative Decoding</div>
-<div class="meta-line">Authors: Chumeng Liang, Linxuan Wang, Xinyu Peng, Huabin Liu, XiaoXu Guo, Yuxin Chen, Ge Liu, Guang Lin, Qifan Song, Jianguo Li</div>
-<div class="meta-line">Venue: www</div>
-<div class="meta-line">First: 2026-09-30T15:35:50+00:00 · Latest: 2026-10-28T08:45:50+00:00</div>
-<div class="meta-line">Comments: Official website: https://www.inclusion-ai.org/ubtree/</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.39972v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.39972v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding accelerates language model inference by verifying multiple draft tokens in a single target-model pass. Recent parallel drafters have achieved breakthrough performance in frontier production models, but their effectiveness deteriorates as the entropy of target distributions increases due to insufficient draft diversity. To overcome this bottleneck without sacrificing parallelism, we introduce UBTree, a parallel drafter that couples a Unigram proposer with a Bigram selector to construct drafting Trees. The unigram proposer is trained with the standard cross-entropy objective to generate candidate tokens independently for each position, while a lightweight bigram selector predicts transition scores between adjacent candidate pairs. Unlike the proposer, the selector is trained with a renormalized KL objective on high-temperature data. This tree-native training broadens the supervision beyond the greedy path, encouraging plausible alternative branches that improve the chance of accepting additional tokens during tree verification. Across seven standardized benchmarks with Qwen3-4B and Qwen3-8B, UBTree achieves an average speedup of $5.84$--$6.94\times$ over autoregressive decoding and outperforms DARTree in all 28 comparisons. Production-scale evaluation further demonstrates UBTree&#x27;s advantage over frontier baselines such as DSpark.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding accelerates language model inference by verifying multiple draft tokens in a single target-model pass.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Verification-Aware Training for Speculative Decoding</div>
-<div class="meta-line">Authors: Geonmo Gu, Byeongho Heo, HeeJae Jun, Yoohoon Kang, Sangmin Lee, Sangdoo Yun, Dongyoon Han</div>
-<div class="meta-line">Venue: NeurIPS 2026</div>
-<div class="meta-line">First: 2026-08-31T01:42:10+00:00 · Latest: 2026-10-28T08:06:17+00:00</div>
-<div class="meta-line">Comments: NeurIPS 2026; 14 pages</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.30135v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.30135v2">PDF</a> · <a href="https://github.com/naver-ai/vat">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding accelerates large language model inference by using a draft model to generate candidate tokens, which are verified by the target model in a single forward pass. Verification proceeds sequentially and discards every position from the first rejection onward, yet existing draft training relies on token-level imitation of the target with a fixed per-position weighting that reflects neither property. We introduce Verification-Aware Training (VAT), a plug-in framework that simulates verification at every training step and turns the resulting accept and reject patterns into supervision. VAT consists of two components: (i) a verification head, a lightweight jointly trained binary classifier that supervises the draft model on whether each position survives sequential verification; (ii) verification-adaptive weighting, which replaces the fixed weighting schedule by keeping full weight up to each sample&#x27;s first rejection point and re-anchoring the decay to start there. VAT modifies only the training objective, so it can be layered on top of existing methods without changing the draft architecture, the target model, or the inference procedure. Applied to EAGLE-3 and DFlash on Qwen3-4B, Qwen3-8B, and LLaMA-3.1-8B, VAT improves average acceptance length by up to 11.4% and wall-clock speedup by up to 8.7%, with consistent gains across math, code, and chat benchmarks. Code will be available at https://github.com/naver-ai/vat</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding accelerates large language model inference by using a draft model to generate candidate tokens, which are verified by the target model in a single forward pass.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Bastion: Budget-Aware Speculative Decoding with Tree-structured Block Diffusion Drafting</div>
-<div class="meta-line">Authors: Soowon Oh, Nam Cao, Yujin Kim, Hojung Jung, Huzama Ahmad, Sangmin Bae, Se-Young Yun</div>
-<div class="meta-line">Venue: NeurIPS 2026</div>
-<div class="meta-line">First: 2026-05-28T10:21:34+00:00 · Latest: 2026-10-28T05:42:31+00:00</div>
-<div class="meta-line">Comments: NeurIPS 2026</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.29727v4">Abs</a> · <a href="https://arxiv.org/pdf/2605.29727v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Block-diffusion drafters have recently emerged as a powerful alternative for speculative decoding by predicting multiple future-token distributions in a single parallel step. However, since these parallel predictions are sampled from position-wise marginals rather than fully conditioned sequences, committing to a single greedy path often fails to capture the target model&#x27;s preferred trajectory. To address this, we propose BASTION, a budget-aware speculative decoding framework with tree-based diffusion drafting. Unlike existing methods that rely on static tree topologies, BASTION dynamically constructs query-dependent trees by balancing draft quality against hardware constraints. Our framework integrates three synergistic components: (1) an acceptance surrogate that estimates expected accepted length via path confidence, (2) an online latency estimator that calibrates a hardware-aware roofline model, and (3) an adaptive best-first expansion that grows the tree until marginal gains no longer justify incremental verification costs. BASTION is training-free, preserves the target model&#x27;s distribution, and requires no per-setting tuning. Across diverse benchmarks and GPU architectures, BASTION achieves up to a $6.61\times$ speedup over standard autoregressive decoding, outperforming state-of-the-art block-diffusion baselines by 39%.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Block-diffusion drafters have recently emerged as a powerful alternative for speculative decoding by predicting multiple future-token distributions in a single parallel step.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Answer-Only Disclosure: Private-Context LLM Assistance over Web APIs with a Leakage Ledger</div>
-<div class="meta-line">Authors: Liang Yuan, Xiaohu Du, Ruikun Luo, Jinze Wang, Mashud Rana, Kaibin Wang, Jiangwen Zhou, Bo Li, Xiaoyu Xia</div>
-<div class="meta-line">First: 2026-10-28T01:01:45+00:00 · Latest: 2026-10-28T01:01:45+00:00</div>
-<div class="meta-line">Comments: 13 pages</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.38126v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.38126v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Web assistants increasingly answer questions about a user&#x27;s private documents by pairing a small on-device model with a cloud LLM behind a Web API. In collaborative decoding, the document stays on the client, and the cloud receives only a public view that the user approves, such as the question alone, but the two models exchange messages while the answer is generated. We show that the message transcript can disclose private content that neither the public view nor the answer contains. In a planted-secret audit, speculative decoding with private drafts did not include the secret code in its answers, yet sent the code to the cloud in rejected drafts. We present ADLER, a decoding protocol for streaming LLM APIs in which every message to the cloud depends only on the public view and the answer the user sees, regardless of how the client combines the two models or how the cloud behaves. A client-side leakage ledger then bounds how much the answer itself reveals relative to a public reference process built from the cloud&#x27;s replies. In the audit, no ADLER configuration exposed the secret beyond the answer. On GSM8K math problems with numerical values masked in the cloud&#x27;s input, ADLER with an unlimited leakage budget raises the exact-match accuracy of a 0.5B client from 0.41 to 0.83 and of a 1.5B client from 0.67 to 0.85 under lenient answer parsing, close to the 0.92 achieved by uploading the full problem. It also exceeds a zero-leakage program baseline (0.69) by 0.14 and 0.16, respectively. In this baseline, the cloud writes a program that the client runs offline using the private numbers. The ledger records the disclosure charge associated with this gain; budgets of 16 nats or less leave accuracy near the cloud-only baseline on GSM8K.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Web assistants increasingly answer questions about a user&#x27;s private documents by pairing a small on-device model with a cloud LLM behind a Web API.</div>
-</details>
 </div></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261030_0701.html">20261030_0701</a>
+      <div class="history-list"><a href="archive/20261031_0642.html">20261031_0642</a>
+<a href="archive/20261030_0701.html">20261030_0701</a>
 <a href="archive/20261029_0654.html">20261029_0654</a>
 <a href="archive/20261028_0642.html">20261028_0642</a>
 <a href="archive/20261027_0655.html">20261027_0655</a>
