@@ -74,62 +74,15 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-11-01 05:58</span>
+        <span class="badge">2026-11-02 06:29</span>
       </div>
     </div>
     <div class="hr"></div>
     <div>Latest digest</div>
-    <div class="row"><div class="card">
-<div class="title">TextSeal2: Distortion-Free LLM Watermarking with Copula Mixing and Memoryless Races</div>
-<div class="meta-line">Authors: Tom Sander, Pierre Fernandez, Itai Gat, Haiming Bao, Jiaxin Shi, Jason Park, Valeriu Lacatusu, Sylvestre-Alvise Rebuffi, Hongyan Chang, Hady Elsahar, Tomáš Souček, Tuan Tran, Surya Parimi, Alexandre Mourachko</div>
-<div class="meta-line">First: 2026-10-29T17:54:12+00:00 · Latest: 2026-10-29T17:54:12+00:00</div>
-<div class="meta-line">Comments: Code: https://github.com/facebookresearch/textseal</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40613v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40613v1">PDF</a> · <a href="https://github.com/facebookresearch/textseal">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">We present TextSeal2, a distortion-free watermark for large language models that keeps its signal under speculative decoding: tokens that replace rejected drafts remain watermarked with the same keys, and the acceptance rate is unchanged. It also preserves output diversity and adds no measurable inference latency. Its predecessor, TextSeal, restores diversity in the Gumbel-max scheme by routing each token to one of two keys via a coin flip. This is suboptimal because the detector averages the scores from both keys without knowing which key was used. TextSeal2 instead merges two or more keys into a single virtual key and couples it to fresh noise through AutoMark&#x27;s Gaussian copula. Any number of keys, including publicly shared keys, can be merged this way without diluting detection. Under speculative decoding, TextSeal2 verifies keyed drafts with one more exponential race, run on the leftovers of the draft races. By memorylessness, this race reproduces block verification, so the output follows the target model exactly. We evaluate TextSeal2 on three LLMs. At equal output token diversity, TextSeal2 detects 8 to 22 percentage points more 100-token answers than TextSeal at a false-positive rate of $10^{-3}$, and is comparable to textGrain while requiring no post-logits optimization. Under speculative decoding, it detects 18 and 22 percentage points more 200-token answers than TextSeal and textGrain, respectively, at the same acceptance rate.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">We present TextSeal2, a distortion-free watermark for large language models that keeps its signal under speculative decoding: tokens that replace rejected drafts remain watermarked with the same keys, and the acceptance rate is unchanged.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Only Accepted Tokens Count: An Energy Accounting of Speculative Decoding Under Latency Targets</div>
-<div class="meta-line">Authors: Bole Ma, Ayesha Afzal, Jan Eitzinger, Harald Koestler, Gerhard Wellein</div>
-<div class="meta-line">First: 2026-10-29T15:37:45+00:00 · Latest: 2026-10-29T15:37:45+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40287v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40287v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Large language model serving is limited by facility power. Energy per token determines how many tokens a datacenter can serve, while a latency target bounds how quickly each user receives them. During decode, every weight is read from memory for every generated token. Batching amortizes this read across users but makes no individual user faster. Speculative decoding does: a drafter proposes several future tokens, and the target model verifies them in a single forward pass that reuses the same weight read. Because every drafted token must be verified whether or not it is accepted, the energy speculation saves depends on how many drafted tokens are accepted. This saving is hard to pin down. It varies across target models from different attention families and across drafting schemes, and it depends on the text being served. Every drafter we evaluate accepts fewer tokens on conversation than on code, and every trained drafter accepts fewer on Romansh, a low-resource language, than on English. We measure speculative decoding under production serving conditions (SGLang, CUDA graphs enabled) on H100 and H200 GPUs, at batch sizes up to 64 across 5 corpora. On dense models, verification, not drafting, dominates the energy cost. The saving shrinks as the batch grows, because batching has already shared the weight read that speculation would divide among the accepted tokens. At large batch sizes, block drafters push verification past the balance point between arithmetic and memory traffic into the compute-bound regime, where the saving becomes a loss, and a drafter with low acceptance raises energy per token. Meeting a tighter latency target with speculation then costs additional energy. Larger batches lower energy per token without speculation. Speculation adds to that saving only when acceptance is high, and on the model we tested it leaves little headroom for latency-preserving DVFS.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Large language model serving is limited by facility power.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">PhOSv1: Efficient Scaling of Model Sleeping on a Single Server for Autoscaling with GPU-Context Deduplication</div>
-<div class="meta-line">Authors: Tianle Sun, Xingda Wei, Rong Chen</div>
-<div class="meta-line">First: 2026-10-29T13:19:00+00:00 · Latest: 2026-10-29T13:19:00+00:00</div>
-<div class="meta-line">Comments: Accepted by IEEE HPCC 2026</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.39999v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.39999v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Autoscaling is a key mechanism in model-as-a-service systems, where fast scale-up is essential because the scale-up time directly determines how long a model service remains overloaded, which in turn governs serving quality. The state-of-the-art approach, model sleeping, adopted by mainstream serving engines including vLLM and SGLang, achieves near-zero-cost scale-up by pausing pre-spawned engines on the GPU. However, sleeping is not a free lunch: each sleeping model must keep its GPU context resident, and this cost grows linearly with the number of models, degrading serving performance. Because providers must support many models, they face a dilemma between fast scale-up for all models and high service performance.
-  In this paper, we show that a single server can keep many models asleep without paying this GPU context tax. The key observation is that the contexts of sleeping models are largely duplicated: the driver (CUDA) context can be shared across models, and their GPU kernel binaries overlap heavily due to common operators and libraries. PhOSv1 deduplicates this context by transparently delegating each engine&#x27;s GPU context allocation to a central daemon through API remoting; therefore, a single server can keep far more models asleep than current engines allow. Our evaluation shows that PhOSv1 matches the scale-up time of vanilla vLLM sleep mode while substantially reducing the GPU memory footprint, improving end-to-end multi-model serving performance.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Autoscaling is a key mechanism in model-as-a-service systems, where fast scale-up is essential because the scale-up time directly determines how long a model service remains overloaded, which in turn governs serving quality.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Why Speculative Decoding Works Better Than Predicted on Sparse MoE Models</div>
-<div class="meta-line">Authors: Ekagra Ranjan, Komal K. Teru, Bharat Venkitesh, Acyr Locatelli</div>
-<div class="meta-line">Venue: NeurIPS 2026</div>
-<div class="meta-line">First: 2026-10-28T22:04:53+00:00 · Latest: 2026-10-28T22:04:53+00:00</div>
-<div class="meta-line">Comments: Accepted as at NeurIPS 2026 main track conference</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.38981v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.38981v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding (SD) accelerates autoregressive inference by leveraging the memory bound nature of decoding, verifying multiple draft tokens in a single forward pass. For mixture-of-experts (MoE) models, prior work predicts a concave speedup-batch size relationship, with gains peaking at intermediate batch sizes due to expert saturation. We evaluate this across 10 sparse MoE models (30B--1T parameters, 8--512 experts) and find recent fine-grained models break this trend, showing higher speedup at low batch size. We find verification cost is governed not only by activated-expert bytes, but also by temporal overlap across draft tokens and GPU execution dynamics. At low batch size, MoE layers in fine-grained models account for a much smaller share of runtime than of weights; on H100, kernel profiling attributes this mainly to higher bandwidth utilization of MoE kernels relative to attention, with L2 absorbing repeated reads of co-routed experts. Across draft tokens, routing overlap further reduces the unique experts activated during verification relative to independence assumptions. We model this effect using a maximum-entropy Iterative Proportional Fitting (IPF) framework that predicts unique expert counts from routing-overlap statistics with less than 4\% error, and substantially narrows the gap to real-model curves and captures the qualitative low-batch trend from synthetic routing.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding (SD) accelerates autoregressive inference by leveraging the memory bound nature of decoding, verifying multiple draft tokens in a single forward pass.</div>
-</details>
-</div></div>
+    <div class="row"></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261031_0642.html">20261031_0642</a>
+      <div class="history-list"><a href="archive/20261101_0558.html">20261101_0558</a>
+<a href="archive/20261031_0642.html">20261031_0642</a>
 <a href="archive/20261030_0701.html">20261030_0701</a>
 <a href="archive/20261029_0654.html">20261029_0654</a>
 <a href="archive/20261028_0642.html">20261028_0642</a>
