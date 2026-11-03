@@ -74,14 +74,71 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-11-03 09:22</span>
+        <span class="badge">2026-11-04 07:44</span>
       </div>
     </div>
     <div class="hr"></div>
     <div>Latest digest</div>
-    <div class="row"></div>
+    <div class="row"><div class="card">
+<div class="title">Drafting Agents, Not Just Tokens: Speculative Recursive Self-Improvement for Agentic Systems</div>
+<div class="meta-line">Authors: Xin Xu, Ke Cheng, Hao Wang, Yangru Huang, Yanghao Xiao, Zhichao Chen, Zhisheng Zhong, Xun Liu, Yi Li, Qian Li, Haibin Lv, Jun Zhang, Jie Jiang, Zhouchen Lin</div>
+<div class="meta-line">First: 2026-10-12T09:43:48+00:00 · Latest: 2026-11-02T18:56:37+00:00</div>
+<div class="meta-line">Comments: 25 pages; updated experiments, analysis, and figures; code available at https://github.com/SpecRSI-GPR/SpecRSI</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.16491v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.16491v2">PDF</a> · <a href="https://github.com/SpecRSI-GPR/SpecRSI">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Improving an agent through successive revisions requires balancing exploration and evaluation under a limited budget. A narrow search can miss useful sequences of edits, while fully evaluating every intermediate version often exhausts the budget before those sequences yield a verified improvement. Inspired by the draft--verify principle of speculative decoding, we propose Speculative Recursive Self-Improvement (SpecRSI), a two-level framework coupling inner-loop agent search with outer-loop improver learning. SpecRSI drafts successors before their predecessors are fully evaluated, while adopting only fully evaluated, admissible versions. In the inner loop, Verification-Aware Tree Search (VATS) allocates the budget between further edits and outstanding checks using the predicted verified return of a continuation. In the outer loop, Group Verification Optimization (GVO) updates the improver from completed searches while keeping the real evaluator fixed. We evaluate SpecRSI on scientific optimization (including active queue management (AQM) for network infrastructure), coding, and general agent-system benchmarks. Under matched evaluation-call budgets, SpecRSI improves scientific terminal gain over Janus by 60.0%--96.3% and area under the budget curve by 32.1%--91.6%, while achieving higher means across all 50 scientific backbone--task pairs and outperforming MetaRSI-v1 by 1.30--2.70 percentage points (pp) in system score across twenty backbones. On instance-level comparisons, it further improves PyBaMM terminal gain by 142.6% and SWE-Pro success by 6.0 pp at 7.0% and 9.2% lower token cost, respectively. These results demonstrate the efficacy of the proposed approach.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Improving an agent through successive revisions requires balancing exploration and evaluation under a limited budget.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">TableTune: Measured, Self-Correcting Draft-Length Tables for Dynamic Speculative Decoding</div>
+<div class="meta-line">Authors: Abhishek Malvankar, Paul Castro, Nick Mitchell</div>
+<div class="meta-line">First: 2026-10-28T21:52:13+00:00 · Latest: 2026-11-02T17:44:59+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.38968v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.38968v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speculative decoding speeds up large language model (LLM) serving only while the GPU has spare compute, so the best draft length, the number of tokens a small drafter guesses per step, shrinks as the batch grows. vLLM lets operators set the draft length for each batch size with a hand-written table, but nothing measures or corrects that table. We present TableTune. Its tuner times the decoding step for every batch size and draft length on vLLM&#x27;s own serving path and computes, in minutes, the table that maximizes throughput. Its controller, a vLLM plugin, tracks how many guesses are accepted in live traffic and rebuilds the table while serving. We measure TableTune only against other ways to speculate. On an H100, the tuned table delivers at least 94% of the throughput of the best fixed draft length at every load in four of five drafter settings (88% in the fifth) without the operator having to know which length that is. Against reimplementations of TurboSpec- and Nightjar-style control on the same engine, its worst-case loss is never higher than theirs, and with the EAGLE-3 drafter it is 3% against 9% and 12%. On a mixture-of-experts model, vLLM&#x27;s documented table loses up to 18% and the tuned table at most 3%. Starting from mistuned tables, the controller raises throughput by up to 58% (up to 45% on vLLM&#x27;s default runner), and after a workload switch with the DFlash drafter it recovers 96% of a stale table&#x27;s loss. In llm-d&#x27;s optimized-baseline deployment as shipped, two Qwen3-32B replicas on four GPUs, the tuned table is up to 32% faster than a fixed draft length of 3 and up to 25% faster than vLLM&#x27;s documented table at high load, and the controller raises the documented table&#x27;s throughput by up to 29%.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speculative decoding speeds up large language model (LLM) serving only while the GPU has spare compute, so the best draft length, the number of tokens a small drafter guesses per step, shrinks as the batch grows.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Lookahead Prediction-Guided Adaptive Visual Refocusing for Interleaved Multimodal Reasoning</div>
+<div class="meta-line">Authors: Mengzhao Wang, Yanli Ji, Peng Ye</div>
+<div class="meta-line">First: 2026-11-02T08:58:28+00:00 · Latest: 2026-11-02T08:58:28+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.02780v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.02780v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Interleaved multimodal chain-of-thought reasoning improves the visual reasoning capabilities of multimodal large language models by dynamically incorporating visual evidence during reasoning. However, existing methods primarily select evidence from historical context. When the reasoning focus shifts, history-guided evidence may remain focused on prior regions and fail to cover the visual information required by the next step. We refer to this lag between visual evidence and subsequent reasoning demands as Temporal Evidence Myopia. To address this issue, we propose Lookahead Prediction-guided Adaptive Visual Refocusing (LPAVR), a training-free test-time framework. LPAVR transforms Multi-Token Prediction (MTP) from a decoding acceleration mechanism into a lookahead signal for anticipating upcoming reasoning intent. During MTP decoding, the draft head generates multiple future tokens, while the target model verifies them in parallel and retains the longest prefix consistent with its decoding trajectory. This target-verified prefix contains near-future semantics, which LPAVR uses to construct lookahead-guided visual evidence and assess whether history-guided evidence covers the indicated regions. If the coverage is sufficient, the history-guided evidence is retained; otherwise, LPAVR switches to the lookahead-guided evidence. This better aligns the visual context with upcoming reasoning and improves consistency between draft predictions and target-model decoding. Experiments on multiple multimodal reasoning benchmarks show that LPAVR improves both reasoning accuracy and the acceptance rates of MTP speculative tokens, jointly enhancing visual reasoning and speculative decoding efficiency.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Interleaved multimodal chain-of-thought reasoning improves the visual reasoning capabilities of multimodal large language models by dynamically incorporating visual evidence during reasoning.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">SpecPilot: Autonomous Algorithm Discovery and Systems Optimization for Speculative Decoding</div>
+<div class="meta-line">Authors: Kunjun Li, Wenhao Chai, Yihao Liang, Yuezhou Hu, Shuyao Xu, Yi Pan, William X. Zheng, Kannan Ramchandran, Kurt Keutzer, Jiantao Jiao</div>
+<div class="meta-line">First: 2026-11-02T04:21:47+00:00 · Latest: 2026-11-02T04:21:47+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.02501v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.02501v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speculative decoding accelerates memory-bound LLM decoding with a lightweight drafter, and parallel drafters extend this speedup by drafting a whole block in one forward pass. However, it remains unclear whether their released systems (stock) attain the full speedup that parallel drafting permits. We identify three challenges. First, with one request, each step accepts few tokens but reads every target weight. Second, with batching, per-request verification work roughly halves the speedup over autoregressive (AR) decoding. Third, speculative decoding is deployment-specific, and no universal optimization fits every serving regime, drafter, target model and GPU. To address these challenges, we present SpecPilot, an autonomous agentic loop that discovers algorithms and systems optimizations for each deployment. In each round, a cost model locates the largest gaps between the current system and its ceiling. Parallel agents explore directions and integrate the successful ones. Token forcing checks every output token against stock to detect reward hacking. A structured memory carries validated mechanisms to new rounds and deployments. SpecPilot discovered a general lossless 12-bit weight format, tree verification for hybrid recurrent targets, two-level verification and three batching mechanisms. We evaluate it across four target models, three drafters, two GPU platforms and five benchmarks. Without training or quality loss, it raises the speedup over AR from stock&#x27;s 4.46$\times$ to 10.87$\times$ with one request, and from 1.94$\times$ to 3.93$\times$ with batching.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speculative decoding accelerates memory-bound LLM decoding with a lightweight drafter, and parallel drafters extend this speedup by drafting a whole block in one forward pass.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">FactorSpec: Serving Exact Relational Constraints as Speculative Drafts</div>
+<div class="meta-line">Authors: Jianchang Su, Dawei Xiang, Wei Zhang</div>
+<div class="meta-line">First: 2026-11-01T23:46:06+00:00 · Latest: 2026-11-01T23:46:06+00:00</div>
+<div class="meta-line">Comments: 18 pages, 14 figures, 5 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.02297v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.02297v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speculative decoding speeds up LLM serving by drafting tokens that the target model verifies in one pass, and its gain grows with the drafts the target accepts. Structured outputs should be an ideal case, because much of a record follows from relations among its fields: an itinerary&#x27;s days follow from its cities&#x27; stays and flights. Serving engines, however, draft such text by proposing it from the prompt or a learned head, and their grammar masks enforce only syntax, so the model must satisfy the relations, which it violates: on NATURAL PLAN&#x27;s trip problems, Qwen3-8B writes a valid itinerary for 10%, and retries that name the violated relation raise this to 14%. We present FactorSpec, which serves exact relational constraints as speculative drafts. FactorSpec compiles a JSON Schema and its relations into a factor graph with an exact feasibility check, drafts every token the constraint determines as certain, verifies each request at a width chosen for it, and computes the masks in worker processes outside the scheduler while the GPU runs. In SGLang, its drafts yield up to 10.5 tokens per verify step, up to 1.9x those of the fastest n-gram drafter, and it decodes up to 1.43x faster than speculators tuned per load, at a grammar mask&#x27;s cost; it also leads in vLLM. Because every record is also valid, it serves up to 13.9x the valid records per GPU-second of syntax-only baselines.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speculative decoding speeds up LLM serving by drafting tokens that the target model verifies in one pass, and its gain grows with the drafts the target accepts.</div>
+</details>
+</div></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261102_0629.html">20261102_0629</a>
+      <div class="history-list"><a href="archive/20261103_0922.html">20261103_0922</a>
+<a href="archive/20261102_0629.html">20261102_0629</a>
 <a href="archive/20261101_0558.html">20261101_0558</a>
 <a href="archive/20261031_0642.html">20261031_0642</a>
 <a href="archive/20261030_0701.html">20261030_0701</a>
