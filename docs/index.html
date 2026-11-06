@@ -74,12 +74,94 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-11-06 07:52</span>
+        <span class="badge">2026-11-07 07:34</span>
       </div>
     </div>
     <div class="hr"></div>
     <div>Latest digest</div>
     <div class="row"><div class="card">
+<div class="title">Edge-Assisted Crowdsensing for Explainable Cyclist Safety Perception</div>
+<div class="meta-line">Authors: Hongsen Cao, Chia-Yen Chiang, Mona Jaber, Meihui Wang, Yasmin Fathy</div>
+<div class="meta-line">First: 2026-11-05T18:33:58+00:00 · Latest: 2026-11-05T18:33:58+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08441v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08441v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Cyclist fatality rates remain high despite policy support for active travel, and autonomous vehicles add complexity to mixed traffic. Neither crash statistics nor multi-model detection pipelines scale to continuous monitoring of perceived safety along a route. We present an edge-assisted crowdsensing system: handlebar cameras supply street-level frames, a vision-language model (VLM) turns each frame into structured traffic attributes through a single prompt, and an explainable boosting machine (EBM) combines them with OpenStreetMap road infrastructure and on-bike kinematics to predict a crowdsourced 1-9 safety score. Extraction belongs at the network edge: the fastest self-hosted model needs 2.49 s per frame and scoring takes 0.4 ms on a CPU. On 1,362 annotated frames from two London routes, the EBM regressor reaches 72.2 percent binary accuracy and a mean absolute error of 1.011 under five-fold cross-validation. It is within one accuracy point of black-box ensembles. Its per-feature shape functions give exact attribution: physical lane separation is worth +0.97 rating points, a painted lane +0.70 and a construction site -0.65. Planners can therefore price an infrastructure change in rating points, and the results enter cost-benefit analysis directly. We also report inter-annotator agreement (alpha = 0.4695), an attribute audit, and a sensitivity analysis linking attribute error to accuracy. With re-encoding, a 20 s sampling interval serves 1,000 riders at 54 Mbit/s at a cost of 1.4 accuracy points, making continuous monitoring practical.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Cyclist fatality rates remain high despite policy support for active travel, and autonomous vehicles add complexity to mixed traffic.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">ValuSpec: Plug-and-Play Candidate Valuation before Target Verification for Tree-Based Speculative Decoding</div>
+<div class="meta-line">Authors: Liang He, SiYuan Ma, Qishi Zhan, Yongqi Fan, Mingyu Cao, Qizhen Lan, Zhaolu Kang, Xilu Wang</div>
+<div class="meta-line">Venue: NeurIPS 2026 poster</div>
+<div class="meta-line">First: 2026-10-22T14:23:26+00:00 · Latest: 2026-11-05T15:09:32+00:00</div>
+<div class="meta-line">Comments: NeurIPS 2026 poster</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31338v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.31338v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Tree-based speculative decoding accelerates large language model inference by verifying multiple candidate branches in parallel. However, in practical serving scenarios, similar requests repeatedly induce overlapping candidate branches. While retrieval-based methods mitigate this by reusing historical drafts, the resulting candidate trees often contain many low-quality branches as the candidate tree grows, which reduces verification efficiency and wastes target-side computation. To address this, we propose ValuSpec, a plug-and-play candidate valuation mechanism that filters low-quality branches from a supplied candidate tree before expensive target-side verification. ValuSpec introduces transfer-based supervision to align filtering with the target model&#x27;s behavior. A filtering threshold is estimated from the target model&#x27;s greedy trajectories on a calibration split, without any parameter training. The target model then verifies the filtered tree under the output-identical greedy rule, so accepted tokens are guaranteed to match standard autoregressive decoding exactly. Experimental results on HumanEval, GSM8K, Dolly, and SpecBench show that, in our main evaluation, ValuSpec achieves up to 2.38x end-to-end speedup in retrieval-based tree settings. Furthermore, integrating ValuSpec into the EAGLE-3 dynamic tree framework yields up to 2.78x end-to-end speedup without modifying its tree construction strategy, demonstrating that ValuSpec serves as a generally applicable and plug-and-play candidate valuation module.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Tree-based speculative decoding accelerates large language model inference by verifying multiple candidate branches in parallel.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">KVBuffer: IO-aware Serving for Linear Attention</div>
+<div class="meta-line">Authors: Longwei Zou, Lin Zhong</div>
+<div class="meta-line">First: 2026-05-18T19:14:52+00:00 · Latest: 2026-11-05T15:09:10+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.19049v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.19049v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Linear attention has recently gained significant attention for long-context inference due to its constant decoding cost with respect to context length. However, existing serving systems typically serve linear attention by recurrently computing and updating a large linear attention state in every decoding step. Since the state is much larger than the per-token key and value, recurrent decoding incurs substantial memory access and becomes inefficient for serving linear attention. In this paper, we propose KVBuffer, an IO-aware serving mechanism for linear attention. By buffering recent keys and values, KVBuffer enables serving systems to compute linear attention outputs in more flexible and memory-efficient ways. For decoding, KVBuffer enables chunkwise computation, which reduces average memory access and decoding latency by deferring state updates and applying them in batch. For speculative decoding, KVBuffer verifies draft tokens in parallel and avoids storing temporary states. For short contexts, KVBuffer computes attention outputs directly from buffered keys and values, without creating or updating the linear attention state. We implement KVBuffer in SGLang for Qwen3.5 and Nemotron-3 series models. Our evaluations show that KVBuffer can speedup batch decoding by up to 1.47x and increase the maximum number of serving requests by 5x for speculative decoding when verifying four draft tokens.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Linear attention has recently gained significant attention for long-context inference due to its constant decoding cost with respect to context length.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">FlashOffloading: Low-Latency KV Cache Offloading for Long-Context LLM Serving</div>
+<div class="meta-line">Authors: Xuan Wang, Zhuanhao Wu, Tingzhu Fang, Xushi Li, Sicheng Zhang, Zhenyu Yang, Feng Liu, Zhaohui Fan, Qiang Xie, Huayi Zou, Yuncong Liu, Zeyu Song, Ke Zhu, Yanjia Zeng, Jingchun Gao, Yan Shi, Kui Luo, Gezi Li, Liangjun Feng, Cheng Li</div>
+<div class="meta-line">First: 2026-11-05T06:50:05+00:00 · Latest: 2026-11-05T06:50:05+00:00</div>
+<div class="meta-line">Comments: 13 pages including references,13 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.07542v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.07542v1">PDF</a> · <a href="https://github.com/vllm-project/vllm-ascend/tree/releases/v0.30.0">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In large language model (LLM) serving systems, the key-value (KV) cache grows linearly with sequence length and concurrency, so long-context inference easily hits the high-bandwidth memory (HBM) capacity wall and results in low concurrency. Offloading the KV cache to host dynamic random-access memory (DRAM) frees HBM space and raises concurrency, but the additional cache management and host-to-device (H2D) load overhead inflates inference latency, higher concurrency fails to translate into effective throughput. We present FlashOffloading, a host-DRAM-centric inference architecture that fully offloads the KV cache in both the prefill and decode phases. FlashOffloading builds rolling HBM cache for prefill, a hot cache for decode, a reverse sparse index with zero extra miss-lookup overhead, and a compute--load overlapped kernel, optimizing KV offloading latency across the entire pipeline and delivering throughput gains under a time-per-output-token (TPOT) service-level objective (SLO). In experiments deploying GLM-5.2 with multi-token prediction (MTP3) speculative decoding on an Ascend910C prefill--decode (PD)-disaggregated platform, FlashOffloading improves prefill throughput by up to 1.38\(\times\) and decode throughput by up to 1.91\(\times\) under a 30 ms TPOT constraint. FlashOffloading is integrated into an open-source serving framework: https://github.com/vllm-project/vllm-ascend/tree/releases/v0.30.0.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In large language model (LLM) serving systems, the key-value (KV) cache grows linearly with sequence length and concurrency, so long-context inference easily hits the high-bandwidth memory (HBM) capacity wall and results in low concurrency.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">ReviewMap: Mapping Evaluative Acts and Automation Boundaries in Peer-Review Comments</div>
+<div class="meta-line">Authors: Kihyun Na, Injung Kim</div>
+<div class="meta-line">First: 2026-11-05T05:49:01+00:00 · Latest: 2026-11-05T05:49:01+00:00</div>
+<div class="meta-line">Comments: 27 pages, 5 figures, 19 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.07489v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.07489v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Peer-review comments check what a paper does and judge why it matters, but no existing scheme distinguishes these two evaluative acts. We argue that making these acts explicit and measuring how reliably LLMs identify them is a prerequisite for responsible LLM-assisted review analysis: humans need to inspect review judgments and their grounds. This defines a more honest mission for NLP in peer review than full automation. We present ReviewMap, a framework that classifies each comment as assessment of claims and scholarly standards or calibration of contribution value and venue fit, with finer-grained attributes applied conditionally by act type. Applied to 500 ICLR~2026 papers through multi-model LLM consensus, the act layer proves reliably automatable under the operational guideline (inter-model $κ\geq 0.75$), supported by five-human validation on 470 development comments, while the attribute layer requires human oversight, defining a measured automation boundary. At the corpus level, 17% of reviewer-paper instances contain no panel-coded calibration, and the panel-coded calibration share is nearly $3\times$ as high in Strengths as in Weaknesses. This boundary informs three affordances: a review guideline that operationalizes the assessment-then-calibration workflow for reviewers, a per-comment rebuttal strategy scaffold for authors, and a discussion-phase dashboard for area chairs.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Peer-review comments check what a paper does and judge why it matters, but no existing scheme distinguishes these two evaluative acts.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">HyFlash: A Prefix-Memory Prior for On-Device Speculative Decoding</div>
+<div class="meta-line">Authors: Jongwoo Ko, Pashmina Cameron</div>
+<div class="meta-line">First: 2026-11-05T00:31:21+00:00 · Latest: 2026-11-05T00:31:21+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.07263v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.07263v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Parallel block drafting accelerates speculative decoding by predicting multiple future positions in a single backbone pass, but on-device deployment constrains both drafter capacity and context storage. Under tight memory budgets, drafters must model long-range dependencies and fine-grained draft-position interactions without the growing KV-cache overhead of full-context attention. We propose HyFlash, a compact parallel drafter that introduces a prefix-memory prior to separate long-range context modeling from fine-grained draft-position interactions with limited capacity. Local attention captures recent context and draft-position interactions, while recurrent memory compresses historical target features into fixed-size states. This inductive bias enables effective local and long-range modeling with bounded draft-side memory. Experiments show that HyFlash achieves higher acceptance than full-context attention with substantially less KV storage and with larger gains for shallow drafters and long contexts.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Parallel block drafting accelerates speculative decoding by predicting multiple future positions in a single backbone pass, but on-device deployment constrains both drafter capacity and context storage.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">FastAFD: When Does Attention-FFN Disaggregation Pay on Rack-Scale NVLink?</div>
+<div class="meta-line">Authors: Yichao Fu, Yuxuan Zhang, Minshen Zhang, Ruitian Wang, Junda Chen, Hao Zhang</div>
+<div class="meta-line">First: 2026-11-04T21:21:57+00:00 · Latest: 2026-11-04T21:21:57+00:00</div>
+<div class="meta-line">Comments: 24 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.07149v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.07149v1">PDF</a> · <a href="https://github.com/hao-ai-lab/FastAFD">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Attention-FFN disaggregation (AFD) separates attention from the experts of a mixture-of-experts (MoE) model and has been reported to raise decode throughput over colocated serving. Whether this advantage holds on rack-scale NVLink systems such as GB200 NVL72 remains unclear: prior results were obtained on other hardware, against narrower colocated baselines, or with analytical models, whereas production engines serve large MoE models on these systems with wide expert parallelism (wide EP). We build and tune FastAFD, an AFD engine for GB200 NVL72 that overlaps the MoE of one microbatch with the attention of the other, and compare it against the best vLLM wide EP setting. Experiments show that AFD has a throughput advantage of up to 1.17x over wide EP on Qwen3 and 1.16x on Qwen3.5, and matches it on MiniMax-M2.5. We derive an analytical model that predicts AFD throughput within 3% using only profiles of colocated vLLM, telling whether switching to AFD would pay off before deploying it. The model yields a concise insight: AFD&#x27;s speedup factors into a batch gain (larger batches, since attention GPUs hold no expert weights), an overlap gain (shorter steps, since the MoE runs on the expert GPUs behind attention), and a disaggregation cost (the GPUs given to experts). AFD has the advantage when the two gains outweigh the cost. This view explains which models benefit from AFD, and shows that speculative decoding helps light-expert models most, where the enlarged overlap gain outweighs the larger disaggregation cost and adds a further 8% to AFD&#x27;s advantage over wide EP. Looking ahead, serving the experts on accelerators that keep their weights in on-chip SRAM, such as the Groq LPX accelerators paired with Vera Rubin NVL72, would remove most of the disaggregation cost, raising the ideal speedup to 2.48x with speculative decoding. FastAFD is open source at https://github.com/hao-ai-lab/FastAFD.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Attention-FFN disaggregation (AFD) separates attention from the experts of a mixture-of-experts (MoE) model and has been reported to raise decode throughput over colocated serving.</div>
+</details>
+</div>
+<div class="card">
 <div class="title">Teaching Diffusion to Speculate Left-to-Right</div>
 <div class="meta-line">Authors: Lexington Whalen, Yuki Ito, Ryo Sakamoto</div>
 <div class="meta-line">First: 2026-06-10T01:21:56+00:00 · Latest: 2026-11-04T18:51:59+00:00</div>
@@ -135,90 +217,10 @@ summary{cursor:pointer;color:var(--acc)}
 <details class="detail"><summary>Summary / 总结</summary>
 <div class="mono">Recycling a target model&#x27;s own predictions offers a training-free source of proposals for speculative decoding.</div>
 </details>
-</div>
-<div class="card">
-<div class="title">Give the Drafter a Second Chance to Guess: Parallel Reconsideration for Speculative Decoding</div>
-<div class="meta-line">Authors: Hoang Anh Duy Le, Huibing Dong, Alireza Khadem, Ziteng Sun, Xiang Song, Yizheng Huang, Soroush Radpour, Anshumali Shrivastava, Ye He</div>
-<div class="meta-line">First: 2026-11-03T22:52:34+00:00 · Latest: 2026-11-03T22:52:34+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05724v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05724v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding accelerates large language model inference with a small drafter, whose per-guess acceptance rate determines the achievable speedup. Feature-level drafters share a design choice: every token, easy or hard, is drafted under a single forward pass. Many of the tokens the target rejects are ones the drafter is itself unsure about yet the target answers decisively. To address this, we introduce Parallel Reconsideration: guided by its own uncertainty, the drafter reconsiders its hesitant guesses with extra passes that run in parallel with the one-pass draft, adding negligible latency. A co-designed training recipe and serving-time drafting algorithm append these reconsidered guesses to the original draft tree as refined candidates. Across models and benchmarks, on average, Parallel Reconsideration improves over the baselines by 5.3% to 10.2% on acceptance length and by 3.5% to 9.2% on speedup.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding accelerates large language model inference with a small drafter, whose per-guess acceptance rate determines the achievable speedup.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">What Do Verifiable Rewards Teach Video-Language Models About Time? A Controlled Multi-Model Study</div>
-<div class="meta-line">Authors: Avyay Sadhu, Patrick Cooper</div>
-<div class="meta-line">Venue: WACV 2027</div>
-<div class="meta-line">First: 2026-09-30T21:42:57+00:00 · Latest: 2026-11-03T21:11:12+00:00</div>
-<div class="meta-line">Comments: 8 pages, 2 figures. Accepted to WACV 2027</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.03792v3">Abs</a> · <a href="https://arxiv.org/pdf/2610.03792v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Reinforcement learning from verifiable rewards (RLVR) has produced large reasoning gains in language models, and verifiable video benchmarks make the recipe directly applicable to causal-temporal video question answering. We present a controlled study of what RLVR actually teaches video-language models about temporal structure. We fine-tune four open models with group relative policy optimization (GRPO) under three data recipes using annotated synthetic questions, self-supervised real-video pretext tasks, and a one-to-one mixture, plus a targeted real-video augmentation arm. We evaluate the model-recipe grid on 105 CLEVRER questions with one correct option and on two real-video transfer sets. The 8B ordered gain is 4.8 points (95% video-bootstrap CI [-5.6, 15.1]), while blind accuracy increases 10.5 points ([0.9, 20.6]). The 4B model gains an accuracy advantage for ordered over shuffled frames. On the real-video sets, the 8B synthetic-only checkpoint loses 26.7 and 25.2 points, with smaller regressions under mixed and augmented recipes. In a separate scene-disjoint, single-gold Qwen3-VL-8B experiment, supervised fine-tuning (SFT) and GRPO each complete 1,200 updates at three fixed seeds. GRPO minus SFT is -3.89 points in ordered accuracy (nominal 97.5% video-bootstrap CI [-7.36, -0.45]) and -2.78 points in ordered-minus-shuffled accuracy ([-6.60, 0.87]). Transfer differences are sensitive to parseability. Intervals quantify test-video uncertainty conditional on the fitted runs. The results show why benchmark accuracy, transfer, and presented-order sensitivity need to be evaluated separately.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Reinforcement learning from verifiable rewards (RLVR) has produced large reasoning gains in language models, and verifiable video benchmarks make the recipe directly applicable to causal-temporal video question answering.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Hybrid Spark: Adaptive Speculative Decoding That Lets the Content Choose the Drafter</div>
-<div class="meta-line">Authors: Ekagra Ranjan, Bharat Venkitesh</div>
-<div class="meta-line">First: 2026-11-03T20:55:26+00:00 · Latest: 2026-11-03T20:55:26+00:00</div>
-<div class="meta-line">Comments: Speculative Decoding</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05611v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05611v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding (SD) speeds up large language model (LLM) serving, but its gain depends on the workload&#x27;s \emph{shape}, such as batch size and context length, and on its \emph{content}. A model-based drafter proposes a short block on any content, while a model-free drafter such as n-gram lookup proposes long copies at almost no cost when the output repeats its input, as in code editing. Adaptive verification spends a batch-wide verification budget on the draft tokens most likely to be accepted, but it supports only one model-based drafter. Model-free drafters provide no per-token confidence, so they cannot take part in budget allocation, and deployments must either fix one drafter or split their GPUs between drafters. We present \sys, a framework that runs a model-based and a model-free drafter on every step and gives each request the better of their chains, within adaptive verification and entirely on the GPU, which keeps asynchronous scheduling intact. The key idea is a price per verified draft token: the goodput that slot would earn elsewhere in the batch. Once the model-free drafter&#x27;s tokens carry calibrated acceptance estimates, fit once on general text, this price puts both drafters&#x27; chains on one scale. Instantiated with \dspark and an n-gram drafter in vLLM, \sys achieves 1.10--1.62\x the output throughput of \dspark on code editing at batch size~4 and 1.04--1.27\x at batch size~128, while staying at 0.97--1.01\x of it on chat at temperature~0. A single deployment can therefore serve both workloads.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding (SD) speeds up large language model (LLM) serving, but its gain depends on the workload&#x27;s \emph{shape}, such as batch size and context length, and on its \emph{content}.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Adversarial Speculative Reasoning Improves Long Horizon Agents</div>
-<div class="meta-line">Authors: Hongyin Luo, Wei Fang, Lijie Yang, Owen Stepan, Daniel Suit, Jeff Krapf, Dana Wensberg, Jack O&#x27;Brien</div>
-<div class="meta-line">First: 2026-11-03T18:45:23+00:00 · Latest: 2026-11-03T18:45:23+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05345v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05345v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding has been treated purely as a systems optimization that speeds up large language model decoding without changing the model behavior. Under this view, the growing effort to train better draft models has been focused solely on acceptance rate. We argue that this view does not hold true for long-horizon agent reasoning. Measuring frontier open-weight models on complex agentic tasks with different speculative decoding approaches, we found that numerical noise grows within verification windows, and the draft acceptance results of the thinking process can change the output distribution of the model after 30 steps, thus noticeably influencing the reasoning accuracy of long-horizon agents in random directions. In this work, we improve the reasoning capability of target models by controlling such noise. While we cannot change the overall token distribution verified by the target model, we can encode critical reasoning with highest precision by training the draft model to be rejected. We identify these points in agent traces and train the draft model to favor adversarial preference. At inference the trained draft and the target part ways precisely at these decision points, verification restarts, so that critical thinking tokens are sampled from the target model and encoded under its least noisy conditions. This approach makes critical reasoning better indexed and more durable over a long horizon. On complex agentic coding benchmarks, our approach raises end-to-end success rate with no change to the target model or its output distribution. Our results recast the speculative decoding mechanism from a pure accelerator into an active allocator for context precision that improves the accuracy of long-horizon agents by training 0.06% to 0.28% of hosted parameters.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding has been treated purely as a systems optimization that speeds up large language model decoding without changing the model behavior.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">S$^3$R: Fast and Faithful RL Rollouts via Self-Sparse Speculative Decoding</div>
-<div class="meta-line">Authors: Yuhang He, Hongyu Ge, Zihan Lin, Siyi Liu, Yongqi Zhang</div>
-<div class="meta-line">First: 2026-10-09T08:22:40+00:00 · Latest: 2026-11-03T16:41:33+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.13202v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.13202v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Fast rollout generation for long-context reinforcement learning with verifiable rewards (RLVR) requires reducing KV-cache traffic without changing the response groups used for policy optimization. In our profiled RLVR workloads, attention accounts for 72--76\% of autoregressive decoding kernel time. Sparse attention reduces these reads, but sampling directly from a sparse policy changes the response groups used for learning. For group-relative optimization, we show that even exact response-wise reweighting does not generally recover the expected dense-policy update because the advantage of each response depends on the rewards of other group members. We propose Self-Sparse Speculative Rollouts (S$^3$R). It uses sparse attention to propose tokens, then generates responses through full-attention verification and exact speculative sampling. Drafting and verification share the same policy parameter, eliminating the need to train or update a separate drafter. The resulting response groups follow the dense-policy distribution. Under S$^3$R, we characterize speedup conditions and the costs of drafting and verification. We found that dense verification still requires the complete historical KV cache. A KV-aware scheduler therefore limits KV-cache repeated offloading and restoration while maintaining rollout parallelism. % OR thrashing In a matched ablation with an aggressive sparse drafting budget, S$^3$R maintains stable training while direct sparse sampling with training-side correction becomes unstable. On long-context mathematical reasoning, S$^3$R achieves $1.39\times~1.35\times$ the end-to-end training throughput of autoregressive rollouts on Qwen3 model, with comparable task performance.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Fast rollout generation for long-context reinforcement learning with verifiable rewards (RLVR) requires reducing KV-cache traffic without changing the response groups used for policy optimization.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">CacheBridge: Efficient Cross-Model KV Transfer for Multi-Model LLM Serving</div>
-<div class="meta-line">Authors: Xingyu Qu, Siyuan Lu, Zhiyu Chen, Sheng Wang, Tao Lin</div>
-<div class="meta-line">First: 2026-09-01T08:20:35+00:00 · Latest: 2026-11-03T08:54:49+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.00891v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.00891v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Multi-model LLM serving uses routers, cascades and agent workflows to move requests across models with different costs and capabilities. Existing serving systems reuse KV caches only within one model, so every switch forces the target to re-prefill history the source already processed, adding time to first token (TTFT) that grows with history length and target size. Cross-model KV transfer can replace this prefill, yet prior methods are slower than re-prefill end to end. We present CacheBridge, the first serving system to accelerate heterogeneous multi-model workloads through cross-model KV transfer. It co-designs a compact, attention-calibrated KV mapper with systematic optimization for online multi-model serving, which makes model switch efficient on latency and memory cost. In Qwen3 14B$\rightarrow$32B agent serving on $τ$-bench, it reduces mean TTFT by $30$ to $98\%$ versus re-prefill at $1$ to $24$ QPS with comparable task success. Across five model pairs from three families, it uses $8$ to $12\times$ less mapper memory than Closed-Form Mapper and retains on average $97.94\%$ and $102.94\%$ of re-prefill task quality on chat/reasoning and RAG workloads, respectively. The promising results have opened new opportunities for efficient multi-model LLM serving through cross-model KV reuse.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Multi-model LLM serving uses routers, cascades and agent workflows to move requests across models with different costs and capabilities.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">ELMoE-3D: Leveraging Intrinsic Elasticity of MoE for Hybrid-Bonding-Enabled Self-Speculative Decoding in On-Premises Serving</div>
-<div class="meta-line">Authors: Yuseon Choi, Jingu Lee, Jungjun Oh, Sunjoo Whang, Byeongcheol Kim, Minsung Kim, Junhyuk Lee, Hoi-Jun Yoo, Sangjin Kim</div>
-<div class="meta-line">First: 2026-04-16T05:12:51+00:00 · Latest: 2026-11-03T07:35:46+00:00</div>
-<div class="meta-line">Comments: IEEE International Symposium on High-Performance Computer Architecture (HPCA) 2027</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.14626v3">Abs</a> · <a href="https://arxiv.org/pdf/2604.14626v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Mixture-of-Experts (MoE) models have become the dominant architecture for large-scale language models, yet on-premises serving remains fundamentally memory-bound as batching turns sparse per-token compute into dense memory activation. Memory-centric architectures (PIM, NMP) improve bandwidth but leave compute underutilized under MoE&#x27;s low arithmetic intensity on high batch sizes. Speculative decoding (SD) trades idle compute for fewer target invocations, yet verification must load experts even for rejected tokens, severely limiting its benefit in MoE especially on low batch sizes. We propose ELMoE-3D, a hybrid-bonding (HB)-based HW-SW co-designed framework that unifies cache-based acceleration and speculative decoding to offer overall speedup across batch sizes. We identify two intrinsic elasticity axes of MoE---expert and bit---and jointly scale them to construct Elastic Self-Speculative Decoding (Elastic-SD), which serves as both an expert cache and a strongly aligned self-draft model accelerated by high HB bandwidth. Our LSB-augmented bit-sliced architecture exploits inherent redundancy in bit-slice representations to natively support bit-nested execution. On our 3D-stacked hardware, ELMoE-3D achieves an average $6.6\times$ speedup and $4.4\times$ energy efficiency gain over naive MoE serving on xPU across batch sizes 1--16, and delivers $2.2\times$ speedup and $1.4\times$ energy efficiency gain over prior accelerator baselines.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Mixture-of-Experts (MoE) models have become the dominant architecture for large-scale language models, yet on-premises serving remains fundamentally memory-bound as batching turns sparse per-token compute into dense memory activation.</div>
-</details>
 </div></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261105_0759.html">20261105_0759</a>
+      <div class="history-list"><a href="archive/20261106_0752.html">20261106_0752</a>
+<a href="archive/20261105_0759.html">20261105_0759</a>
 <a href="archive/20261104_0744.html">20261104_0744</a>
 <a href="archive/20261103_0922.html">20261103_0922</a>
 <a href="archive/20261102_0629.html">20261102_0629</a>
