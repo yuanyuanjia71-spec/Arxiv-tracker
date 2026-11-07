@@ -74,7 +74,7 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-11-07 07:34</span>
+        <span class="badge">2026-11-08 06:23</span>
       </div>
     </div>
     <div class="hr"></div>
@@ -148,78 +148,10 @@ summary{cursor:pointer;color:var(--acc)}
 <details class="detail"><summary>Summary / 总结</summary>
 <div class="mono">Parallel block drafting accelerates speculative decoding by predicting multiple future positions in a single backbone pass, but on-device deployment constrains both drafter capacity and context storage.</div>
 </details>
-</div>
-<div class="card">
-<div class="title">FastAFD: When Does Attention-FFN Disaggregation Pay on Rack-Scale NVLink?</div>
-<div class="meta-line">Authors: Yichao Fu, Yuxuan Zhang, Minshen Zhang, Ruitian Wang, Junda Chen, Hao Zhang</div>
-<div class="meta-line">First: 2026-11-04T21:21:57+00:00 · Latest: 2026-11-04T21:21:57+00:00</div>
-<div class="meta-line">Comments: 24 pages</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.07149v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.07149v1">PDF</a> · <a href="https://github.com/hao-ai-lab/FastAFD">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Attention-FFN disaggregation (AFD) separates attention from the experts of a mixture-of-experts (MoE) model and has been reported to raise decode throughput over colocated serving. Whether this advantage holds on rack-scale NVLink systems such as GB200 NVL72 remains unclear: prior results were obtained on other hardware, against narrower colocated baselines, or with analytical models, whereas production engines serve large MoE models on these systems with wide expert parallelism (wide EP). We build and tune FastAFD, an AFD engine for GB200 NVL72 that overlaps the MoE of one microbatch with the attention of the other, and compare it against the best vLLM wide EP setting. Experiments show that AFD has a throughput advantage of up to 1.17x over wide EP on Qwen3 and 1.16x on Qwen3.5, and matches it on MiniMax-M2.5. We derive an analytical model that predicts AFD throughput within 3% using only profiles of colocated vLLM, telling whether switching to AFD would pay off before deploying it. The model yields a concise insight: AFD&#x27;s speedup factors into a batch gain (larger batches, since attention GPUs hold no expert weights), an overlap gain (shorter steps, since the MoE runs on the expert GPUs behind attention), and a disaggregation cost (the GPUs given to experts). AFD has the advantage when the two gains outweigh the cost. This view explains which models benefit from AFD, and shows that speculative decoding helps light-expert models most, where the enlarged overlap gain outweighs the larger disaggregation cost and adds a further 8% to AFD&#x27;s advantage over wide EP. Looking ahead, serving the experts on accelerators that keep their weights in on-chip SRAM, such as the Groq LPX accelerators paired with Vera Rubin NVL72, would remove most of the disaggregation cost, raising the ideal speedup to 2.48x with speculative decoding. FastAFD is open source at https://github.com/hao-ai-lab/FastAFD.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Attention-FFN disaggregation (AFD) separates attention from the experts of a mixture-of-experts (MoE) model and has been reported to raise decode throughput over colocated serving.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Teaching Diffusion to Speculate Left-to-Right</div>
-<div class="meta-line">Authors: Lexington Whalen, Yuki Ito, Ryo Sakamoto</div>
-<div class="meta-line">First: 2026-06-10T01:21:56+00:00 · Latest: 2026-11-04T18:51:59+00:00</div>
-<div class="meta-line">Comments: 13 pages, technical report</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.11552v3">Abs</a> · <a href="https://arxiv.org/pdf/2606.11552v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Large language models (LLMs) achieve remarkable performance across a wide range of tasks, but their autoregressive decoding process incurs substantial inference costs due to inherently sequential token generation. Speculative decoding addresses this bottleneck by employing a lightweight draft model to propose multiple future tokens that are subsequently verified in parallel by a larger target model. Recent work has demonstrated that diffusion language models are well suited for this setting, as they can generate entire blocks of draft tokens in parallel and thereby alleviate the sequential constraints of autoregressive drafting. A subtlety of this regime is that block-diffusion drafters generate tokens bidirectionally within a block, whereas verification is performed by an autoregressive target model that evaluates tokens in a strictly left-to-right manner, leaving a gap between the symmetric training-time objective and the asymmetric verification-time reward. In this work, we offer an empirical analysis of three training-time interventions that narrow this gap: token positional weighting, a first-error focal loss that targets the position that breaks the accepted prefix within each block, and a chain loss term that substitutes a differentiable surrogate for the expected accepted length. The three interventions act along orthogonal axes (position, block-conditional first error, joint prefix) and compose additively; they are likewise orthogonal to test-time alignment mechanisms such as multi-draft self-selection, with which they can in principle be combined. Across four target models and six reasoning, code, and dialogue benchmarks, the three interventions raise accepted draft length by 21-76% per benchmark over a position-uniform baseline, without adding additional forward passes and without changing the inference pipeline or the rejection-sampling exactness contract.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Large language models (LLMs) achieve remarkable performance across a wide range of tasks, but their autoregressive decoding process incurs substantial inference costs due to inherently sequential token generation.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">D3D: Decoupled Diffusion Drafting for Asynchronous Speculative Decoding</div>
-<div class="meta-line">Authors: Baoyou Chen, Ruiqiao Mei, Guancong Lin, Tao Song, Weihao Yuan, Qun Liu, Siyu Zhu</div>
-<div class="meta-line">First: 2026-11-04T12:27:58+00:00 · Latest: 2026-11-04T12:27:58+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.06425v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.06425v1">PDF</a> · <a href="https://github.com/fudan-generative-vision/D3D">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Target-conditioned diffusion drafters predict candidate tokens in parallel, yet each new block must wait for updated target-model hidden states. This forces drafting and verification to run sequentially, limiting speedup even though each block is generated in one pass. We introduce D3D, a standalone diffusion drafter that removes this inter-round dependency. D3D combines blockwise denoising with auxiliary autoregressive supervision to achieve long accepted prefixes without target hidden states. This independence lets D3D draft successor blocks during verification in one packed pass, enabling asynchronous speculative decoding. We progressively prune layers according to their effect on acceptance length to reduce the cost of packed drafting. Removing five of 36 layers retains over 99\% of mean acceptance length across three benchmarks with Qwen3-8B as the target. Across seven benchmarks, D3D averages 5.00$\times$ and 5.71$\times$ decoding speedup with Qwen3-8B and Qwen3-32B targets, compared with 4.03$\times$ and 3.67$\times$ for DFlash. On GSM8K with Qwen3-32B, speedup reaches 7.48$\times$. Code is publicly available at https://github.com/fudan-generative-vision/D3D.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Target-conditioned diffusion drafters predict candidate tokens in parallel, yet each new block must wait for updated target-model hidden states.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Split-KV: Efficient Context Parallelism for Training Diffusion Drafters</div>
-<div class="meta-line">Authors: Geng Zhang, Fangzhao Zhang, Cong Xie, Tiantian Fan, Yang You</div>
-<div class="meta-line">First: 2026-11-04T04:16:46+00:00 · Latest: 2026-11-04T04:16:46+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05926v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05926v1">PDF</a> · <a href="https://github.com/zxgx/verl">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Diffusion drafters accelerate speculative decoding by denoising multiple draft tokens in parallel. Their training uses anchor sampling to construct compact draft queries and performs cross-attention with a block-sparse mask over a much longer context. We empirically show that acceptance length remains stable as context scales with a fixed query budget, while increasing the query budget yields diminishing quality gains, jointly establishing a practical regime with queries far shorter than the context. No existing context parallelism (CP) method jointly exploits this query--context asymmetry and meets the nonlinear, sample-dependent load-balancing requirement created by anchor sampling. We present Split-KV, an exact CP method that keeps key/value shards local and limits per-layer attention communication to query-sized tensors, making this communication independent of context length. Its global query view further enables a cost-aware longest-processing-time-first (LPT) strategy that balances context key/value chunks by their realized attention cost. At a CP size of 64, Split-KV retains 85--91\% weak-scaling efficiency and achieves up to $3.67\times$ speedup over the fastest available CP baseline. LPT achieves $&lt;$1\% imbalance and plans three orders of magnitude faster than the best load-balancing baseline. Code is available at https://github.com/zxgx/verl.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Diffusion drafters accelerate speculative decoding by denoising multiple draft tokens in parallel.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Online Draft Co-Training for Speculative Decoding in Large-Scale, Long-Context RL Post-Training</div>
-<div class="meta-line">Authors: Zili Wang, Zhaopeng Qiu, Yuekai Zhang, Shuang Yu, Seonjin Na, Hayate Iso, Junjie Lai</div>
-<div class="meta-line">First: 2026-09-07T06:48:29+00:00 · Latest: 2026-11-04T03:48:05+00:00</div>
-<div class="meta-line">Comments: Technical Report</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.07108v3">Abs</a> · <a href="https://arxiv.org/pdf/2609.07108v3">PDF</a> · <a href="https://github.com/NVIDIA-NeMo/RL/issues/3698">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding accelerates rollout generation, which dominates the cost of reinforcement learning (RL) post-training. Online co-training keeps the draft aligned with the evolving policy, further increasing acceptance length and speedup. However, training large models on long contexts requires context parallelism (CP) and pipeline parallelism (PP), and co-training drafts under this layout poses two obstacles: (1) the draft&#x27;s branch attention is unsupported by causal CP, and (2) the target features that the draft consumes are spread across PP stages. In this paper, we present the design and implementation of online draft co-training in NeMo-RL. For CP, we extend packed, load-balanced zigzag ring attention by merging rank-local branch attention with causal main-sequence attention. For PP, TapChannel transports intermediate target features across stages via a separate path, leaving the pipeline schedule unaffected. Experiments show that co-training keeps the policy&#x27;s reward and accuracy close to the no-draft baseline while delivering $1.48$--$2.25\times$ rollout speedups and $1.19$--$1.88\times$ end-to-end training speedups across model scales up to 122B. Our CP design achieves strong scaling at 256K sequence length with significant memory savings over prior work, and our PP transport incurs modest overhead. Code can be found at https://github.com/NVIDIA-NeMo/RL/issues/3698.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding accelerates rollout generation, which dominates the cost of reinforcement learning (RL) post-training.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">RECAP: Context-Aware Prediction Recycling with Request-Local and Persistent Memories for Multimodal Speculative Decoding</div>
-<div class="meta-line">Authors: Hengjie Zhu, Dayan Wu, Xinze Liu, Peng Fu, Zheng Lin, Weiping Wang</div>
-<div class="meta-line">First: 2026-11-04T03:32:18+00:00 · Latest: 2026-11-04T03:32:18+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05894v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05894v1">PDF</a> · <a href="https://github.com/Senmo996/RECAP-official-code">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Recycling a target model&#x27;s own predictions offers a training-free source of proposals for speculative decoding. In vision-language models, however, existing recycling indexes predictions by the last token alone, conflating predictions computed under different images and prefixes; we find that such reuse fails most often at image-sensitive decoding states. Longer keys reduce this aliasing but match fewer states. We introduce \method, which stores target predictions under one-, two-, and three-token keys: contextual memories live only for the current request and are thus implicitly conditioned on its image, while token-level memory persists across requests to retain coverage. At each lookup, entropy-confidence weighting fuses the retrieved predictions according to their key specificity and concentration. Best-first search composes the fused transitions into a candidate tree, supplemented by suffix-matched continuations, and one target pass verifies the tree under greedy decoding. Without training or an auxiliary draft model, \method\ achieves mean speedups over autoregressive decoding of $1.66\speed$ and $1.56\speed$ across seven single-turn benchmarks on Qwen2.5-VL-7B and LLaVA-1.6-7B, exceeding the strongest training-free baseline, Token Recycling ($1.51\speed$ and $1.37\speed$). Our implementation is available in https://github.com/Senmo996/RECAP-official-code.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Recycling a target model&#x27;s own predictions offers a training-free source of proposals for speculative decoding.</div>
-</details>
 </div></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261106_0752.html">20261106_0752</a>
+      <div class="history-list"><a href="archive/20261107_0734.html">20261107_0734</a>
+<a href="archive/20261106_0752.html">20261106_0752</a>
 <a href="archive/20261105_0759.html">20261105_0759</a>
 <a href="archive/20261104_0744.html">20261104_0744</a>
 <a href="archive/20261103_0922.html">20261103_0922</a>
