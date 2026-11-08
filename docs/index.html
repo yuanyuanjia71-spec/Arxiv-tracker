@@ -74,83 +74,15 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-11-08 06:23</span>
+        <span class="badge">2026-11-09 06:33</span>
       </div>
     </div>
     <div class="hr"></div>
     <div>Latest digest</div>
-    <div class="row"><div class="card">
-<div class="title">Edge-Assisted Crowdsensing for Explainable Cyclist Safety Perception</div>
-<div class="meta-line">Authors: Hongsen Cao, Chia-Yen Chiang, Mona Jaber, Meihui Wang, Yasmin Fathy</div>
-<div class="meta-line">First: 2026-11-05T18:33:58+00:00 · Latest: 2026-11-05T18:33:58+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08441v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08441v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Cyclist fatality rates remain high despite policy support for active travel, and autonomous vehicles add complexity to mixed traffic. Neither crash statistics nor multi-model detection pipelines scale to continuous monitoring of perceived safety along a route. We present an edge-assisted crowdsensing system: handlebar cameras supply street-level frames, a vision-language model (VLM) turns each frame into structured traffic attributes through a single prompt, and an explainable boosting machine (EBM) combines them with OpenStreetMap road infrastructure and on-bike kinematics to predict a crowdsourced 1-9 safety score. Extraction belongs at the network edge: the fastest self-hosted model needs 2.49 s per frame and scoring takes 0.4 ms on a CPU. On 1,362 annotated frames from two London routes, the EBM regressor reaches 72.2 percent binary accuracy and a mean absolute error of 1.011 under five-fold cross-validation. It is within one accuracy point of black-box ensembles. Its per-feature shape functions give exact attribution: physical lane separation is worth +0.97 rating points, a painted lane +0.70 and a construction site -0.65. Planners can therefore price an infrastructure change in rating points, and the results enter cost-benefit analysis directly. We also report inter-annotator agreement (alpha = 0.4695), an attribute audit, and a sensitivity analysis linking attribute error to accuracy. With re-encoding, a 20 s sampling interval serves 1,000 riders at 54 Mbit/s at a cost of 1.4 accuracy points, making continuous monitoring practical.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Cyclist fatality rates remain high despite policy support for active travel, and autonomous vehicles add complexity to mixed traffic.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">ValuSpec: Plug-and-Play Candidate Valuation before Target Verification for Tree-Based Speculative Decoding</div>
-<div class="meta-line">Authors: Liang He, SiYuan Ma, Qishi Zhan, Yongqi Fan, Mingyu Cao, Qizhen Lan, Zhaolu Kang, Xilu Wang</div>
-<div class="meta-line">Venue: NeurIPS 2026 poster</div>
-<div class="meta-line">First: 2026-10-22T14:23:26+00:00 · Latest: 2026-11-05T15:09:32+00:00</div>
-<div class="meta-line">Comments: NeurIPS 2026 poster</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31338v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.31338v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Tree-based speculative decoding accelerates large language model inference by verifying multiple candidate branches in parallel. However, in practical serving scenarios, similar requests repeatedly induce overlapping candidate branches. While retrieval-based methods mitigate this by reusing historical drafts, the resulting candidate trees often contain many low-quality branches as the candidate tree grows, which reduces verification efficiency and wastes target-side computation. To address this, we propose ValuSpec, a plug-and-play candidate valuation mechanism that filters low-quality branches from a supplied candidate tree before expensive target-side verification. ValuSpec introduces transfer-based supervision to align filtering with the target model&#x27;s behavior. A filtering threshold is estimated from the target model&#x27;s greedy trajectories on a calibration split, without any parameter training. The target model then verifies the filtered tree under the output-identical greedy rule, so accepted tokens are guaranteed to match standard autoregressive decoding exactly. Experimental results on HumanEval, GSM8K, Dolly, and SpecBench show that, in our main evaluation, ValuSpec achieves up to 2.38x end-to-end speedup in retrieval-based tree settings. Furthermore, integrating ValuSpec into the EAGLE-3 dynamic tree framework yields up to 2.78x end-to-end speedup without modifying its tree construction strategy, demonstrating that ValuSpec serves as a generally applicable and plug-and-play candidate valuation module.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Tree-based speculative decoding accelerates large language model inference by verifying multiple candidate branches in parallel.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">KVBuffer: IO-aware Serving for Linear Attention</div>
-<div class="meta-line">Authors: Longwei Zou, Lin Zhong</div>
-<div class="meta-line">First: 2026-05-18T19:14:52+00:00 · Latest: 2026-11-05T15:09:10+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.19049v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.19049v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Linear attention has recently gained significant attention for long-context inference due to its constant decoding cost with respect to context length. However, existing serving systems typically serve linear attention by recurrently computing and updating a large linear attention state in every decoding step. Since the state is much larger than the per-token key and value, recurrent decoding incurs substantial memory access and becomes inefficient for serving linear attention. In this paper, we propose KVBuffer, an IO-aware serving mechanism for linear attention. By buffering recent keys and values, KVBuffer enables serving systems to compute linear attention outputs in more flexible and memory-efficient ways. For decoding, KVBuffer enables chunkwise computation, which reduces average memory access and decoding latency by deferring state updates and applying them in batch. For speculative decoding, KVBuffer verifies draft tokens in parallel and avoids storing temporary states. For short contexts, KVBuffer computes attention outputs directly from buffered keys and values, without creating or updating the linear attention state. We implement KVBuffer in SGLang for Qwen3.5 and Nemotron-3 series models. Our evaluations show that KVBuffer can speedup batch decoding by up to 1.47x and increase the maximum number of serving requests by 5x for speculative decoding when verifying four draft tokens.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Linear attention has recently gained significant attention for long-context inference due to its constant decoding cost with respect to context length.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">FlashOffloading: Low-Latency KV Cache Offloading for Long-Context LLM Serving</div>
-<div class="meta-line">Authors: Xuan Wang, Zhuanhao Wu, Tingzhu Fang, Xushi Li, Sicheng Zhang, Zhenyu Yang, Feng Liu, Zhaohui Fan, Qiang Xie, Huayi Zou, Yuncong Liu, Zeyu Song, Ke Zhu, Yanjia Zeng, Jingchun Gao, Yan Shi, Kui Luo, Gezi Li, Liangjun Feng, Cheng Li</div>
-<div class="meta-line">First: 2026-11-05T06:50:05+00:00 · Latest: 2026-11-05T06:50:05+00:00</div>
-<div class="meta-line">Comments: 13 pages including references,13 figures</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.07542v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.07542v1">PDF</a> · <a href="https://github.com/vllm-project/vllm-ascend/tree/releases/v0.30.0">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">In large language model (LLM) serving systems, the key-value (KV) cache grows linearly with sequence length and concurrency, so long-context inference easily hits the high-bandwidth memory (HBM) capacity wall and results in low concurrency. Offloading the KV cache to host dynamic random-access memory (DRAM) frees HBM space and raises concurrency, but the additional cache management and host-to-device (H2D) load overhead inflates inference latency, higher concurrency fails to translate into effective throughput. We present FlashOffloading, a host-DRAM-centric inference architecture that fully offloads the KV cache in both the prefill and decode phases. FlashOffloading builds rolling HBM cache for prefill, a hot cache for decode, a reverse sparse index with zero extra miss-lookup overhead, and a compute--load overlapped kernel, optimizing KV offloading latency across the entire pipeline and delivering throughput gains under a time-per-output-token (TPOT) service-level objective (SLO). In experiments deploying GLM-5.2 with multi-token prediction (MTP3) speculative decoding on an Ascend910C prefill--decode (PD)-disaggregated platform, FlashOffloading improves prefill throughput by up to 1.38\(\times\) and decode throughput by up to 1.91\(\times\) under a 30 ms TPOT constraint. FlashOffloading is integrated into an open-source serving framework: https://github.com/vllm-project/vllm-ascend/tree/releases/v0.30.0.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">In large language model (LLM) serving systems, the key-value (KV) cache grows linearly with sequence length and concurrency, so long-context inference easily hits the high-bandwidth memory (HBM) capacity wall and results in low concurrency.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">ReviewMap: Mapping Evaluative Acts and Automation Boundaries in Peer-Review Comments</div>
-<div class="meta-line">Authors: Kihyun Na, Injung Kim</div>
-<div class="meta-line">First: 2026-11-05T05:49:01+00:00 · Latest: 2026-11-05T05:49:01+00:00</div>
-<div class="meta-line">Comments: 27 pages, 5 figures, 19 tables</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.07489v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.07489v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Peer-review comments check what a paper does and judge why it matters, but no existing scheme distinguishes these two evaluative acts. We argue that making these acts explicit and measuring how reliably LLMs identify them is a prerequisite for responsible LLM-assisted review analysis: humans need to inspect review judgments and their grounds. This defines a more honest mission for NLP in peer review than full automation. We present ReviewMap, a framework that classifies each comment as assessment of claims and scholarly standards or calibration of contribution value and venue fit, with finer-grained attributes applied conditionally by act type. Applied to 500 ICLR~2026 papers through multi-model LLM consensus, the act layer proves reliably automatable under the operational guideline (inter-model $κ\geq 0.75$), supported by five-human validation on 470 development comments, while the attribute layer requires human oversight, defining a measured automation boundary. At the corpus level, 17% of reviewer-paper instances contain no panel-coded calibration, and the panel-coded calibration share is nearly $3\times$ as high in Strengths as in Weaknesses. This boundary informs three affordances: a review guideline that operationalizes the assessment-then-calibration workflow for reviewers, a per-comment rebuttal strategy scaffold for authors, and a discussion-phase dashboard for area chairs.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Peer-review comments check what a paper does and judge why it matters, but no existing scheme distinguishes these two evaluative acts.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">HyFlash: A Prefix-Memory Prior for On-Device Speculative Decoding</div>
-<div class="meta-line">Authors: Jongwoo Ko, Pashmina Cameron</div>
-<div class="meta-line">First: 2026-11-05T00:31:21+00:00 · Latest: 2026-11-05T00:31:21+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.07263v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.07263v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Parallel block drafting accelerates speculative decoding by predicting multiple future positions in a single backbone pass, but on-device deployment constrains both drafter capacity and context storage. Under tight memory budgets, drafters must model long-range dependencies and fine-grained draft-position interactions without the growing KV-cache overhead of full-context attention. We propose HyFlash, a compact parallel drafter that introduces a prefix-memory prior to separate long-range context modeling from fine-grained draft-position interactions with limited capacity. Local attention captures recent context and draft-position interactions, while recurrent memory compresses historical target features into fixed-size states. This inductive bias enables effective local and long-range modeling with bounded draft-side memory. Experiments show that HyFlash achieves higher acceptance than full-context attention with substantially less KV storage and with larger gains for shallow drafters and long contexts.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Parallel block drafting accelerates speculative decoding by predicting multiple future positions in a single backbone pass, but on-device deployment constrains both drafter capacity and context storage.</div>
-</details>
-</div></div>
+    <div class="row"></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261107_0734.html">20261107_0734</a>
+      <div class="history-list"><a href="archive/20261108_0623.html">20261108_0623</a>
+<a href="archive/20261107_0734.html">20261107_0734</a>
 <a href="archive/20261106_0752.html">20261106_0752</a>
 <a href="archive/20261105_0759.html">20261105_0759</a>
 <a href="archive/20261104_0744.html">20261104_0744</a>
