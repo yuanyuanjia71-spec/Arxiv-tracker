@@ -74,7 +74,7 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-11-12 09:06</span>
+        <span class="badge">2026-11-13 07:55</span>
       </div>
     </div>
     <div class="hr"></div>
@@ -127,82 +127,10 @@ summary{cursor:pointer;color:var(--acc)}
 <details class="detail"><summary>Summary / 总结</summary>
 <div class="mono">Parallel drafters accelerate LLM decoding by proposing a whole block of draft tokens in a single forward pass, making them attractive for LLM serving.</div>
 </details>
-</div>
-<div class="card">
-<div class="title">Inference Validation for Regulated AI: Building a Decision Pipeline on NVIDIA AIPerf</div>
-<div class="meta-line">Authors: Dev Akre, Roman Bobalo, Manoj Dobbali</div>
-<div class="meta-line">First: 2026-11-09T17:21:17+00:00 · Latest: 2026-11-09T17:21:17+00:00</div>
-<div class="meta-line">Comments: 10 pages, 3 figures, 3 tables</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12737v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.12737v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Deploying large language models in regulated industries requires more than picking the fastest inference engine: it requires evidence that a configuration meets contractual and legal obligations before it serves a single customer request. We describe Runway, an internal validation harness built at MasterControl that builds a governed decision pipeline around NVIDIA AIPerf. The key insight is separating concerns: AIPerf provides the trusted measurement, while Runway provides the experiment design that comes before it and the compliance, cost, and audit decisions that come after. We describe the architecture and the storage model that makes caching and audit one mechanism. We report three findings from Runway sweeps: TensorRT-LLM and vLLM rankings invert with concurrency; a newer, pricier GPU instance can be the cheaper one per request; and speculative decoding behaves differently across engines under load, so engine configuration can outweigh engine choice.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Deploying large language models in regulated industries requires more than picking the fastest inference engine: it requires evidence that a configuration meets contractual and legal obligations before it serves a single customer request.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Text2NGAC: a multi-LLM pipeline for NGAC policy extraction with mutation-based verification</div>
-<div class="meta-line">Authors: Ayesha Habib, Huixiang Zhang, Dan Zhu, Waiz Haider</div>
-<div class="meta-line">First: 2026-11-09T15:32:40+00:00 · Latest: 2026-11-09T15:32:40+00:00</div>
-<div class="meta-line">Comments: 33 pages, 6 figures. Under review at Cybersecurity (SpringerOpen)</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12572v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.12572v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Access-control policies are written in natural language but enforced as formal models, and translating them into NIST Next Generation Access Control (NGAC) graphs remains unsolved: prior systems cover only subsets of the NGAC model, and none verify the graphs they extract. We present Text2NGAC, a pipeline of cooperating large language models that disambiguates each sentence before extraction, escalates uncertain sentences to a multi-model ensemble, and checks the resulting graph with a five-strategy verifier whose own effectiveness is measured by controlled mutation testing. To our knowledge it is the first system to extract all four NGAC relationship types - associations, prohibitions, event-response obligations, and assignments - from real-world policy documents. Three results anchor the evaluation. The verifier detects 99.7% of 918 injected mutants and every structural fail-open fault, and the fault classes it misses are characterized and weighted by security consequence rather than left unexamined. The extracted graphs are enforceable: one corpus&#x27;s graph loads unmodified into the NIST reference implementation, which reproduces all 55 access decisions the graph entails and fires an extracted obligation end-to-end. Extraction reaches 97.3-99.6% exact-tuple-match accuracy on the 714 scored sentences of four real corpora, far above three reproduced baselines on matched metrics, and paraphrase probes with semantic re-scoring bound the pipeline&#x27;s sensitivity to rewording. Reported accuracy is wording- and benchmark-specific, adversarial input is outside the verifier&#x27;s guarantees, and the intended deployment is extraction plus structural verification feeding expert review. A complete two-tier reproducibility artifact accompanies the paper.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Access-control policies are written in natural language but enforced as formal models, and translating them into NIST Next Generation Access Control (NGAC) graphs remains unsolved: prior systems cover only subsets of the NGAC model, and none verify the graphs they extract.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Phrase-Level Speculative Decoding on a Frozen Target</div>
-<div class="meta-line">Authors: Madhusudhana Naidu</div>
-<div class="meta-line">First: 2026-11-09T14:13:32+00:00 · Latest: 2026-11-09T14:13:32+00:00</div>
-<div class="meta-line">Comments: 10 pages, 9 tables</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12464v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.12464v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoders raise throughput by banking more target tokens per forward pass, and Medusa, EAGLE-3, DFlash and DSpark all do it the same way: more candidates that survive verification. All of them draft in the target&#x27;s own vocabulary, so one node of the candidate tree is one target token, and the tokenizer makes that unit look like a constant. It is not. BPE&#x27;s pretokenizer splits on whitespace before merges are learned, so no multi-word string can ever become a single token: in Qwen3-4B, &quot;United States of America&quot; is four tokens and no adjacent pair of them exists as one entry, so a phrase is out of reach of any method drafting in the target&#x27;s vocabulary.
-  We change the unit. A small MLP head reads the frozen target&#x27;s hidden state and predicts a one- to three-word phrase as one entry in a separate draft vocabulary; greedy longest-match expansion maps it back into the target&#x27;s own tokens, and N candidates are verified in one forward pass behind a prefix-tree mask, so the change is orthogonal to tree depth and width. The target and its tokenizer stay frozen and a candidate is accepted only while it matches the target&#x27;s own argmax, so the served output is identical to greedy decoding up to floating-point tie-breaking.
-  On one A5000 at batch 1, against HuggingFace generate(), a 21.94M head (0.545% of Qwen3-4B) reaches 2.391x on GSM8K, 2.444x on MATH-500 and 1.544x on MT-Bench. Because the head&#x27;s output layer is one row of 257 parameters per entry, the draft vocabulary size is the parameter budget: an 8,000-entry head is 3.434M parameters, 0.0854% of the target and 64x smaller than EAGLE-3&#x27;s drafter, and keeps 92.3% of the larger head&#x27;s GSM8K tokens per pass. With EAGLE-3 run on same prompts and baseline, our 21.94M head is ahead of tree-16 on both maths sets and behind tree-60 on every set.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoders raise throughput by banking more target tokens per forward pass, and Medusa, EAGLE-3, DFlash and DSpark all do it the same way: more candidates that survive verification.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">DForkTree: Accelerating Speculative Decoding with Fork-Aware Block Diffusion Draft Trees</div>
-<div class="meta-line">Authors: Zhicheng Zheng, Cheng Zhang, Chenkai Tang</div>
-<div class="meta-line">First: 2026-11-09T13:06:52+00:00 · Latest: 2026-11-09T13:06:52+00:00</div>
-<div class="meta-line">Comments: 20 pages, 13 figures, 13 tables. Code: https://github.com/Perseus037/DForkTree</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12356v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.12356v1">PDF</a> · <a href="https://github.com/Perseus037/DForkTree">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Speculative decoding speeds up language models by letting a lightweight drafter propose several future tokens that the target model verifies in parallel. Block diffusion drafters such as DFlash draft a whole block in one forward pass, and DDTree builds a draft tree from their per-position distributions. Each of these distributions assumes that the drafter&#x27;s own most likely continuation is correct. A tree, however, gains over a chain only on branches that leave this continuation, where the drafter&#x27;s top-1 accuracy drops from 89% to 18% and its candidate lists miss the right token far more often. When re-run from the fork token, the same drafter is usually correct, so the errors come from the prefix that the distributions condition on rather than from what the drafter knows. We introduce DForkTree, a training-free method that re-anchors each branch on its own tokens. DForkTree adds n-gram statistics from the target model&#x27;s own outputs to the drafter&#x27;s scores as pointwise mutual information, weights them more after the fork, and builds the optimal tree under these scores exactly on the GPU. On Qwen3.5-4B and 9B, with all tree methods sharing one drafter, tree pipeline and verifier, DForkTree is the fastest tree method on every benchmark. It is up to 41.5% faster than DFlash and 15.1% faster than DDTree in the same setting, with average speedups of up to 4.75x over autoregressive decoding.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Speculative decoding speeds up language models by letting a lightweight drafter propose several future tokens that the target model verifies in parallel.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Speculative Decoding Reimagined for Multimodal Large Language Models</div>
-<div class="meta-line">Authors: Luxi Lin, Zhihang Lin, Zhanpeng Zeng, Rongrong Ji</div>
-<div class="meta-line">First: 2025-05-20T12:12:17+00:00 · Latest: 2026-11-09T13:04:11+00:00</div>
-<div class="meta-line">Comments: 13 pages</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2505.14260v2">Abs</a> · <a href="https://arxiv.org/pdf/2505.14260v2">PDF</a> · <a href="https://github.com/Lyn-Lucy/MSD">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Multimodal Large Language Models (MLLMs) deliver strong performance across vision-language tasks but suffer from high autoregressive decoding latency. Although speculative decoding can accelerate Large Language Models (LLMs) without changing their output distribution, directly applying existing approaches to MLLMs yields limited speedups because text and visual tokens exhibit distinct characteristics. We present Multimodal Speculative Decoding (MSD), a framework specifically designed for efficient MLLM inference. MSD is motivated by two key observations: text and visual tokens should be handled separately during drafting, and an effective draft model requires both strong language modeling and visual perception capabilities. Accordingly, MSD decouples text and visual token processing in the draft model and applies token-specific strategies to improve drafting efficiency. We further introduce a two-stage training strategy. The draft model is first trained on text-only instruction-tuning data to strengthen its language modeling ability and is then progressively exposed to multimodal data to develop visual perception while preserving its language competence. Extensive experiments across multimodal benchmarks demonstrate that MSD achieves up to $2.29\times$ inference speedup for LLaVA-1.5-7B and $2.46\times$ for LLaVA-1.5-13B without sacrificing generation quality. These results establish MSD as an effective and general approach for accelerating multimodal autoregressive generation. Our code is available at https://github.com/Lyn-Lucy/MSD</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Multimodal Large Language Models (MLLMs) deliver strong performance across vision-language tasks but suffer from high autoregressive decoding latency.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Multi-Future Drafting: Mixture Block Drafters for Tree-Verified Speculative Decoding</div>
-<div class="meta-line">Authors: Haoyu Huang, Jialiang Kang, Linlin Yang, Xiao Yang, Baochang Zhang</div>
-<div class="meta-line">First: 2026-11-09T05:15:08+00:00 · Latest: 2026-11-09T05:15:08+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13017v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13017v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Block drafters such as DFlash draft a block of future tokens in one forward pass, and draft trees such as DDTree verify the prefixes ranked highest by the product of the drafter&#x27;s per-position distributions. Under tree verification, the expected number of accepted tokens is the probability mass the tree covers. We show that a product misallocates it: when the continuation can follow several futures, it splices them into chimeras, prefixes stitched together from different futures that the target never produces, and gives them as much budget as the futures themselves. Barring ties, no product-ranked tree can hold two futures that disagree in $m$ positions without $2^{m-1}-1$ chimeras, however well the drafter is trained, and in practice chimeras make up 27-33% of a 64-node tree. We propose Multi-Future Drafting (MFD), which restores the coupling with a latent variable instead of the chain rule: $K$ learned mode embeddings at the drafter&#x27;s input draft $K$ coherent blocks in the same pass, and a mixture DDTree lets the verifier pick the future the target takes, losslessly and with $K+1$ extra vectors. On four Qwen targets from 4B to 27B parameters, at batch size 1, MFD reaches up to 7.8$\times$ speedup, 5-8% faster than the best single-mode tree trained identically and, on Qwen3-4B and Qwen3-8B, 9-16% faster than the released DARTree trained on the same prompts.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Block drafters such as DFlash draft a block of future tokens in one forward pass, and draft trees such as DDTree verify the prefixes ranked highest by the product of the drafter&#x27;s per-position distributions.</div>
-</details>
 </div></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261111_0747.html">20261111_0747</a>
+      <div class="history-list"><a href="archive/20261112_0906.html">20261112_0906</a>
+<a href="archive/20261111_0747.html">20261111_0747</a>
 <a href="archive/20261110_0947.html">20261110_0947</a>
 <a href="archive/20261109_0633.html">20261109_0633</a>
 <a href="archive/20261108_0623.html">20261108_0623</a>
