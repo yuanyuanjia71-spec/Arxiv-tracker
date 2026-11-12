@@ -74,12 +74,61 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-11-11 07:47</span>
+        <span class="badge">2026-11-12 09:06</span>
       </div>
     </div>
     <div class="hr"></div>
     <div>Latest digest</div>
     <div class="row"><div class="card">
+<div class="title">REAL Loss: Optimizing Real Expected Acceptance Length for Speculative Decoding</div>
+<div class="meta-line">Authors: Yu Tian</div>
+<div class="meta-line">First: 2026-11-10T17:45:12+00:00 · Latest: 2026-11-10T17:45:12+00:00</div>
+<div class="meta-line">Comments: 19 pages, 10 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14399v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14399v1">PDF</a> · <a href="https://github.com/King-ty/speculators/tree/real-loss">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speculative decoding accelerates LLM inference by having a draft model propose multiple tokens for the target model to verify in one pass. The speedup is governed by the expected acceptance length (EAL), yet standard training objectives such as cross-entropy, KL divergence, and total variation focus only on distribution matching or single-step overlap. Recent studies instead propose block-level training objectives, aiming to optimize EAL directly. However, these objectives remain surrogates rather than exact formulations of EAL. For example, some average later acceptance over target-distributed continuations rather than the verification branches selected by accepted tokens, introducing a covariance gap that can reverse the gradient direction. We analyze this gap and derive REAL, a real EAL training loss that uses path weights for unbiased estimation and Rao-Blackwellization for variance reduction. In a controlled loss-level comparison with a Qwen3.6-35B-A3B target and a Domino drafter, REAL outperforms WTV, VSD, DBLast, and the static LK baseline on probabilistic serving acceptance length across 9 task subsets and 5 evaluation seeds. These gains require only a change to the training loss, with no modification to the drafter architecture or inference procedure, demonstrating the practicality of real EAL training. A reference implementation of the REAL loss is available at https://github.com/King-ty/speculators/tree/real-loss.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speculative decoding accelerates LLM inference by having a draft model propose multiple tokens for the target model to verify in one pass.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">GAGR-Lab: Evaluating Joint Spatial-Geometric and Analytic Function Reasoning</div>
+<div class="meta-line">Authors: Jingyao Zhang, Yun Li, Lu Han</div>
+<div class="meta-line">First: 2026-10-07T15:01:54+00:00 · Latest: 2026-11-10T13:12:55+00:00</div>
+<div class="meta-line">Comments: 15 pages, 1 figure, 7 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.10201v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.10201v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Joint spatial-geometric and analytic function reasoning requires translating a perceived spatial configuration into a symbolic function whose executed curve satisfies geometric constraints. We present GAGR-Lab, a framework for measuring this capability through Cartesian game scenes, explicit function semantics, and authoritative Rust trajectory execution. It distinguishes spatial perception, metric grounding, geometric relations, function interpretation, function construction, and constrained synthesis. We specify four configurable scene-difficulty presets and a prospective 24-cell diagnostic design, while reporting only the subset actually evaluated. A bounded pilot of one hosted model (Llama 3.2 11B Vision Instruct) using two API credentials as execution replicas yields 72 balanced games with 432 attempts, 429 valid provider responses, and no target hits; exploratory ordinary-function prompt variants also fail to hit, while the structured localization interface yields no scoreable outputs. A privileged analytic search control independently succeeds on 600 directional cases from 300 generated scenes, with exact repeatability and 1,200 successful vertical-reflection or translation checks. The framework separates serving reliability, symbolic compliance, and geometric success, and preserves exact model-visible inputs and realized paths. A staged protocol outlines diagnostic calibration, held-out replication, multi-model comparison, and paired robustness tests. The contribution is an operational research framework with an executed pilot and a clearly identified prospective study plan; the full difficulty matrix and comparative model results remain untested.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Joint spatial-geometric and analytic function reasoning requires translating a perceived spatial configuration into a symbolic function whose executed curve satisfies geometric constraints.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Acceptance-Aware Draft Model Training for Speculative Decoding</div>
+<div class="meta-line">Authors: Tianhua Xia, Mugilan Ganesan, Yifei Feng, Haiyu Wang, Maximilian Egger, Sai Qian Zhang</div>
+<div class="meta-line">First: 2026-09-21T06:02:51+00:00 · Latest: 2026-11-10T07:58:07+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.24150v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.24150v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speculative decoding accelerates large language model (LLM) inference by using a lightweight draft model to generate multiple candidate tokens that are verified by the target model in a single forward pass. Its speedup is largely determined by the acceptance length, yet existing draft-model training methods mainly optimize cross-entropy or Kullback-Leibler (KL) divergence as proxies. These objectives encourage distribution matching but do not directly optimize acceptance length, and the acceptance mechanism also differs between greedy and sampling-based decoding.
+  In this work, we propose acceptance-length-aware training losses that directly optimize the expected number of accepted tokens within a speculative window. For greedy verification, we derive an expected accepted length (EAL) loss that explicitly maximizes expected acceptance length. For sampling-based decoding, we introduce a window total variation (WTV) loss that optimizes the overlap between temperature-scaled draft and target distributions while accounting for sequential acceptance dependencies. Both objectives can be further combined with a group-relative reinforcement learning stage (GRPO) using simulated acceptance length as the reward.
+  Experiments across different target and draft models, tasks, and decoding settings show that our losses consistently improve acceptance length over KL-based training. WTV provides particularly strong gains under sampling-based decoding, while EAL better matches greedy verification. These results show that directly optimizing the acceptance objective, with losses tailored to the decoding mode, is more effective than conventional distribution-matching objectives.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speculative decoding accelerates large language model (LLM) inference by using a lightweight draft model to generate multiple candidate tokens that are verified by the target model in a single forward pass.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">ForeSpark: Joint Draft and Verification Budget Scheduling for Parallel Speculative Decoding</div>
+<div class="meta-line">Authors: Jaeyong Song, Daniel Wang, Pratyush Patel, Jonny Kong, Preyas Shah, Shobhit Kanaujia</div>
+<div class="meta-line">First: 2026-11-10T01:37:38+00:00 · Latest: 2026-11-10T01:37:38+00:00</div>
+<div class="meta-line">Comments: 21 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13442v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13442v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Parallel drafters accelerate LLM decoding by proposing a whole block of draft tokens in a single forward pass, making them attractive for LLM serving. Recent systems optimize goodput (i.e., accepted tokens per second) because rejected drafts steal compute from other requests. However, these systems control only how many tokens are verified, so every request still drafts a full block. At high serving load, we find that drafting consumes up to 40% of step time, of which a majority is discarded because it is never verified. Yet, draft-length control from autoregressive drafters does not carry over, because a parallel drafter commits to its length before its single pass. Moreover, draft and verification lengths are coupled across the batch, so they must be selected jointly for every request while keeping the decision computationally cheap at every step. In this paper, we propose work-conserving speculation (WCS), a design that jointly allocates draft and verification budgets per request in LLM serving, and present ForeSpark as its prototype. ForeSpark realizes WCS with (i) a context-aware pre-draft estimator that predicts acceptance for every candidate length from the target model&#x27;s context features, (ii) a lightweight joint draft-verify scheduler that selects both lengths through a global sort, and (iii) a post-draft budget distribution that spends verification on the most promising tokens. Implemented on vLLM, ForeSpark improves throughput by up to 1.77x over the state-of-the-art DSpark and by 2.49x over autoregressive decoding at a matched per-request generation rate, without changing the output distribution. It also tolerates higher load, sustaining up to 1.51x the request rate of DSpark under latency service level objectives (SLOs).</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Parallel drafters accelerate LLM decoding by proposing a whole block of draft tokens in a single forward pass, making them attractive for LLM serving.</div>
+</details>
+</div>
+<div class="card">
 <div class="title">Inference Validation for Regulated AI: Building a Decision Pipeline on NVIDIA AIPerf</div>
 <div class="meta-line">Authors: Dev Akre, Roman Bobalo, Manoj Dobbali</div>
 <div class="meta-line">First: 2026-11-09T17:21:17+00:00 · Latest: 2026-11-09T17:21:17+00:00</div>
@@ -142,18 +191,19 @@ summary{cursor:pointer;color:var(--acc)}
 </details>
 </div>
 <div class="card">
-<div class="title">D3Tree: Learning to Prune Block-Diffusion Draft Trees for Efficient Verification</div>
-<div class="meta-line">Authors: Hong Nie, Zhangchi Gao, Jun Yu, Bo Wang, Jianqing Sun, Shengping Liu</div>
-<div class="meta-line">First: 2026-11-08T13:29:14+00:00 · Latest: 2026-11-08T13:29:14+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.11371v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.11371v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<div class="title">Multi-Future Drafting: Mixture Block Drafters for Tree-Verified Speculative Decoding</div>
+<div class="meta-line">Authors: Haoyu Huang, Jialiang Kang, Linlin Yang, Xiao Yang, Baochang Zhang</div>
+<div class="meta-line">First: 2026-11-09T05:15:08+00:00 · Latest: 2026-11-09T05:15:08+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13017v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13017v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
 <details class="detail"><summary>Abstract</summary>
-<div class="mono">Block-diffusion drafters propose a whole block of tokens in one forward pass, and draft trees built from their position-wise marginals increase the expected accepted length of speculative decoding. Every tree node occupies a query row in target verification, so under concurrent serving low-yield branches compete with other requests for verification capacity. Existing tree methods select verified nodes by draft probability under a fixed or cost-selected per-request budget, and thus always retain a prefix of the drafter&#x27;s ranking. We present D3Tree, which learns which nodes of a block-diffusion draft tree are worth verifying. A tree-size head with 2H+2 parameters predicts each candidate&#x27;s conditional survival from the draft state, the candidate embedding, and its draft log-probability. Thresholding the product of these scores along parent chains yields an ancestor-closed subtree whose size adapts to each request and decoding round. The head is trained on a frozen drafter with conditional labels on the full candidate tree; an optional joint mode also steers the drafter toward the retained reference path. At serving time, D3Tree verifies whole trees under light load and, under heavy load, allocates one batch-wide node budget by predicted survival, sized to the target&#x27;s matrix-multiplication tiles. Retained trees share one ancestor-masked target pass, while construction, pruning, and scheduling run on the GPU and overlap with the host. Across six vision-language verifiers and 17 text and multimodal benchmarks, D3Tree is fastest in 70 of 72 load settings, with 3.2-4.0x speedup over autoregressive decoding for one request and 1.3-1.8x at 64 concurrent requests, where fixed-budget trees fall below autoregressive speed. Under a time-varying arrival trace, it has the lowest mean end-to-end latency in every arrival phase.</div></details>
+<div class="mono">Block drafters such as DFlash draft a block of future tokens in one forward pass, and draft trees such as DDTree verify the prefixes ranked highest by the product of the drafter&#x27;s per-position distributions. Under tree verification, the expected number of accepted tokens is the probability mass the tree covers. We show that a product misallocates it: when the continuation can follow several futures, it splices them into chimeras, prefixes stitched together from different futures that the target never produces, and gives them as much budget as the futures themselves. Barring ties, no product-ranked tree can hold two futures that disagree in $m$ positions without $2^{m-1}-1$ chimeras, however well the drafter is trained, and in practice chimeras make up 27-33% of a 64-node tree. We propose Multi-Future Drafting (MFD), which restores the coupling with a latent variable instead of the chain rule: $K$ learned mode embeddings at the drafter&#x27;s input draft $K$ coherent blocks in the same pass, and a mixture DDTree lets the verifier pick the future the target takes, losslessly and with $K+1$ extra vectors. On four Qwen targets from 4B to 27B parameters, at batch size 1, MFD reaches up to 7.8$\times$ speedup, 5-8% faster than the best single-mode tree trained identically and, on Qwen3-4B and Qwen3-8B, 9-16% faster than the released DARTree trained on the same prompts.</div></details>
 <details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Block-diffusion drafters propose a whole block of tokens in one forward pass, and draft trees built from their position-wise marginals increase the expected accepted length of speculative decoding.</div>
+<div class="mono">Block drafters such as DFlash draft a block of future tokens in one forward pass, and draft trees such as DDTree verify the prefixes ranked highest by the product of the drafter&#x27;s per-position distributions.</div>
 </details>
 </div></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261110_0947.html">20261110_0947</a>
+      <div class="history-list"><a href="archive/20261111_0747.html">20261111_0747</a>
+<a href="archive/20261110_0947.html">20261110_0947</a>
 <a href="archive/20261109_0633.html">20261109_0633</a>
 <a href="archive/20261108_0623.html">20261108_0623</a>
 <a href="archive/20261107_0734.html">20261107_0734</a>
