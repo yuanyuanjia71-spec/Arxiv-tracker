@@ -1,0 +1,642 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-11-14 07:58</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261114_0758</div>
+    <div class="row"><div class="card">
+<div class="title">Towards Green Text Generation: Memory-Based Speculative Decoding</div>
+<div class="meta-line">Authors: Antal van den Bosch</div>
+<div class="meta-line">Venue: Proceedings of the 19th International Natural Language Generation Conference: Long Papers, pages 472-482, October 2026</div>
+<div class="meta-line">First: 2026-11-12T12:32:14+00:00 · Latest: 2026-11-12T12:32:14+00:00</div>
+<div class="meta-line">Comments: 11 pages, 2 figures, 7 tables. Published at the 19th International Natural Language Generation Conference (INLG 2026). Code: https://github.com/antalvdb/olifant-speculative ; models: https://huggingface.co/antalvdb/olifant-speculative-ibases</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.16714v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.16714v1">PDF</a> · <a href="https://github.com/antalvdb/olifant-speculative">Code1</a> · <a href="https://huggingface.co/antalvdb/olifant-speculative-ibases">Code2</a> · <a href="https://huggingface.co/huggingface">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speculative decoding accelerates text generation with large language models by letting a cheap draft model propose tokens that a large verifier checks in a single forward pass. We introduce Olifant, a draft model built on a memory-based classifier. It predicts the next token from a four-token window in under 0.3 ms on CPU, requiring no GPU, no backpropagation, and no accelerator memory. We measure throughput and energy under two verifier regimes on consumer hardware. Without a KV cache, drafting is nearly free: a domain-matched Olifant model reaches 38.1% acceptance on EU legal text, delivering 2.43x throughput and 2.51x lower energy per token than the neural verifier model alone. With a KV-cached verifier, itself a ~10x energy saver, drafting costs matter: a TinyLlama draft model halves throughput and triples energy despite high acceptance, whereas Olifant still yields 1.25x throughput and the lowest energy in the study (93 J per 100 tokens, 14x below the uncached baseline). We further show that KV caching decouples time from energy: verification of longer drafts raises power draw, shifting the energy-optimal draft length below the speed-optimal one. Speculative decoding is not dead in the age of fast verifiers, provided drafting is nearly free.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speculative decoding accelerates text generation with large language models by letting a cheap draft model propose tokens that a large verifier checks in a single forward pass.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">DForkTree: Accelerating Speculative Decoding with Fork-Aware Block Diffusion Draft Trees</div>
+<div class="meta-line">Authors: Zhicheng Zheng, Cheng Zhang, Chenkai Tang, Tianxiang Zhao</div>
+<div class="meta-line">First: 2026-11-09T13:06:52+00:00 · Latest: 2026-11-12T06:04:02+00:00</div>
+<div class="meta-line">Comments: 21 pages, 12 figures, 13 tables. Code: https://github.com/Perseus037/DForkTree</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12356v2">Abs</a> · <a href="https://arxiv.org/pdf/2611.12356v2">PDF</a> · <a href="https://github.com/Perseus037/DForkTree">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Speculative decoding speeds up language models by having a lightweight drafter propose future tokens that the target model verifies in parallel. Block diffusion drafters such as DFlash predict an entire block in one forward pass, and DDTree builds draft trees directly from their per-position distributions. Each distribution implicitly assumes that the drafter&#x27;s own greedy continuation is accepted, whereas a draft tree improves over a chain only on branches that leave this greedy path. Once a path forks, the drafter&#x27;s top-1 accuracy drops from 89% to 18% and its top candidates often miss the true token. Re-running the drafter from the fork token largely restores its accuracy, showing that the errors stem from conditioning on an outdated prefix rather than from limited model capacity. In this paper, we introduce DForkTree, a training-free method that re-anchors each branch on its own tokens. It adjusts the drafter&#x27;s scores with pointwise mutual information from target-generated n-grams, weighted more heavily after a fork, and a layer-wise GPU search recovers the exact optimal tree under these scores. On Qwen3.5-4B and 9B, DForkTree outperforms all baselines on every benchmark, by up to 41.5% over DFlash and 15.1% over DDTree, with average speedups of up to 4.75x over autoregressive decoding.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Speculative decoding speeds up language models by having a lightweight drafter propose future tokens that the target model verifies in parallel.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Inference Validation for Regulated AI: A Governed Decision Pipeline for LLM Serving</div>
+<div class="meta-line">Authors: Dev Akre, Roman Bobalo, Manoj Dobbali</div>
+<div class="meta-line">First: 2026-11-09T17:21:17+00:00 · Latest: 2026-11-11T16:36:55+00:00</div>
+<div class="meta-line">Comments: 10 pages, 3 figures, 3 tables Updated paper title to better reflect content</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12737v2">Abs</a> · <a href="https://arxiv.org/pdf/2611.12737v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Deploying large language models in regulated industries requires more than picking the fastest inference engine: it requires evidence that a configuration meets contractual and legal obligations before it serves a single customer request. We describe Runway, an internal validation harness built at MasterControl that builds a governed decision pipeline around NVIDIA AIPerf. The key insight is separating concerns: AIPerf provides the trusted measurement, while Runway provides the experiment design that comes before it and the compliance, cost, and audit decisions that come after. We describe the architecture and the storage model that makes caching and audit one mechanism. We report three findings from Runway sweeps: TensorRT-LLM and vLLM rankings invert with concurrency; a newer, pricier GPU instance can be the cheaper one per request; and speculative decoding behaves differently across engines under load, so engine configuration can outweigh engine choice.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Deploying large language models in regulated industries requires more than picking the fastest inference engine: it requires evidence that a configuration meets contractual and legal obligations before it serves a single customer request.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Next-Latent Prediction Transformers Learn Compact World Models</div>
+<div class="meta-line">Authors: Jayden Teoh, Manan Tomar, Kwangjun Ahn, Edward S. Hu, Tim Pearce, Pratyusha Sharma, Akshay Krishnamurthy, Riashat Islam, Alex Lamb, John Langford</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2025-11-08T10:41:26+00:00 · Latest: 2026-11-11T09:38:16+00:00</div>
+<div class="meta-line">Comments: Accepted to NeurIPS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2511.05963v5">Abs</a> · <a href="https://arxiv.org/pdf/2511.05963v5">PDF</a> · <a href="https://github.com/JaydenTeoh/NextLat">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Transformers replace recurrence with a memory that grows with sequence length and self-attention that enables ad-hoc lookups over past tokens. Consequently, they lack an inherent incentive to compress history into compact latent states with consistent transition rules. This often leads to learning solutions that generalize poorly. We introduce Next-Latent Prediction (NextLat), which extends standard next-token training with self-supervised predictions in the latent space. Specifically, NextLat trains a transformer to learn latent representations that are predictive of its next latent state given the next token. Theoretically, we show that these latents converge towards belief states, compressed information about the history necessary to predict the future. This simple auxiliary objective injects a recurrent inductive bias into transformers while leaving their architecture, parallel training efficiency, and inference unchanged. NextLat effectively encourages transformers to form compact internal world models with coherent belief states and transition dynamics -- crucial properties not guaranteed by standard next-token prediction alone. Empirically, across benchmarks in world modeling, reasoning, planning, and language modeling, NextLat demonstrates significant gains over standard next-token prediction and other baselines in downstream accuracy, representation compression, and lookahead planning. Furthermore, NextLat enables variable-length self-speculative decoding, accelerating inference by up to 3.3x in language modeling. NextLat offers a simple yet effective paradigm for learning compact, predictive representations in transformers that generalize better. Our code is available at https://github.com/JaydenTeoh/NextLat.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Transformers replace recurrence with a memory that grows with sequence length and self-attention that enables ad-hoc lookups over past tokens.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Recompute or Restore? Host-Tier KV for Multi-Model Agent Workflows on a Static-Graph NPU Serving Stack</div>
+<div class="meta-line">Authors: Sungwon Woo, Seyeon Kim</div>
+<div class="meta-line">First: 2026-11-11T07:12:45+00:00 · Latest: 2026-11-11T07:12:45+00:00</div>
+<div class="meta-line">Comments: 14 pages, 6 figures, 5 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.15126v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.15126v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Agent workflows issue dependent model calls that share long context prefixes, so serving them efficiently depends on reusing the key-value (KV) cache of those prefixes. On accelerators that compile model graphs ahead of time, however, the device KV budget is fixed, and prefixes evicted under load must be recomputed. Restoring them from host memory avoids this recomputation, but the transfer occupies the same engine thread as prefill and decode, so its benefit is not guaranteed. In this paper, we study when restoring beats recomputing on a commercial static-graph neural processing unit (NPU) stack (Rebellions ATOM+, vllm-rbln 0.10.2) that serves a Qwen3-8B planner on two cards and a Qwen3-0.6B executor on one. We first show that repeated prefill dominates planner work when default serving collapses: 89.5% of the executed planner prompt tokens had been materialized before. We then build a synchronous host-DRAM tier on the runtime&#x27;s public KV copy calls, together with a scheduler-aware event model whose predictions are frozen before each test cohort. Experimental results show that the host tier raises workflow service-level objective (SLO) attainment from 22.8% to 100% and from 9.4% to 99.8% in the two tested overload conditions, and endpoint confirmation on two new seeds supports conservative load gains of 11.8% (chain) and 18.2% (fork), while mixed and bursty workloads remain seed-sensitive. The frozen model predicts median and 99th-percentile (P99) latency within its 15% tolerance in all 24 common-load conditions, including the 16-18% P99 increase that the tier causes for fork workflows, but it misorders three policy contrasts and overestimates the benefit of a cheaper store path (11% predicted against 3.1% measured). The trade-off therefore depends on runtime scheduling and transfer cost as well as cache capacity.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Agent workflows issue dependent model calls that share long context prefixes, so serving them efficiently depends on reusing the key-value (KV) cache of those prefixes.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">EvoX: Rethinking the Agent Harness as a Runtime Policy</div>
+<div class="meta-line">Authors: Haoyang Zhang, Qumeng Sun, Xiao Zhang, Xiang Liu, Zhidong Fan, Junjie Wang</div>
+<div class="meta-line">First: 2026-11-11T04:05:54+00:00 · Latest: 2026-11-11T04:05:54+00:00</div>
+<div class="meta-line">Comments: 15 pages, 5 figures. Technical report</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.15006v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.15006v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large language model (LLM) agents increasingly interact with tools and environments, yet plausible model decisions do not always translate into successful execution due to tool-call mismatches, interrupted workflows, and unsupported completion claims. We present EvoX, a Rust-based, multi-model agent runtime guided by The Second Policy, which views the harness as an Operational Policy complementing the foundation model&#x27;s Semantic Policy. EvoX combines model-facing guidance with deterministic runtime control through three complementary mechanisms: Action Realization, Execution Continuity, and Outcome Grounding. To evaluate harnesses without suppressing their native behaviors, we introduce Contrast, a controlled and auditable framework integrating explicit fairness constraints, provider-bound request verification, and evidence-based adjudication. Across five benchmarks, six foundation models, and six agent harnesses, EvoX achieves the highest numerical success rate of 56.2% over 691 common task--model pairs, exceeding the average of the other five harnesses by approximately 3.0 percentage points. Its larger advantages on GLM-5.3 (+10.7 points) and Kimi K3 (+7.9 points) highlight the model-dependent effectiveness of harness design and the potential for cross-provider adaptability. Achieved without memory, evolution, or extensions, these results establish EvoX as a competitive multi-model agent runtime and underscore the importance of harness-level operational control in realizing foundation-model capabilities.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large language model (LLM) agents increasingly interact with tools and environments, yet plausible model decisions do not always translate into successful execution due to tool-call mismatches, interrupted workflows, and unsupported completion claims.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261113_0755.html">20261113_0755</a>
+<a href="archive/20261112_0906.html">20261112_0906</a>
+<a href="archive/20261111_0747.html">20261111_0747</a>
+<a href="archive/20261110_0947.html">20261110_0947</a>
+<a href="archive/20261109_0633.html">20261109_0633</a>
+<a href="archive/20261108_0623.html">20261108_0623</a>
+<a href="archive/20261107_0734.html">20261107_0734</a>
+<a href="archive/20261106_0752.html">20261106_0752</a>
+<a href="archive/20261105_0759.html">20261105_0759</a>
+<a href="archive/20261104_0744.html">20261104_0744</a>
+<a href="archive/20261103_0922.html">20261103_0922</a>
+<a href="archive/20261102_0629.html">20261102_0629</a>
+<a href="archive/20261101_0558.html">20261101_0558</a>
+<a href="archive/20261031_0642.html">20261031_0642</a>
+<a href="archive/20261030_0701.html">20261030_0701</a>
+<a href="archive/20261029_0654.html">20261029_0654</a>
+<a href="archive/20261028_0642.html">20261028_0642</a>
+<a href="archive/20261027_0655.html">20261027_0655</a>
+<a href="archive/20261026_0517.html">20261026_0517</a>
+<a href="archive/20261025_0516.html">20261025_0516</a>
+<a href="archive/20261024_0544.html">20261024_0544</a>
+<a href="archive/20261023_0603.html">20261023_0603</a>
+<a href="archive/20261022_0602.html">20261022_0602</a>
+<a href="archive/20261021_0557.html">20261021_0557</a>
+<a href="archive/20261020_0640.html">20261020_0640</a>
+<a href="archive/20261019_0507.html">20261019_0507</a>
+<a href="archive/20261018_0505.html">20261018_0505</a>
+<a href="archive/20261017_0548.html">20261017_0548</a>
+<a href="archive/20261016_0551.html">20261016_0551</a>
+<a href="archive/20261015_0558.html">20261015_0558</a>
+<a href="archive/20261014_0708.html">20261014_0708</a>
+<a href="archive/20261012_0632.html">20261012_0632</a>
+<a href="archive/20261011_0604.html">20261011_0604</a>
+<a href="archive/20261010_0657.html">20261010_0657</a>
+<a href="archive/20261009_0735.html">20261009_0735</a>
+<a href="archive/20261008_0722.html">20261008_0722</a>
+<a href="archive/20261007_0650.html">20261007_0650</a>
+<a href="archive/20261006_0825.html">20261006_0825</a>
+<a href="archive/20261005_0602.html">20261005_0602</a>
+<a href="archive/20261004_0552.html">20261004_0552</a>
+<a href="archive/20261002_0657.html">20261002_0657</a>
+<a href="archive/20261001_0641.html">20261001_0641</a>
+<a href="archive/20260930_0644.html">20260930_0644</a>
+<a href="archive/20260929_0735.html">20260929_0735</a>
+<a href="archive/20260928_0541.html">20260928_0541</a>
+<a href="archive/20260927_0539.html">20260927_0539</a>
+<a href="archive/20260926_0553.html">20260926_0553</a>
+<a href="archive/20260925_0552.html">20260925_0552</a>
+<a href="archive/20260924_0551.html">20260924_0551</a>
+<a href="archive/20260923_0542.html">20260923_0542</a>
+<a href="archive/20260922_0621.html">20260922_0621</a>
+<a href="archive/20260921_0506.html">20260921_0506</a>
+<a href="archive/20260920_0509.html">20260920_0509</a>
+<a href="archive/20260919_0518.html">20260919_0518</a>
+<a href="archive/20260918_0549.html">20260918_0549</a>
+<a href="archive/20260916_0548.html">20260916_0548</a>
+<a href="archive/20260915_0610.html">20260915_0610</a>
+<a href="archive/20260913_0503.html">20260913_0503</a>
+<a href="archive/20260912_0524.html">20260912_0524</a>
+<a href="archive/20260911_0515.html">20260911_0515</a>
+<a href="archive/20260910_0518.html">20260910_0518</a>
+<a href="archive/20260909_0529.html">20260909_0529</a>
+<a href="archive/20260908_0549.html">20260908_0549</a>
+<a href="archive/20260907_0453.html">20260907_0453</a>
+<a href="archive/20260906_0446.html">20260906_0446</a>
+<a href="archive/20260905_0506.html">20260905_0506</a>
+<a href="archive/20260904_0527.html">20260904_0527</a>
+<a href="archive/20260903_0523.html">20260903_0523</a>
+<a href="archive/20260902_0528.html">20260902_0528</a>
+<a href="archive/20260901_0703.html">20260901_0703</a>
+<a href="archive/20260831_0541.html">20260831_0541</a>
+<a href="archive/20260830_0521.html">20260830_0521</a>
+<a href="archive/20260829_0956.html">20260829_0956</a>
+<a href="archive/20260828_1023.html">20260828_1023</a>
+<a href="archive/20260827_0522.html">20260827_0522</a>
+<a href="archive/20260826_0320.html">20260826_0320</a>
+<a href="archive/20260825_0319.html">20260825_0319</a>
+<a href="archive/20260824_0312.html">20260824_0312</a>
+<a href="archive/20260823_0313.html">20260823_0313</a>
+<a href="archive/20260822_0317.html">20260822_0317</a>
+<a href="archive/20260821_0321.html">20260821_0321</a>
+<a href="archive/20260820_0316.html">20260820_0316</a>
+<a href="archive/20260819_0318.html">20260819_0318</a>
+<a href="archive/20260818_0318.html">20260818_0318</a>
+<a href="archive/20260817_0311.html">20260817_0311</a>
+<a href="archive/20260816_0312.html">20260816_0312</a>
+<a href="archive/20260815_0340.html">20260815_0340</a>
+<a href="archive/20260814_0348.html">20260814_0348</a>
+<a href="archive/20260813_0354.html">20260813_0354</a>
+<a href="archive/20260812_0351.html">20260812_0351</a>
+<a href="archive/20260811_0345.html">20260811_0345</a>
+<a href="archive/20260810_0322.html">20260810_0322</a>
+<a href="archive/20260809_0320.html">20260809_0320</a>
+<a href="archive/20260808_0341.html">20260808_0341</a>
+<a href="archive/20260807_0835.html">20260807_0835</a>
+<a href="archive/20260806_0420.html">20260806_0420</a>
+<a href="archive/20260805_0415.html">20260805_0415</a>
+<a href="archive/20260804_0419.html">20260804_0419</a>
+<a href="archive/20260803_0402.html">20260803_0402</a>
+<a href="archive/20260802_0402.html">20260802_0402</a>
+<a href="archive/20260801_0413.html">20260801_0413</a>
+<a href="archive/20260731_0409.html">20260731_0409</a>
+<a href="archive/20260730_0405.html">20260730_0405</a>
+<a href="archive/20260729_0409.html">20260729_0409</a>
+<a href="archive/20260728_0412.html">20260728_0412</a>
+<a href="archive/20260726_0403.html">20260726_0403</a>
+<a href="archive/20260725_0408.html">20260725_0408</a>
+<a href="archive/20260724_0405.html">20260724_0405</a>
+<a href="archive/20260723_0404.html">20260723_0404</a>
+<a href="archive/20260722_0409.html">20260722_0409</a>
+<a href="archive/20260721_0414.html">20260721_0414</a>
+<a href="archive/20260720_0359.html">20260720_0359</a>
+<a href="archive/20260719_0356.html">20260719_0356</a>
+<a href="archive/20260718_0355.html">20260718_0355</a>
+<a href="archive/20260717_0353.html">20260717_0353</a>
+<a href="archive/20260716_0359.html">20260716_0359</a>
+<a href="archive/20260715_0402.html">20260715_0402</a>
+<a href="archive/20260714_0404.html">20260714_0404</a>
+<a href="archive/20260713_0358.html">20260713_0358</a>
+<a href="archive/20260712_0356.html">20260712_0356</a>
+<a href="archive/20260711_0410.html">20260711_0410</a>
+<a href="archive/20260710_0430.html">20260710_0430</a>
+<a href="archive/20260709_0415.html">20260709_0415</a>
+<a href="archive/20260708_0443.html">20260708_0443</a>
+<a href="archive/20260707_0445.html">20260707_0445</a>
+<a href="archive/20260706_0404.html">20260706_0404</a>
+<a href="archive/20260705_0402.html">20260705_0402</a>
+<a href="archive/20260704_0408.html">20260704_0408</a>
+<a href="archive/20260703_0413.html">20260703_0413</a>
+<a href="archive/20260702_0444.html">20260702_0444</a>
+<a href="archive/20260701_0448.html">20260701_0448</a>
+<a href="archive/20260630_0445.html">20260630_0445</a>
+<a href="archive/20260629_0403.html">20260629_0403</a>
+<a href="archive/20260627_0424.html">20260627_0424</a>
+<a href="archive/20260626_0451.html">20260626_0451</a>
+<a href="archive/20260625_0426.html">20260625_0426</a>
+<a href="archive/20260624_0457.html">20260624_0457</a>
+<a href="archive/20260623_0527.html">20260623_0527</a>
+<a href="archive/20260622_0419.html">20260622_0419</a>
+<a href="archive/20260621_0409.html">20260621_0409</a>
+<a href="archive/20260620_0423.html">20260620_0423</a>
+<a href="archive/20260619_0516.html">20260619_0516</a>
+<a href="archive/20260618_0459.html">20260618_0459</a>
+<a href="archive/20260617_0537.html">20260617_0537</a>
+<a href="archive/20260616_0537.html">20260616_0537</a>
+<a href="archive/20260615_0412.html">20260615_0412</a>
+<a href="archive/20260614_0409.html">20260614_0409</a>
+<a href="archive/20260613_0458.html">20260613_0458</a>
+<a href="archive/20260612_0510.html">20260612_0510</a>
+<a href="archive/20260611_0521.html">20260611_0521</a>
+<a href="archive/20260610_0451.html">20260610_0451</a>
+<a href="archive/20260609_0509.html">20260609_0509</a>
+<a href="archive/20260608_0404.html">20260608_0404</a>
+<a href="archive/20260607_0402.html">20260607_0402</a>
+<a href="archive/20260606_0444.html">20260606_0444</a>
+<a href="archive/20260604_0540.html">20260604_0540</a>
+<a href="archive/20260603_0539.html">20260603_0539</a>
+<a href="archive/20260602_0556.html">20260602_0556</a>
+<a href="archive/20260601_0404.html">20260601_0404</a>
+<a href="archive/20260531_0400.html">20260531_0400</a>
+<a href="archive/20260530_0509.html">20260530_0509</a>
+<a href="archive/20260528_0457.html">20260528_0457</a>
+<a href="archive/20260527_0450.html">20260527_0450</a>
+<a href="archive/20260526_0417.html">20260526_0417</a>
+<a href="archive/20260525_0358.html">20260525_0358</a>
+<a href="archive/20260524_0359.html">20260524_0359</a>
+<a href="archive/20260523_0426.html">20260523_0426</a>
+<a href="archive/20260522_0428.html">20260522_0428</a>
+<a href="archive/20260521_0456.html">20260521_0456</a>
+<a href="archive/20260520_0421.html">20260520_0421</a>
+<a href="archive/20260519_0421.html">20260519_0421</a>
+<a href="archive/20260518_0357.html">20260518_0357</a>
+<a href="archive/20260517_0354.html">20260517_0354</a>
+<a href="archive/20260516_0409.html">20260516_0409</a>
+<a href="archive/20260515_0424.html">20260515_0424</a>
+<a href="archive/20260514_0426.html">20260514_0426</a>
+<a href="archive/20260513_0423.html">20260513_0423</a>
+<a href="archive/20260512_0425.html">20260512_0425</a>
+<a href="archive/20260511_0350.html">20260511_0350</a>
+<a href="archive/20260510_0347.html">20260510_0347</a>
+<a href="archive/20260508_0408.html">20260508_0408</a>
+<a href="archive/20260507_0415.html">20260507_0415</a>
+<a href="archive/20260506_0401.html">20260506_0401</a>
+<a href="archive/20260505_0408.html">20260505_0408</a>
+<a href="archive/20260504_0344.html">20260504_0344</a>
+<a href="archive/20260503_0345.html">20260503_0345</a>
+<a href="archive/20260502_0358.html">20260502_0358</a>
+<a href="archive/20260501_0402.html">20260501_0402</a>
+<a href="archive/20260430_0405.html">20260430_0405</a>
+<a href="archive/20260429_0408.html">20260429_0408</a>
+<a href="archive/20260428_0402.html">20260428_0402</a>
+<a href="archive/20260427_0338.html">20260427_0338</a>
+<a href="archive/20260426_0336.html">20260426_0336</a>
+<a href="archive/20260425_0342.html">20260425_0342</a>
+<a href="archive/20260424_0404.html">20260424_0404</a>
+<a href="archive/20260423_0359.html">20260423_0359</a>
+<a href="archive/20260422_0357.html">20260422_0357</a>
+<a href="archive/20260421_0352.html">20260421_0352</a>
+<a href="archive/20260420_0333.html">20260420_0333</a>
+<a href="archive/20260419_0332.html">20260419_0332</a>
+<a href="archive/20260418_0350.html">20260418_0350</a>
+<a href="archive/20260417_0354.html">20260417_0354</a>
+<a href="archive/20260416_0357.html">20260416_0357</a>
+<a href="archive/20260415_0358.html">20260415_0358</a>
+<a href="archive/20260414_0358.html">20260414_0358</a>
+<a href="archive/20260413_0330.html">20260413_0330</a>
+<a href="archive/20260412_0327.html">20260412_0327</a>
+<a href="archive/20260411_0335.html">20260411_0335</a>
+<a href="archive/20260410_0356.html">20260410_0356</a>
+<a href="archive/20260409_0355.html">20260409_0355</a>
+<a href="archive/20260408_0347.html">20260408_0347</a>
+<a href="archive/20260407_0343.html">20260407_0343</a>
+<a href="archive/20260406_0326.html">20260406_0326</a>
+<a href="archive/20260405_0323.html">20260405_0323</a>
+<a href="archive/20260403_0340.html">20260403_0340</a>
+<a href="archive/20260402_0351.html">20260402_0351</a>
+<a href="archive/20260401_0345.html">20260401_0345</a>
+<a href="archive/20260331_0345.html">20260331_0345</a>
+<a href="archive/20260330_0324.html">20260330_0324</a>
+<a href="archive/20260328_0333.html">20260328_0333</a>
+<a href="archive/20260327_0348.html">20260327_0348</a>
+<a href="archive/20260326_0338.html">20260326_0338</a>
+<a href="archive/20260325_0345.html">20260325_0345</a>
+<a href="archive/20260324_0339.html">20260324_0339</a>
+<a href="archive/20260323_0317.html">20260323_0317</a>
+<a href="archive/20260322_0315.html">20260322_0315</a>
+<a href="archive/20260321_0329.html">20260321_0329</a>
+<a href="archive/20260320_0339.html">20260320_0339</a>
+<a href="archive/20260319_0341.html">20260319_0341</a>
+<a href="archive/20260318_0350.html">20260318_0350</a>
+<a href="archive/20260317_0345.html">20260317_0345</a>
+<a href="archive/20260316_0320.html">20260316_0320</a>
+<a href="archive/20260315_0319.html">20260315_0319</a>
+<a href="archive/20260314_0323.html">20260314_0323</a>
+<a href="archive/20260313_0333.html">20260313_0333</a>
+<a href="archive/20260312_0334.html">20260312_0334</a>
+<a href="archive/20260311_0330.html">20260311_0330</a>
+<a href="archive/20260310_0331.html">20260310_0331</a>
+<a href="archive/20260309_0314.html">20260309_0314</a>
+<a href="archive/20260308_0312.html">20260308_0312</a>
+<a href="archive/20260307_0326.html">20260307_0326</a>
+<a href="archive/20260306_0348.html">20260306_0348</a>
+<a href="archive/20260305_0331.html">20260305_0331</a>
+<a href="archive/20260303_0329.html">20260303_0329</a>
+<a href="archive/20260302_0314.html">20260302_0314</a>
+<a href="archive/20260301_0312.html">20260301_0312</a>
+<a href="archive/20260228_0325.html">20260228_0325</a>
+<a href="archive/20260227_0335.html">20260227_0335</a>
+<a href="archive/20260226_0344.html">20260226_0344</a>
+<a href="archive/20260225_0342.html">20260225_0342</a>
+<a href="archive/20260224_0353.html">20260224_0353</a>
+<a href="archive/20260223_0316.html">20260223_0316</a>
+<a href="archive/20260222_0316.html">20260222_0316</a>
+<a href="archive/20260221_0329.html">20260221_0329</a>
+<a href="archive/20260220_0333.html">20260220_0333</a>
+<a href="archive/20260219_0340.html">20260219_0340</a>
+<a href="archive/20260218_0339.html">20260218_0339</a>
+<a href="archive/20260217_0325.html">20260217_0325</a>
+<a href="archive/20260216_0316.html">20260216_0316</a>
+<a href="archive/20260215_0315.html">20260215_0315</a>
+<a href="archive/20260213_0342.html">20260213_0342</a>
+<a href="archive/20260212_0347.html">20260212_0347</a>
+<a href="archive/20260211_0353.html">20260211_0353</a>
+<a href="archive/20260208_0315.html">20260208_0315</a>
+<a href="archive/20260207_0330.html">20260207_0330</a>
+<a href="archive/20260206_0331.html">20260206_0331</a>
+<a href="archive/20260205_0331.html">20260205_0331</a>
+<a href="archive/20260204_0338.html">20260204_0338</a>
+<a href="archive/20260203_0953.html">20260203_0953</a>
+<a href="archive/20260202_0316.html">20260202_0316</a>
+<a href="archive/20260201_0313.html">20260201_0313</a>
+<a href="archive/20260131_0325.html">20260131_0325</a>
+<a href="archive/20260130_2239.html">20260130_2239</a>
+<a href="archive/20260130_1244.html">20260130_1244</a>
+<a href="archive/20260130_0341.html">20260130_0341</a>
+<a href="archive/20260129_0344.html">20260129_0344</a>
+<a href="archive/20260128_0341.html">20260128_0341</a>
+<a href="archive/20260127_0338.html">20260127_0338</a>
+<a href="archive/20260126_0330.html">20260126_0330</a>
+<a href="archive/20260125_0329.html">20260125_0329</a>
+<a href="archive/20260124_0337.html">20260124_0337</a>
+<a href="archive/20260123_0337.html">20260123_0337</a>
+<a href="archive/20260122_0343.html">20260122_0343</a>
+<a href="archive/20260121_0424.html">20260121_0424</a>
+<a href="archive/20260119_0329.html">20260119_0329</a>
+<a href="archive/20260118_0327.html">20260118_0327</a>
+<a href="archive/20260117_0332.html">20260117_0332</a>
+<a href="archive/20260116_0339.html">20260116_0339</a>
+<a href="archive/20260115_0334.html">20260115_0334</a>
+<a href="archive/20260114_0333.html">20260114_0333</a>
+<a href="archive/20260113_0334.html">20260113_0334</a>
+<a href="archive/20260112_0331.html">20260112_0331</a>
+<a href="archive/20260111_0329.html">20260111_0329</a>
+<a href="archive/20260110_0333.html">20260110_0333</a>
+<a href="archive/20260109_0334.html">20260109_0334</a>
+<a href="archive/20260108_0335.html">20260108_0335</a>
+<a href="archive/20260107_0330.html">20260107_0330</a>
+<a href="archive/20260106_0336.html">20260106_0336</a>
+<a href="archive/20260105_0328.html">20260105_0328</a>
+<a href="archive/20260104_0328.html">20260104_0328</a>
+<a href="archive/20260103_0325.html">20260103_0325</a>
+<a href="archive/20260102_0339.html">20260102_0339</a>
+<a href="archive/20260101_0329.html">20260101_0329</a>
+<a href="archive/20251231_0333.html">20251231_0333</a>
+<a href="archive/20251230_0332.html">20251230_0332</a>
+<a href="archive/20251229_0329.html">20251229_0329</a>
+<a href="archive/20251228_0332.html">20251228_0332</a>
+<a href="archive/20251227_0329.html">20251227_0329</a>
+<a href="archive/20251226_0330.html">20251226_0330</a>
+<a href="archive/20251225_0329.html">20251225_0329</a>
+<a href="archive/20251224_0331.html">20251224_0331</a>
+<a href="archive/20251223_0332.html">20251223_0332</a>
+<a href="archive/20251222_0328.html">20251222_0328</a>
+<a href="archive/20251221_0329.html">20251221_0329</a>
+<a href="archive/20251220_0330.html">20251220_0330</a>
+<a href="archive/20251219_0330.html">20251219_0330</a>
+<a href="archive/20251218_0345.html">20251218_0345</a>
+<a href="archive/20251217_0332.html">20251217_0332</a>
+<a href="archive/20251216_0333.html">20251216_0333</a>
+<a href="archive/20251215_0333.html">20251215_0333</a>
+<a href="archive/20251214_0327.html">20251214_0327</a>
+<a href="archive/20251212_0333.html">20251212_0333</a>
+<a href="archive/20251211_0331.html">20251211_0331</a>
+<a href="archive/20251210_0332.html">20251210_0332</a>
+<a href="archive/20251209_0331.html">20251209_0331</a>
+<a href="archive/20251208_0328.html">20251208_0328</a>
+<a href="archive/20251207_0327.html">20251207_0327</a>
+<a href="archive/20251206_0330.html">20251206_0330</a>
+<a href="archive/20251205_0331.html">20251205_0331</a>
+<a href="archive/20251204_0331.html">20251204_0331</a>
+<a href="archive/20251203_0333.html">20251203_0333</a>
+<a href="archive/20251202_0335.html">20251202_0335</a>
+<a href="archive/20251201_0328.html">20251201_0328</a>
+<a href="archive/20251130_0327.html">20251130_0327</a>
+<a href="archive/20251129_0328.html">20251129_0328</a>
+<a href="archive/20251128_0327.html">20251128_0327</a>
+<a href="archive/20251127_0327.html">20251127_0327</a>
+<a href="archive/20251126_0329.html">20251126_0329</a>
+<a href="archive/20251125_0327.html">20251125_0327</a>
+<a href="archive/20251124_0327.html">20251124_0327</a>
+<a href="archive/20251123_0326.html">20251123_0326</a>
+<a href="archive/20251122_0328.html">20251122_0328</a>
+<a href="archive/20251121_0328.html">20251121_0328</a>
+<a href="archive/20251120_0329.html">20251120_0329</a>
+<a href="archive/20251119_0328.html">20251119_0328</a>
+<a href="archive/20251118_0328.html">20251118_0328</a>
+<a href="archive/20251117_0326.html">20251117_0326</a>
+<a href="archive/20251116_0325.html">20251116_0325</a>
+<a href="archive/20251115_0327.html">20251115_0327</a>
+<a href="archive/20251114_0328.html">20251114_0328</a>
+<a href="archive/20251113_0330.html">20251113_0330</a>
+<a href="archive/20251112_0329.html">20251112_0329</a>
+<a href="archive/20251111_0328.html">20251111_0328</a>
+<a href="archive/20251110_0325.html">20251110_0325</a>
+<a href="archive/20251109_0326.html">20251109_0326</a>
+<a href="archive/20251108_0328.html">20251108_0328</a>
+<a href="archive/20251107_0328.html">20251107_0328</a>
+<a href="archive/20251106_0329.html">20251106_0329</a>
+<a href="archive/20251105_0326.html">20251105_0326</a>
+<a href="archive/20251104_0327.html">20251104_0327</a>
+<a href="archive/20251103_0324.html">20251103_0324</a>
+<a href="archive/20251102_0326.html">20251102_0326</a>
+<a href="archive/20251101_0324.html">20251101_0324</a>
+<a href="archive/20251031_0328.html">20251031_0328</a>
+<a href="archive/20251030_0330.html">20251030_0330</a>
+<a href="archive/20251029_0329.html">20251029_0329</a>
+<a href="archive/20251028_0329.html">20251028_0329</a>
+<a href="archive/20251027_0322.html">20251027_0322</a>
+<a href="archive/20251026_0327.html">20251026_0327</a>
+<a href="archive/20251025_0331.html">20251025_0331</a>
+<a href="archive/20251024_0329.html">20251024_0329</a>
+<a href="archive/20251023_0329.html">20251023_0329</a>
+<a href="archive/20251022_0330.html">20251022_0330</a>
+<a href="archive/20251021_0331.html">20251021_0331</a>
+<a href="archive/20251020_0328.html">20251020_0328</a>
+<a href="archive/20251019_0321.html">20251019_0321</a>
+<a href="archive/20251018_0327.html">20251018_0327</a>
+<a href="archive/20251017_0320.html">20251017_0320</a>
+<a href="archive/20251016_0328.html">20251016_0328</a>
+<a href="archive/20251015_0328.html">20251015_0328</a>
+<a href="archive/20251014_0323.html">20251014_0323</a>
+<a href="archive/20251011_0328.html">20251011_0328</a>
+<a href="archive/20251010_0330.html">20251010_0330</a>
+<a href="archive/20251009_0321.html">20251009_0321</a>
+<a href="archive/20251008_0343.html">20251008_0343</a>
+<a href="archive/20251007_0353.html">20251007_0353</a>
+<a href="archive/20251006_0325.html">20251006_0325</a>
+<a href="archive/20251005_0350.html">20251005_0350</a>
+<a href="archive/20251004_0352.html">20251004_0352</a>
+<a href="archive/20251003_0352.html">20251003_0352</a>
+<a href="archive/20251002_0356.html">20251002_0356</a>
+<a href="archive/20251001_0321.html">20251001_0321</a>
+<a href="archive/20250925_0335.html">20250925_0335</a>
+<a href="archive/20250924_0350.html">20250924_0350</a>
+<a href="archive/20250923_0348.html">20250923_0348</a>
+<a href="archive/20250922_0346.html">20250922_0346</a>
+<a href="archive/20250921_0345.html">20250921_0345</a>
+<a href="archive/20250920_0342.html">20250920_0342</a>
+<a href="archive/20250919_0346.html">20250919_0346</a>
+<a href="archive/20250918_0342.html">20250918_0342</a>
+<a href="archive/20250917_0336.html">20250917_0336</a>
+<a href="archive/20250916_0333.html">20250916_0333</a>
+<a href="archive/20250915_0333.html">20250915_0333</a>
+<a href="archive/20250914_0328.html">20250914_0328</a>
+<a href="archive/20250913_0322.html">20250913_0322</a>
+<a href="archive/20250912_0335.html">20250912_0335</a>
+<a href="archive/20250911_0337.html">20250911_0337</a>
+<a href="archive/20250910_0338.html">20250910_0338</a>
+<a href="archive/20250909_0341.html">20250909_0341</a>
+<a href="archive/20250908_0342.html">20250908_0342</a>
+<a href="archive/20250907_0333.html">20250907_0333</a>
+<a href="archive/20250906_0350.html">20250906_0350</a>
+<a href="archive/20250905_0319.html">20250905_0319</a>
+<a href="archive/20250904_0323.html">20250904_0323</a>
+<a href="archive/20250903_0355.html">20250903_0355</a>
+<a href="archive/20250902_0325.html">20250902_0325</a>
+<a href="archive/20250901_0355.html">20250901_0355</a>
+<a href="archive/20250831_0355.html">20250831_0355</a>
+<a href="archive/20250830_0356.html">20250830_0356</a>
+<a href="archive/20250829_0355.html">20250829_0355</a>
+<a href="archive/20250828_0333.html">20250828_0333</a>
+<a href="archive/20250827_1654.html">20250827_1654</a>
+<a href="archive/20250827_1602.html">20250827_1602</a>
+<a href="archive/20250827_1557.html">20250827_1557</a>
+<a href="archive/20250827_0320.html">20250827_0320</a>
+<a href="archive/20250826_0320.html">20250826_0320</a>
+<a href="archive/20250825_1752.html">20250825_1752</a>
+<a href="archive/20250825_1709.html">20250825_1709</a>
+<a href="archive/20250825_1652.html">20250825_1652</a>
+<a href="archive/20250825_1647.html">20250825_1647</a>
+<a href="archive/20250825_1645.html">20250825_1645</a>
+<a href="archive/20250825_1631.html">20250825_1631</a>
+<a href="archive/20250825_1606.html">20250825_1606</a>
+<a href="archive/20250825_1559.html">20250825_1559</a>
+<a href="archive/20250825_1558.html">20250825_1558</a>
+<a href="archive/20250825_1556.html">20250825_1556</a>
+<a href="archive/20250825_1531.html">20250825_1531</a>
+<a href="archive/20250825_1525.html">20250825_1525</a>
+<a href="archive/20250825_1516.html">20250825_1516</a>
+<a href="archive/20250825_1450.html">20250825_1450</a>
+<a href="archive/20250825_1444.html">20250825_1444</a>
+<a href="archive/20250825_1438.html">20250825_1438</a>
+<a href="archive/20250825_1414.html">20250825_1414</a>
+<a href="archive/20250825_1413.html">20250825_1413</a>
+<a href="archive/20250825_1410.html">20250825_1410</a>
+<a href="archive/20250825_1408.html">20250825_1408</a>
+<a href="archive/20250825_1405.html">20250825_1405</a>
+<a href="archive/20250825_1401.html">20250825_1401</a>
+<a href="archive/20250825_1355.html">20250825_1355</a>
+<a href="archive/20250825_1347.html">20250825_1347</a>
+<a href="archive/20250825_1345.html">20250825_1345</a>
+<a href="archive/20250825_1344.html">20250825_1344</a>
+<a href="archive/20250825_1343.html">20250825_1343</a>
+<a href="archive/20250825_1340.html">20250825_1340</a>
+<a href="archive/20250825_1339.html">20250825_1339</a>
+<a href="archive/20250825_1333.html">20250825_1333</a>
+<a href="archive/20250825_1323.html">20250825_1323</a>
+<a href="archive/20250825_1317.html">20250825_1317</a>
+<a href="archive/20250825_1243.html">20250825_1243</a>
+<a href="archive/20250824_0342.html">20250824_0342</a>
+<a href="archive/20250823_0343.html">20250823_0343</a>
+<a href="archive/20250823_0142.html">20250823_0142</a>
+<a href="archive/20250822_2331.html">20250822_2331</a>
+<a href="archive/20250822_2308.html">20250822_2308</a>
+<a href="archive/20250822_2258.html">20250822_2258</a>
+<a href="archive/20250822_2241.html">20250822_2241</a>
+<a href="archive/20250822_2228.html">20250822_2228</a>
+<a href="archive/20250822_2206.html">20250822_2206</a>
+<a href="archive/20250822_2147.html">20250822_2147</a>
+<a href="archive/20250822_2111.html">20250822_2111</a>
+<a href="archive/20250822_1259.html">20250822_1259</a>
+<a href="archive/20250822_1233.html">20250822_1233</a>
+<a href="archive/20250822_1229.html">20250822_1229</a>
+<a href="archive/20250822_1223.html">20250822_1223</a>
+<a href="archive/20250822_1210.html">20250822_1210</a>
+<a href="archive/20250822_1201.html">20250822_1201</a>
+<a href="archive/20250822_1111.html">20250822_1111</a>
+<a href="archive/20250822_1058.html">20250822_1058</a>
+<a href="archive/20250822_1052.html">20250822_1052</a>
+<a href="archive/20250822_1045.html">20250822_1045</a>
+<a href="archive/20250822_0657.html">20250822_0657</a>
+<a href="archive/20250822_0553.html">20250822_0553</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
