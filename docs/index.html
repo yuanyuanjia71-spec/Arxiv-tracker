@@ -74,7 +74,7 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-11-14 07:58</span>
+        <span class="badge">2026-11-15 06:46</span>
       </div>
     </div>
     <div class="hr"></div>
@@ -103,58 +103,10 @@ summary{cursor:pointer;color:var(--acc)}
 <details class="detail"><summary>Summary / 总结</summary>
 <div class="mono">Speculative decoding speeds up language models by having a lightweight drafter propose future tokens that the target model verifies in parallel.</div>
 </details>
-</div>
-<div class="card">
-<div class="title">Inference Validation for Regulated AI: A Governed Decision Pipeline for LLM Serving</div>
-<div class="meta-line">Authors: Dev Akre, Roman Bobalo, Manoj Dobbali</div>
-<div class="meta-line">First: 2026-11-09T17:21:17+00:00 · Latest: 2026-11-11T16:36:55+00:00</div>
-<div class="meta-line">Comments: 10 pages, 3 figures, 3 tables Updated paper title to better reflect content</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12737v2">Abs</a> · <a href="https://arxiv.org/pdf/2611.12737v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Deploying large language models in regulated industries requires more than picking the fastest inference engine: it requires evidence that a configuration meets contractual and legal obligations before it serves a single customer request. We describe Runway, an internal validation harness built at MasterControl that builds a governed decision pipeline around NVIDIA AIPerf. The key insight is separating concerns: AIPerf provides the trusted measurement, while Runway provides the experiment design that comes before it and the compliance, cost, and audit decisions that come after. We describe the architecture and the storage model that makes caching and audit one mechanism. We report three findings from Runway sweeps: TensorRT-LLM and vLLM rankings invert with concurrency; a newer, pricier GPU instance can be the cheaper one per request; and speculative decoding behaves differently across engines under load, so engine configuration can outweigh engine choice.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Deploying large language models in regulated industries requires more than picking the fastest inference engine: it requires evidence that a configuration meets contractual and legal obligations before it serves a single customer request.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Next-Latent Prediction Transformers Learn Compact World Models</div>
-<div class="meta-line">Authors: Jayden Teoh, Manan Tomar, Kwangjun Ahn, Edward S. Hu, Tim Pearce, Pratyusha Sharma, Akshay Krishnamurthy, Riashat Islam, Alex Lamb, John Langford</div>
-<div class="meta-line">Venue: NeurIPS 2026</div>
-<div class="meta-line">First: 2025-11-08T10:41:26+00:00 · Latest: 2026-11-11T09:38:16+00:00</div>
-<div class="meta-line">Comments: Accepted to NeurIPS 2026</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2511.05963v5">Abs</a> · <a href="https://arxiv.org/pdf/2511.05963v5">PDF</a> · <a href="https://github.com/JaydenTeoh/NextLat">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Transformers replace recurrence with a memory that grows with sequence length and self-attention that enables ad-hoc lookups over past tokens. Consequently, they lack an inherent incentive to compress history into compact latent states with consistent transition rules. This often leads to learning solutions that generalize poorly. We introduce Next-Latent Prediction (NextLat), which extends standard next-token training with self-supervised predictions in the latent space. Specifically, NextLat trains a transformer to learn latent representations that are predictive of its next latent state given the next token. Theoretically, we show that these latents converge towards belief states, compressed information about the history necessary to predict the future. This simple auxiliary objective injects a recurrent inductive bias into transformers while leaving their architecture, parallel training efficiency, and inference unchanged. NextLat effectively encourages transformers to form compact internal world models with coherent belief states and transition dynamics -- crucial properties not guaranteed by standard next-token prediction alone. Empirically, across benchmarks in world modeling, reasoning, planning, and language modeling, NextLat demonstrates significant gains over standard next-token prediction and other baselines in downstream accuracy, representation compression, and lookahead planning. Furthermore, NextLat enables variable-length self-speculative decoding, accelerating inference by up to 3.3x in language modeling. NextLat offers a simple yet effective paradigm for learning compact, predictive representations in transformers that generalize better. Our code is available at https://github.com/JaydenTeoh/NextLat.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Transformers replace recurrence with a memory that grows with sequence length and self-attention that enables ad-hoc lookups over past tokens.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Recompute or Restore? Host-Tier KV for Multi-Model Agent Workflows on a Static-Graph NPU Serving Stack</div>
-<div class="meta-line">Authors: Sungwon Woo, Seyeon Kim</div>
-<div class="meta-line">First: 2026-11-11T07:12:45+00:00 · Latest: 2026-11-11T07:12:45+00:00</div>
-<div class="meta-line">Comments: 14 pages, 6 figures, 5 tables</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.15126v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.15126v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Agent workflows issue dependent model calls that share long context prefixes, so serving them efficiently depends on reusing the key-value (KV) cache of those prefixes. On accelerators that compile model graphs ahead of time, however, the device KV budget is fixed, and prefixes evicted under load must be recomputed. Restoring them from host memory avoids this recomputation, but the transfer occupies the same engine thread as prefill and decode, so its benefit is not guaranteed. In this paper, we study when restoring beats recomputing on a commercial static-graph neural processing unit (NPU) stack (Rebellions ATOM+, vllm-rbln 0.10.2) that serves a Qwen3-8B planner on two cards and a Qwen3-0.6B executor on one. We first show that repeated prefill dominates planner work when default serving collapses: 89.5% of the executed planner prompt tokens had been materialized before. We then build a synchronous host-DRAM tier on the runtime&#x27;s public KV copy calls, together with a scheduler-aware event model whose predictions are frozen before each test cohort. Experimental results show that the host tier raises workflow service-level objective (SLO) attainment from 22.8% to 100% and from 9.4% to 99.8% in the two tested overload conditions, and endpoint confirmation on two new seeds supports conservative load gains of 11.8% (chain) and 18.2% (fork), while mixed and bursty workloads remain seed-sensitive. The frozen model predicts median and 99th-percentile (P99) latency within its 15% tolerance in all 24 common-load conditions, including the 16-18% P99 increase that the tier causes for fork workflows, but it misorders three policy contrasts and overestimates the benefit of a cheaper store path (11% predicted against 3.1% measured). The trade-off therefore depends on runtime scheduling and transfer cost as well as cache capacity.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Agent workflows issue dependent model calls that share long context prefixes, so serving them efficiently depends on reusing the key-value (KV) cache of those prefixes.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">EvoX: Rethinking the Agent Harness as a Runtime Policy</div>
-<div class="meta-line">Authors: Haoyang Zhang, Qumeng Sun, Xiao Zhang, Xiang Liu, Zhidong Fan, Junjie Wang</div>
-<div class="meta-line">First: 2026-11-11T04:05:54+00:00 · Latest: 2026-11-11T04:05:54+00:00</div>
-<div class="meta-line">Comments: 15 pages, 5 figures. Technical report</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.15006v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.15006v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Large language model (LLM) agents increasingly interact with tools and environments, yet plausible model decisions do not always translate into successful execution due to tool-call mismatches, interrupted workflows, and unsupported completion claims. We present EvoX, a Rust-based, multi-model agent runtime guided by The Second Policy, which views the harness as an Operational Policy complementing the foundation model&#x27;s Semantic Policy. EvoX combines model-facing guidance with deterministic runtime control through three complementary mechanisms: Action Realization, Execution Continuity, and Outcome Grounding. To evaluate harnesses without suppressing their native behaviors, we introduce Contrast, a controlled and auditable framework integrating explicit fairness constraints, provider-bound request verification, and evidence-based adjudication. Across five benchmarks, six foundation models, and six agent harnesses, EvoX achieves the highest numerical success rate of 56.2% over 691 common task--model pairs, exceeding the average of the other five harnesses by approximately 3.0 percentage points. Its larger advantages on GLM-5.3 (+10.7 points) and Kimi K3 (+7.9 points) highlight the model-dependent effectiveness of harness design and the potential for cross-provider adaptability. Achieved without memory, evolution, or extensions, these results establish EvoX as a competitive multi-model agent runtime and underscore the importance of harness-level operational control in realizing foundation-model capabilities.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Large language model (LLM) agents increasingly interact with tools and environments, yet plausible model decisions do not always translate into successful execution due to tool-call mismatches, interrupted workflows, and unsupported completion claims.</div>
-</details>
 </div></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261113_0755.html">20261113_0755</a>
+      <div class="history-list"><a href="archive/20261114_0758.html">20261114_0758</a>
+<a href="archive/20261113_0755.html">20261113_0755</a>
 <a href="archive/20261112_0906.html">20261112_0906</a>
 <a href="archive/20261111_0747.html">20261111_0747</a>
 <a href="archive/20261110_0947.html">20261110_0947</a>
